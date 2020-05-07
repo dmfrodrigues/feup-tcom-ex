@@ -1,0 +1,47 @@
+\setcounter{section}{4}
+\section{Challenge Activity 5 - Regular Expressions}
+{
+\renewcommand{\thesubsection}{\thesection.\alph{subsection}}
+\subsection{Item a}
+\begin{theorem}
+If $L((01+10)(01+10)^\ast)$, then
+\begin{equation*}
+	\forall w \in L, \#0(w)=\#1(w)
+\end{equation*}
+\end{theorem}
+\begin{proof}
+Base case: $w=01$. The theorem applies trivially given that $\#0(w)=\#1(w) \iff 1=1$.\\
+Base case: $w=10$. The theorem applies trivially given that $\#0(w)=\#1(w) \iff 1=1$.\\
+Inductive hypothesis: $\#0(w)=\#1(w)$\\
+Inductive step: $w'=w01$
+\begin{alignat*}{2}
+	\#0(w')=\#1(w')
+	&\iff \#0(w01)      &&=\#1(w01)\\
+	&\iff \#0(w)+\#0(01)&&=\#1(w)+\#1(01)\\
+	&\iff \#0(w)+1      &&=\#1(w)+1\\
+	&\iff \#0(w)        &&=\#1(w)
+\end{alignat*}
+Inductive step: $w'=w10$
+\begin{alignat*}{2}
+	\#0(w')=\#1(w')
+	&\iff \#0(w10)      &&=\#1(w10)\\
+	&\iff \#0(w)+\#0(10)&&=\#1(w)+\#1(10)\\
+	&\iff \#0(w)+1      &&=\#1(w)+1\\
+	&\iff \#0(w)        &&=\#1(w)
+\end{alignat*}
+Having proven the theorem holds for the two base cases, and the two inductive steps, we have proven the theorem.
+\end{proof}
+\subsection{Item b}
+\begin{theorem}
+	$L=\{w\in \{0,1\}^\ast \colon \#0(w)=\#1(w)\}$ is not a regular language.
+\end{theorem}
+\begin{proof}
+Assume by absurd that
+\begin{equation}\label{eq:CA05_ABSURD}
+L \text{ is a regular language}
+\end{equation}
+Then there is a DFA with $N$ states that is equivalent to $L$, where each state represents a distinct value of the difference between \#0 and \#1 up to a certain symbol in a string.\\
+Consider $w=0^{N+1}1^{N+1}$. This string would require $N+1$ states to represent the differences between \#0 and \#1 (which would range from $0$ to $N+1$), and thus is not accepted by the DFA. However, $w$ trivially belongs to $L$, thus arriving at a contradiction with \eqref{eq:CA05_ABSURD}.\\
+We have thus proven the theorem correct.
+\end{proof}
+}

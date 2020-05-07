@@ -1,0 +1,22 @@
+\documentclass[a4paper]{article}
+% Hyperreferences
+\usepackage{hyperref}
+% TCOM style
+\usepackage[title={TCOM - solved exams},
+            author={Diogo Rodrigues},
+            email={dmfrodrigues2000@gmail.com}]{simplereport}
+\usepackage{import}
+% Metadata
+\title{TCOM - solved exams}
+\author{Diogo Miguel Ferreira Rodrigues \\ \href{mailto:dmfrodrigues2000@gmail.com}{dmfrodrigues2000@gmail.com}}
+\date{}
+% Document
+\begin{document}
+\begingroup
+	\maketitle
+	\let\clearpage\relax
+	\setcounter{tocdepth}{2}
+	\tableofcontents
+\endgroup
+\import{./2018/}{2018E.tex}
+\end{document}

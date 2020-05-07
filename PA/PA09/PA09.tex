@@ -1,0 +1,113 @@
+\setcounter{section}{8}
+\section{Preparation Activity 9 - Properties of CFLs}
+{
+\renewcommand{\thesubsubsection}{\thesubsection\alph{subsubsection}}
+\subsection{Exercise 1}
+\subsubsection{Item a}
+\begin{alignat*}{2}
+	S &\rightarrow aZbVc\;|\;T\;|\;U\\
+	T &\rightarrow aZb\\
+	U &\rightarrow bVc\\
+	Z &\rightarrow aZb\;|\;\varepsilon \\
+	V &\rightarrow bVc\;|\;\varepsilon
+\end{alignat*}
+Replace in $Z$.
+\begin{alignat*}{2}
+	S &\rightarrow aZbVc\;|\;T\;|\;U\\
+	T &\rightarrow aZb\\
+	U &\rightarrow bVc\\
+	Z &\rightarrow T\;|\;\varepsilon \\
+	V &\rightarrow bVc\;|\;\varepsilon
+\end{alignat*}
+Expand $T$ and $S$.
+\begin{alignat*}{2}
+	S &\rightarrow aTbVc\;|\;abVc\;|\;T\;|\;U\\
+	T &\rightarrow ab\;|\;aTb\\
+	U &\rightarrow bVc\\
+	Z &\rightarrow T\;|\;\varepsilon \\
+	V &\rightarrow bVc\;|\;\varepsilon
+\end{alignat*}
+Remove $Z$.
+\begin{alignat*}{2}
+	S &\rightarrow aTbVc\;|\;abVc\;|\;T\;|\;U\\
+	T &\rightarrow ab\;|\;aTb\\
+	U &\rightarrow bVc\\
+	V &\rightarrow bVc\;|\;\varepsilon
+\end{alignat*}
+Replace in $V$.
+\begin{alignat*}{2}
+	S &\rightarrow aTbVc\;|\;abVc\;|\;T\;|\;U\\
+	T &\rightarrow ab\;|\;aTb\\
+	U &\rightarrow bVc\\
+	V &\rightarrow U\;|\;\varepsilon
+\end{alignat*}
+Expand $U$ and $S$.
+\begin{alignat*}{2}
+	S &\rightarrow aTbUc\;|\;aTbc\;|\;abUc\;|\;abc\;|\;T\;|\;U\\
+	T &\rightarrow ab\;|\;aTb\\
+	U &\rightarrow bc\;|\;bUc\\
+	V &\rightarrow U\;|\;\varepsilon
+\end{alignat*}
+Remove $V$.
+\begin{alignat*}{2}
+	S &\rightarrow aTbUc\;|\;aTbc\;|\;abUc\;|\;abc\;|\;T\;|\;U\\
+	T &\rightarrow ab\;|\;aTb\\
+	U &\rightarrow bc\;|\;bUc\\
+\end{alignat*}
+Replace symbols by generators.
+\begin{alignat*}{2}
+	S &\rightarrow ATBUC\;|\;ATBC\;|\;ABUC\;|\;ABC\;|\;T\;|\;U\\
+	T &\rightarrow AB\;|\;ATB\\
+	U &\rightarrow BC\;|\;BUC\\
+	A &\rightarrow a\\
+	B &\rightarrow b\\
+	C &\rightarrow c
+\end{alignat*}
+Replace long expressions.
+\begin{alignat*}{2}
+	S   &\rightarrow AE_1\;|\;AE_4\;|\;AE_2\;|\;AE_5\;|\;T\;|\;U\\
+	E_1 &\rightarrow TE_2\\
+	E_2 &\rightarrow BE_3\\
+	E_3 &\rightarrow UC\\
+	E_4 &\rightarrow TE_5\\
+	E_5 &\rightarrow BC\\
+	E_6 &\rightarrow TB\\
+	T   &\rightarrow AB\;|\;AE_6\\
+	U   &\rightarrow BC\;|\;BE_3\\
+	A   &\rightarrow a\\
+	B   &\rightarrow b\\
+	C   &\rightarrow c
+\end{alignat*}
+Replace $T$ and $U$ in $S$.
+\begin{alignat*}{2}
+	S   &\rightarrow AB\;|\;AE_1\;|\;AE_2\;|\;AE_4\;|\;AE_5\;|\;AE_6\;|\;BC\;|\;BE_3\\
+	E_1 &\rightarrow TE_2\\
+	E_2 &\rightarrow BE_3\\
+	E_3 &\rightarrow UC\\
+	E_4 &\rightarrow TE_5\\
+	E_5 &\rightarrow BC\\
+	E_6 &\rightarrow TB\\
+	T   &\rightarrow AB\;|\;AE_6\\
+	U   &\rightarrow BC\;|\;BE_3\\
+	A   &\rightarrow a\\
+	B   &\rightarrow b\\
+	C   &\rightarrow c
+\end{alignat*}
+\subsubsection{Item b}
+\begin{center} \includegraphics[scale=0.5]{PA09_1b} \end{center}
+\subsubsection{Item c}
+Consider a string $s=s_1s_2\ldots s_N$. $X_{i,j}$ is the set of variables that produce string $s[i:j]$.
+\begin{alignat*}{2}
+	X_{i,i} &= \{S\;|\;S \rightarrow s_i\}\\
+	X_{i,j} &= \{S\;|\;\exists k \in [i,j] \colon \exists A\in X_{i,k},B\in X_{k+1,j}\colon S \rightarrow AB\}\;(j \geq i)
+\end{alignat*}
+\begin{center} \begin{tabular}{c || c | c | c}
+	\backslashbox{$i$}{$j$} & $1             $ & $2             $ & $3      $ \\ \hline
+	$1                    $ & $A             $ & $S, T          $ & $S      $ \\
+    $2                    $ & \cellcolor{gray} & $B             $ & $S,E_5,U$ \\
+	$3                    $ & \cellcolor{gray} & \cellcolor{gray} & $C      $ \\ \hline
+	$                     $ & $a             $ & $b$     & $c$
+\end{tabular} \end{center}
+\subsection{Exercise 2}
+\textcolor{red}{Incomplete.}
+}

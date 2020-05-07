@@ -1,0 +1,29 @@
+\setcounter{section}{0}
+\section{Preparation Activity 1 - Proof by Induction}
+\begin{theorem}
+	\begin{equation*}
+		\forall x \in \mathbb{R}\setminus \{0,1\},\forall n \in \mathbb{N}, \sum_{i=0}^{n}{x^i} = \frac{x^{n+1}-1}{x-1}
+	\end{equation*}
+\end{theorem}
+\begin{proof}
+Base case: $n=0$
+\begin{alignat*}{2}
+	\sum_{i=0}^{n}{x^i} = \frac{x^{n+1}-1}{x-1}
+	&\iff \sum_{i=0}^{0}{x^i} &&= \frac{x^{0+1}-1}{x-1}\\
+	&\iff x^0                 &&= \frac{x-1}{x-1}
+\end{alignat*}
+Given $x \neq 0$ and $x \neq 1$, the above equation is trivially true.\\
+Inductive hypothesis:
+\begin{equation*}
+\sum_{i=0}^{n}{x^i} = \frac{x^{n+1}-1}{x-1}
+\end{equation*}
+Inductive step:
+\begin{alignat*}{3}
+	\sum_{i=0}^{n+1}{x^i} = \frac{x^{n+2}-1}{x-1}
+	&\iff x^{n+1}         &&+\sum_{i=0}^{n}{x^i}   &&= \frac{x^{n+2}-1}{x-1}\\
+	&\iff x^{n+1}         &&+\frac{x^{n+1}-1}{x-1} &&= \frac{x^{n+2}-1}{x-1}\\
+	&\iff (x-1)x^{n+1}    &&+x^{n+1}-1             &&= x^{n+2}-1\\
+	&\iff x^{n+2}-x^{n+1} &&+x^{n+1}               &&= x^{n+2}\\
+\end{alignat*}
+Having proven the theorem correct for the base case and the inductive step, the theorem is proven.
+\end{proof}

@@ -1,0 +1,63 @@
+\setcounter{section}{3}
+\section{Challenge Activity 4 - \texorpdfstring{$\varepsilon$}{epsilon}-NFAs}
+\subsection{Exercise 1}
+The NFA equivalent to a given $\varepsilon$-NFA is given by
+\begin{alignat*}{2}
+	NFA &= (\Sigma, Q_N, \delta_N, q_N, F_N)\\
+	Q_N &\subseteq \mathscr{P}(Q_E)\\
+	q_N &= \varepsilon close(q_E)\\
+	F_N &= \{\varepsilon close(q)\colon q \in Q_E \wedge \varepsilon close(q) \cap F_E \neq \emptyset\}\\
+	T(S,a)&= \bigcup_{q\in S}{\delta_E(q,a)}\\
+	\delta_N(S,a) &= \{\varepsilon close(q)\colon q \in T(S,a)\}
+\end{alignat*}
+where $T(S,A)$ are states reachable from any of the members of $S$ through transitions with $a\in \Sigma$.\\
+Informally, this corresponds to replacing every occurence of a state by its $\varepsilon$-closure, given all states of $\varepsilon close(q)$ can be reached the same way $q$ can.
+\subsection{Exercise 2}
+\begin{alignat*}{2}
+    NFA &= (\Sigma, Q_N, \delta_N, q_N, F_N)\\
+    \Sigma &= \{a,b\}\\
+	q_N &= \varepsilon close(0)\\
+	    &= \{0,1,2,4,7\}\\
+	F_N &= \{\varepsilon close(q)\colon q \in Q_E \wedge \varepsilon close(q) \cap F_E \neq \emptyset\}\\
+	    &= \{\{10\}\}
+\end{alignat*}
+\begin{alignat*}{2}
+	\varepsilon close(0)&=\{0,1,2,4,7\} \\
+	\varepsilon close(1)&=\{1,2,4\} \\
+	\varepsilon close(2)&=\{2\} \\
+	\varepsilon close(3)&=\{1,2,3,4,6,7\} \\
+	\varepsilon close(4)&=\{4\} \\
+	\varepsilon close(5)&=\{1,2,4,5,6,7\} \\
+	\varepsilon close(6)&=\{1,2,4,7\} \\
+	\varepsilon close(7)&=\{7\} \\
+	\varepsilon close(8)&=\{8\} \\
+	\varepsilon close(9)&=\{9\} \\
+	\varepsilon close(10)&=\{10\}
+\end{alignat*}
+\begin{center}
+\begin{tabular}{ r | c c }
+ $\delta_N$ & $a$ & $b$ \\ \hline
+ $\rightarrow \{0,1,2,  4,    7   \}$ & $\{\{1,2,3,4,6,7\},\{8\}\}$ & $\{\{1,2,4,5,6,7\}\}$\\%eclose(0)
+ $            \{  1,2,3,4,  6,7   \}$ & $\{\{1,2,3,4,6,7\},\{8\}\}$ & $\{\{1,2,4,5,6,7\}\}$\\%eclose(3)
+ $            \{  1,2,  4,5,6,7   \}$ & $\{\{1,2,3,4,6,7\},\{8\}\}$ & $\{\{1,2,4,5,6,7\}\}$\\%eclose(5)
+ $            \{                8 \}$ & $\emptyset                $ & $\{\{9\}\}          $\\%eclose(8)
+ $            \{                9 \}$ & $\emptyset                $ & $\{\{10\}\}         $\\%eclose(9)
+ $        \ast\{                10\}$ & $\emptyset                $ & $\emptyset          $  %eclose(10)
+\end{tabular}
+\end{center}
+Replacing sets by the $\varepsilon$-closures they correspond to, we have
+\begin{center}
+\begin{tabular}{ r | c c }
+ $\delta_N$ & $a$ & $b$ \\ \hline
+ $\rightarrow  0 $ & $\{3,8\}  $ & $\{5\}    $\\%eclose(0)
+ $             3 $ & $\{3,8\}  $ & $\{5\}    $\\%eclose(3)
+ $             5 $ & $\{3,8\}  $ & $\{5\}    $\\%eclose(5)
+ $             8 $ & $\emptyset$ & $\{9\}    $\\%eclose(8)
+ $             9 $ & $\emptyset$ & $\{10\}   $\\%eclose(9)
+ $        \ast 10$ & $\emptyset$ & $\emptyset$  %eclose(10)
+\end{tabular}
+\end{center}
+\begin{center} \includegraphics[scale=0.12]{CA04_nfa_v2} \end{center}
+Both the provided $\varepsilon$-NFA and the constructed NFA accept the same strings: those ended in $abb$.
+\subsection{Exercise 3}
+I think my scheme can be applied to every $\varepsilon$-NFA.

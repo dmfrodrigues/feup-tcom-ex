@@ -1,0 +1,30 @@
+\setcounter{section}{1}
+\section{Preparation Activity 2 - DFAs}
+{
+\renewcommand{\thesubsection}{\thesection.\alph{subsection}}
+\subsection{Item a}
+\begin{center} \includegraphics[scale=0.12]{PA02_a} \end{center}
+\subsection{Item b}
+\begin{center}
+\begin{minipage}[c]{0.25\textwidth}
+	\begin{alignat*}{2}
+		DFA    &= (Q, \Sigma, \delta, q_0, F)\\
+		Q      &= \{\emptyset,q_0,q_1,q_2\}\\
+		\Sigma &= \{a,b\}\\
+		F      &= \{q_2\}\\
+		\delta &\colon Q \times \Sigma \rightarrow Q
+	\end{alignat*}
+\end{minipage}%
+\begin{minipage}[c]{0.2\textwidth}
+	\begin{center}
+		\begin{tabular}{ r | c c }
+ 			$         \delta$ & $a  $ & $b  $ \\ \hline
+			$            \emptyset$ & $\emptyset$ & $\emptyset$\\ 			
+ 			$\rightarrow q_0$ & $q_1$ & $\emptyset$ \\
+ 			$            q_1$ & $q_1$ & $q_2$ \\
+ 			$      ^\ast q_2$ & $q_1$ & $q_2$
+		\end{tabular}
+		\end{center}
+\end{minipage}
+\end{center}
+}

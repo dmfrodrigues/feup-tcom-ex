@@ -1,0 +1,69 @@
+\setcounter{section}{5}
+\section{Challenge Activity 6 - Regular Languages}
+\subsection{Exercise 1}%
+{
+\renewcommand{\thesubsubsection}{\thesubsection\alph{subsubsection}}
+\subsubsection{Item a}
+\begin{theorem}\label{theo:L1}
+Given $L_1$ defined by the regular expression $(01+10)(01+10)^\ast$,
+\begin{equation*}
+	\forall w \in L_1, |w| \equiv 0 \pmod{2}
+\end{equation*}
+\end{theorem}
+\begin{proof}
+Base case: $w=01$.
+\begin{equation*}
+	|w| \equiv 0 \pmod{2} \iff |01| \equiv 0 \pmod{2} \iff 2 \equiv 0 \pmod{2}
+\end{equation*}
+Base case: $w=10$.
+\begin{equation*}
+	|w| \equiv 0 \pmod{2} \iff |10| \equiv 0 \pmod{2} \iff 2 \equiv 0 \pmod{2}
+\end{equation*}
+Inductive hypothesis: $|w| \equiv 0 \pmod{2}$.\\
+Inductive step: $w'=w01$
+\begin{alignat*}{2}
+	|w'| \equiv 0 \pmod{2}
+	&\iff |w01|    &&\equiv 0 \pmod{2}\\
+	&\iff |w|+|01| &&\equiv 0 \pmod{2}\\
+	&\iff |w|+2    &&\equiv 0 \pmod{2}\\
+	&\iff |w|      &&\equiv 0 \pmod{2}
+\end{alignat*}
+Inductive step: $w'=w10$
+\begin{alignat*}{2}
+	|w'| \equiv 0 \pmod{2}
+	&\iff |w10|    &&\equiv 0 \pmod{2}\\
+	&\iff |w|+|10| &&\equiv 0 \pmod{2}\\
+	&\iff |w|+2    &&\equiv 0 \pmod{2}\\
+	&\iff |w|      &&\equiv 0 \pmod{2}
+\end{alignat*}
+Having proven the theorem holds for the two base cases, and the two inductive steps, we have proven the theorem.
+\end{proof}
+\subsubsection{Item b}
+\begin{theorem}
+	Knowing $L_1$ as described in theorem \ref{theo:L1} is a regular language,
+	\begin{equation*}
+		L_2 = \{w^n | w \in \{a,b\} \wedge n \geq 1 \}
+	\end{equation*}
+	is also a regular equation.
+\end{theorem}
+\begin{proof}
+Considering $h(a)=01$ and $h(b)=10$, we can trivially conclude that
+\begin{equation*}
+	h(L_2)=L_1 \iff L_2 = h^{-1}(L_1)
+\end{equation*}
+Given the class of regular languages is closed to inverse homomorphism, this means that, given that $L_1$ is regular, $h^{-1}(L_1)=L_2$ is regular.
+\end{proof}
+}
+\subsection{Exercise 2}
+Let the equivalent DFAs be $D_3$ and $D_4$ respectively. If $D_3 \times D_4=D_4$ (where $(p,q)\in Q_{3 \times 4}$ is an accept state if either $p \in Q_3$ or $q \in Q_4$ are accept states), then $L_3 \subseteq L_4$. One can easily prove that two DFAs are equivalent by reducing them and comparing for equality (ignoring the fact state names might be different).
+\subsection{Exercise 3}
+It is true, given the language of the lexemes in any Python program can be split into two parts:
+\begin{enumerate}
+	\item All the keywords, reserved words and similars, which are a finite set of finite strings, being thus representable in a DFA.
+	\item All the identifiers and literals, which have some rules associated but are still representable as DFAs/regular expressions:
+	\begin{itemize}
+		\item Numeric literals are either special values like $True$, $False$, $None$, or must conform to a well known format (dot-separated, scientific notation,...)
+		\item String literals are roughly defined as the elements of $\{"w" | w \in \Sigma^\ast \} \cup \{'w' | w \in \Sigma^\ast \}$.
+		\item Identifiers obey a simple set of rules, like not starting with a digit, only being composed of digits, uppercase and lowercase letters; aside from that, they can be any length, which is no problem to represent as a DFA.
+	\end{itemize}
+\end{enumerate}

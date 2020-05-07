@@ -1,0 +1,169 @@
+\setcounter{section}{1}
+\section{TP02 - DFAs}
+{
+\renewcommand{\thesubsubsection}{\thesubsection\alph{subsubsection}}
+\subsection{Exercise 1}
+\subsubsection{Item a}
+\begin{center}
+	\begin{minipage}[c]{0.5\textwidth}
+		\begin{alignat*}{2}
+			DFA    &= (\Sigma, Q, \delta, q_0, F)\\
+			\Sigma &= \{0,1,2,A,B,C\}\\
+			Q      &= \{q_0,q_1,q_2\}\\
+			F      &= \{q_0\}\\
+			\delta &\colon Q \times \Sigma \rightarrow Q
+		\end{alignat*}
+		\begin{center}
+		\begin{tabular}{ r | c c c c c c}
+ 			$\delta              $ & $0  $ & $1  $ & $2  $ & $A  $ & $B  $ & $C  $ \\ \hline
+ 			$\rightarrow^\ast q_0$ & $q_0$ & $q_1$ & $q_2$ & $q_0$ & $q_1$ & $q_2$ \\  
+ 			$           ^\ast q_1$ & $q_0$ & $q_1$ & $q_2$ & $q_0$ & $q_1$ & $q_2$ \\
+ 			$           ^\ast q_2$ & $q_0$ & $q_1$ & $q_2$ & $q_0$ & $q_1$ & $q_2$    
+		\end{tabular}
+		\end{center}
+	\end{minipage}
+	\begin{minipage}[c]{0.4\textwidth}
+		\includegraphics[scale=0.120]{TP02_01}
+	\end{minipage}
+\end{center}
+\subsubsection{Item b}
+Buttons A,0 send the elevator to floor 0, buttons B,1 to floor 1, and buttons C,2 to floor 2.
+\subsection{Exercise 2}
+\begin{center} \includegraphics[scale=0.11]{TP02_02} \end{center}
+\begin{center}
+	\begin{minipage}[c]{0.50\textwidth}
+		\begin{alignat*}{2}
+			DFA    &= (\Sigma, Q, \delta, y_0, F)\\
+			\Sigma &= \{0,1,2,3,4,5,6,7,8,9,-\}\\
+			Q      &= \{y_0,y_1,y_2,y_3,y_4,m_0,m_1,m_2,d_0,d_1,d_2\}\\
+			F      &= \{d_2\}\\
+			\delta &\colon Q \times \Sigma \rightarrow Q
+		\end{alignat*}
+	\end{minipage}
+	\begin{minipage}[c]{0.3\textwidth}
+		\begin{center}
+		\begin{tabular}{ r | c c }
+ 			$\delta$ & $\{0-9\}$ & $\{-\}$ \\ \hline
+ 			$\rightarrow y_0$ & $y_1      $ & $\emptyset$ \\  
+ 			$            y_1$ & $y_2      $ & $\emptyset$ \\
+ 			$            y_2$ & $y_3      $ & $m_0      $ \\
+ 			$            y_3$ & $y_4      $ & $\emptyset$ \\
+ 			$            y_4$ & $\emptyset$ & $m_0      $ \\
+ 			$            m_0$ & $m_1      $ & $\emptyset$ \\
+ 			$            m_1$ & $m_2      $ & $\emptyset$ \\
+ 			$            m_2$ & $\emptyset$ & $d_0      $ \\
+ 			$            d_0$ & $d_1      $ & $\emptyset$ \\
+ 			$            d_1$ & $d_2      $ & $\emptyset$ \\
+ 			$      ^\ast d_2$ & $\emptyset$ & $\emptyset$ \\
+ 			$\emptyset      $ & $\emptyset$ & $\emptyset$
+		\end{tabular}
+		\end{center}
+	\end{minipage}
+\end{center}
+\pagebreak
+\subsection{Exercise 3}
+\begin{center} \vspace*{-20pt}
+\begin{tabular}{p{48mm} p{48mm} p{48mm}}
+	\subsubsection{Item a}
+	\begin{center} \includegraphics[scale=0.12]{TP02_03_a} \end{center}
+	&
+	\subsubsection{Item b}
+	\begin{center} \includegraphics[scale=0.12]{TP02_03_b} \end{center}
+	&
+	\subsubsection{Item c}
+	\begin{center} \includegraphics[scale=0.12]{TP02_03_c} \end{center}
+\end{tabular}
+\end{center}
+\subsection{Exercise 4}
+\begin{definition}[Extended transition function]
+\label{def:ext_trans}
+May $\hat{\delta}\colon Q\times \Sigma^\ast \rightarrow Q$ be recursively defined as:
+\begin{alignat*}{2}
+	\hat{\delta}(q,w)= \begin{cases}
+		  q                           & \text{if } w=\varepsilon\\
+		  \delta(\hat{\delta}(q,x),a) & \text{if } w=xa, x\in\Sigma\\
+		  \end{cases}
+\end{alignat*}
+\end{definition}
+\begin{theorem}
+	\begin{equation*}
+		\forall x,y \in \Sigma^\ast,\hat{\delta}(q,xy)=\hat{\delta}(\hat{\delta}(q,x),y)
+	\end{equation*}
+\end{theorem}
+\begin{proof}
+Base case: $|y|=1$. Let $y$ be constitued of a single symbol $a\in\Sigma$.
+\begin{alignat*}{2}
+	\hat{\delta}(q,xy)=\hat{\delta}(\hat{\delta}(q,x),y)
+	&\iff \hat{\delta}(q,xa)=\delta(\hat{\delta}(q,x),a)
+\end{alignat*}
+Inductive hypothesis:
+\begin{equation*}
+	\hat{\delta}(q,xy)=\hat{\delta}(\hat{\delta}(q,x),y)
+\end{equation*}
+Inductive step: may $a\in\Sigma$ and $y'=ya$.
+\begin{alignat*}{3}
+	\hat{\delta}(q,xy)=\hat{\delta}(\hat{\delta}(q,x),y)
+	&\xRightarrow{\text{Apply $\delta$}} &&\delta(\hat{\delta}(q,xy),a)&&=\delta(\hat{\delta}(\hat{\delta}(q,x),y),a) \\
+	&\xLeftrightarrow{\text{Def \ref{def:ext_trans}}}     &&\hat{\delta}(q,xya)         &&=\hat{\delta}(\hat{\delta}(q,x),ya) \\
+	&\xLeftrightarrow{\text{Rep $y'$}}     &&\hat{\delta}(q,xy')         &&=\hat{\delta}(\hat{\delta}(q,x),y')
+\end{alignat*}
+Having proven the theorem holds for the base case, and the inductive step, we have proven the theorem.
+\end{proof}
+\pagebreak
+\subsection{Exercise 5}
+\subsubsection{Item a}
+The important principle of this item is that $q_i$ represents the remainder of the division by $5$ is $i$ so far.
+\begin{center}
+	\begin{minipage}[c]{0.25\textwidth}
+		\begin{alignat*}{2}
+			DFA    &= (\Sigma, Q, \delta, q_0, F)\\
+			\Sigma &= \{0,1\}\\
+			Q      &= \{q_0,q_1,q_2,q_3,q_4\}\\
+			F      &= \{q_0\}\\
+			\delta &\colon Q \times \Sigma \rightarrow Q
+		\end{alignat*}
+	\end{minipage}
+	\begin{minipage}[c]{0.2\textwidth}
+		\begin{center}
+		\begin{tabular}{ r | c c }
+ 			$\delta              $ & $0  $ & $1  $ \\ \hline
+ 			$\rightarrow^\ast q_0$ & $q_0$ & $q_1$ \\  
+ 			$                 q_1$ & $q_2$ & $q_3$ \\
+ 			$                 q_2$ & $q_4$ & $q_0$ \\
+ 			$                 q_3$ & $q_1$ & $q_2$ \\
+ 			$                 q_4$ & $q_3$ & $q_4$
+		\end{tabular}
+		\end{center}
+	\end{minipage}
+	\begin{minipage}[c]{0.45\textwidth}
+		\begin{center} \includegraphics[scale=0.12]{TP02_05_a} \end{center}
+	\end{minipage}
+\end{center}
+\subsubsection{Item b}
+\begin{center}
+	\begin{minipage}[c]{0.25\textwidth}
+		\begin{alignat*}{2}
+			DFA    &= (\Sigma, Q, \delta, q_0, F)\\
+			\Sigma &= \{0,1\}\\
+			Q      &= \{q_0,q_1,q_2,q_3,q_4\}\\
+			F      &= \{q_0\}\\
+			\delta &\colon Q \times \Sigma \rightarrow Q
+		\end{alignat*}
+	\end{minipage}
+	\begin{minipage}[c]{0.2\textwidth}
+		\begin{center}
+		\begin{tabular}{ r | c c }
+ 			$\delta              $ & $0  $ & $1  $ \\ \hline
+ 			$\rightarrow^\ast q_0$ & $q_0$ & $q_2$ \\  
+ 			$                 q_1$ & $q_3$ & $q_0$ \\
+ 			$                 q_2$ & $q_1$ & $q_3$ \\
+ 			$                 q_3$ & $q_4$ & $q_1$ \\
+ 			$                 q_4$ & $q_2$ & $q_4$
+		\end{tabular}
+		\end{center}
+	\end{minipage}
+	\begin{minipage}[c]{0.45\textwidth}
+		\begin{center} \includegraphics[scale=0.12]{TP02_05_b} \end{center}
+	\end{minipage}
+\end{center}
+}

@@ -1,0 +1,121 @@
+\setcounter{section}{3}
+\section{TP04 - \texorpdfstring{$\varepsilon$}{e}-NFAs}
+{
+\renewcommand{\thesubsubsection}{\thesubsection\alph{subsubsection}}
+\subsection{Exercise 1}
+\subsubsection{Item a}
+\begin{center} \includegraphics[scale=0.12]{TP04_1_a} \end{center}
+\subsubsection{Item b}
+This $\varepsilon$-NFA is actually a regular NFA; suggestions for a simpler, working $\varepsilon$-NFA are welcome.
+\begin{center} \includegraphics[width=160mm,keepaspectratio]{TP04_1_b} \end{center}
+\subsection{Exercise 2}
+\subsubsection{Item a}
+\begin{alignat*}{2}
+	\varepsilon close(p)&=\{p,q,r\}\\
+	\varepsilon close(q)&=\{q\}\\
+	\varepsilon close(r)&=\{r\}
+\end{alignat*}
+\subsubsection{Item b}
+We will use the DFA from \ref{sssec:TP04_2_c} to answer to this item. The only reject state is $\emptyset$, which is also a dead state, so the only strings that are not accepted are the ones that end up locked in $\emptyset$. From that, it is easy to conclude that the only strings with length less or equal to $3$ that are rejected are $bba$ and $bbb$.
+\subsubsection{Item c} \label{sssec:TP04_2_c}
+\begin{center} \includegraphics[scale=0.12]{TP04_2_c} \end{center}
+\begin{center}
+\begin{minipage}[c]{0.35\textwidth}
+\begin{alignat*}{2}
+	DFA       &= (\Sigma, Q_D, \delta_D, \{p,q,r\}, F_D)\\
+	\Sigma    &= \{a,b\}\\
+	Q_D       &= \{\{p,q,r\},\{q,r\},\{r\},\emptyset\}\\
+	F_D       &= \{\{p,q,r\},\{q,r\},\{r\}\}\\
+	\delta_D &\colon Q_D \times \Sigma \rightarrow Q_D
+\end{alignat*}
+\end{minipage}%
+\begin{minipage}[c]{0.45\textwidth}
+\begin{center}
+\begin{tabular}{ r | c c c }
+    $\delta_D$ & $a$ & $b$ & $c$ \\ \hline
+    $\rightarrow^\ast \{p,q,r\}$ & $\{p,q,r\}$ & $\{  q,r\}$ & $\{p,q,r\}$ \\
+    $           ^\ast \{  q,r\}$ & $\{p,q,r\}$ & $\{    r\}$ & $\{p,q,r\}$ \\
+    $           ^\ast \{    r\}$ & $\emptyset$ & $\emptyset$ & $\{p,q,r\}$\\
+    $ \emptyset                $ & $\emptyset$ & $\emptyset$ & $\emptyset$
+\end{tabular}
+\end{center}
+\end{minipage}
+\end{center}
+\subsection{Exercise 3}
+\subsubsection{Item a}
+This $\varepsilon$-NFA is actually a regular NFA; suggestions for a simpler, working $\varepsilon$-NFA are welcome.
+\begin{center}
+	\begin{minipage}[c]{0.30\textwidth}
+		\begin{alignat*}{2}
+			\varepsilon NFA &= (\Sigma, Q_E, \delta_E, 0, F_E)\\
+			\Sigma &= \{a,b\}\\
+			Q_E    &= \{0,1,2\}\\
+			F_E    &= \{0,1,2\}\\
+			\delta_E &\colon Q_E \times \Sigma \rightarrow \mathscr{P}(Q_E)
+		\end{alignat*}
+	\end{minipage}
+	\begin{minipage}[c]{0.25\textwidth}
+		\begin{center}
+		\begin{tabular}{ r | c c c }
+ 			$\delta_E          $ & $\varepsilon$ & $a    $ & $b    $ \\ \hline
+ 			$\rightarrow^\ast 0$ & $\emptyset$ & $\{1\}$ & $\{0\}$ \\  
+ 			$                 1$ & $\emptyset$ & $\{2\}$ & $\{0\}$ \\
+ 			$                 2$ & $\emptyset$ & $\emptyset$ & $\{0\}$
+		\end{tabular}
+		\end{center}
+	\end{minipage}
+	\begin{minipage}[c]{0.35\textwidth}
+		\begin{center} \includegraphics[scale=0.12]{TP04_3_a} \end{center}
+	\end{minipage}
+\end{center}
+\subsubsection{Item b}
+This $\varepsilon$-NFA is actually a regular NFA; suggestions for a simpler, working $\varepsilon$-NFA are welcome.
+\begin{center}
+	\begin{minipage}[c]{0.27\textwidth}
+		\begin{alignat*}{2}
+			\varepsilon NFA &= (\Sigma, Q_E, \delta_E, 0, F_E)\\
+			\Sigma &= \{a,b,c\}\\
+			Q_E    &= \{00,01,10,11\}\\
+			F_E    &= \{00\}\\
+			\delta_E &\colon Q_E \times \Sigma \rightarrow \mathscr{P}(Q_E)
+		\end{alignat*}
+	\end{minipage}
+	\begin{minipage}[c]{0.35\textwidth}
+		\begin{center}
+		\begin{tabular}{ r | c c c c }
+ 			$\delta_E           $ & $\varepsilon$ & $a    $ & $b    $ & $c$ \\ \hline
+ 			$\rightarrow^\ast 00$ & $\emptyset  $ & $\{10\}$ & $\{10\}$ & $\{11\}$ \\  
+ 			$                 01$ & $\emptyset  $ & $\{11\}$ & $\{11\}$ & $\{10\}$ \\
+ 			$                 10$ & $\emptyset  $ & $\{00\}$ & $\{00\}$ & $\{01\}$\\
+ 			$                 11$ & $\emptyset  $ & $\{01\}$ & $\{01\}$ & $\{00\}$
+		\end{tabular}
+		\end{center}
+	\end{minipage}
+	\begin{minipage}[c]{0.37\textwidth}
+		\begin{center} \includegraphics[scale=0.12]{TP04_3_b} \end{center}
+	\end{minipage}
+\end{center}
+\subsection{Exercise 4}
+\begin{alignat*}{2}
+	\varepsilon close(p)&=\{p,q,r\}\\
+	\varepsilon close(q)&=\{q\}\\
+	\varepsilon close(r)&=\{q,r\}\\
+	\varepsilon close(s)&=\{s\}
+\end{alignat*}
+\begin{center} \includegraphics[scale=0.12]{TP04_4} \end{center}
+\begin{alignat*}{2}
+	DFA       &= (\Sigma, Q_D, \delta_D, \{p,q,r\}, F_D)\\
+	\Sigma    &= \{a,b,c,d\}\\
+	Q_D       &= \{\{p,q,r\},\{q,r,s\},\{p,q,r,s\}\}\\
+	F_D       &= \{\{p,q,r\},\{q,r,s\},\{p,q,r,s\}\}\\
+	\delta_D &\colon Q_D \times \Sigma \rightarrow Q_D
+\end{alignat*}
+\begin{center}
+\begin{tabular}{ r | c c c c }
+    $\delta_D                    $ & $a          $ & $b          $ & $c          $ & $d          $ \\ \hline
+    $\rightarrow{^\ast} \{p,q,r  \}$ & $\{p,q,r,s\}$ & $\{  q,r,s\}$ & $\{p,q,r  \}$ & $\{p,q,r,s\}$ \\
+    $           {^\ast} \{  q,r,s\}$ & $\{  q,r,s\}$ & $\{p,q,r  \}$ & $\{p,q,r  \}$ & $\{p,q,r,s\}$ \\
+    $           {^\ast} \{p,q,r,s\}$ & $\{p,q,r,s\}$ & $\{p,q,r,s\}$ & $\{p,q,r  \}$ & $\{p,q,r,s\}$ \\
+\end{tabular}
+\end{center}
+}

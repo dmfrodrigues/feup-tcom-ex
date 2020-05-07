@@ -1,0 +1,90 @@
+\setcounter{section}{0}
+\section{Challenge Activity 1 - Proof by Induction}
+\begin{lemma} \label{lem:CA01_max}
+\begin{equation*}
+	\forall m,n \in \mathbb{N}, 2^m+2^n \leq 2^{\max \{m,n\} +1}
+\end{equation*}
+\end{lemma}
+\begin{proof}
+\begin{alignat*}{2}
+	\forall x,y \in \mathbb{R}, x \leq \max \{x,y\} \wedge y \leq \max \{x,y\}
+	\implies \begin{cases}
+		m \leq \max \{ m,n\}\\
+		n \leq \max \{ m,n\}
+	\end{cases}
+\end{alignat*}
+$f \colon \mathbb{R} \rightarrow \mathbb{R}, f(x)=2^x$ is a continuous, strictly increasing function, therefore
+\begin{equation*}
+	\forall x,y \in \mathbb{R}, x<y \iff f(x) < f(y)
+\end{equation*}
+\begin{alignat*}{2}
+	\begin{cases}
+		m \leq \max \{ m,n\}\\
+		n \leq \max \{ m,n\}
+	\end{cases}
+	&\iff &&
+	\begin{cases}
+		2^m \leq 2^{\max \{ m,n\}}\\
+		2^n \leq 2^{\max \{ m,n\}}
+	\end{cases}\\
+	&\implies && 2^m+2^n \leq 2 * 2^{\max \{m,n\}}\\
+	&\iff     && 2^m+2^n \leq 2^{\max \{m,n\} +1}
+\end{alignat*}
+The lemma is thus proven correct.
+\end{proof}
+\begin{definition}[Operator $\cdot$]
+	The operator $\cdot$ is such that $B=B_1 \cdot B_2$ is the binary tree obtained by taking a new node $r$ (on which $B$ will be rooted), and connecting it to the roots of binary trees $B_1$ and $B_2$.
+\end{definition}
+\begin{definition}[Binary tree]
+Let $\mathbb{B}$ be the set of all binary trees.
+$B$ is a \textit{binary tree} ($B \in \mathbb{B}$) iff
+\begin{enumerate}
+	\item \label{def:BT1} $B$ is composed of a single node, in which case the root is that node.
+	\item \label{def:BT2} $\exists B_1,B_2 \in \mathbb{B} \colon B=B_1 \cdot B_2$.
+\end{enumerate}
+\end{definition}
+\begin{definition}[Height of a binary tree]
+	May $H \colon \mathbb{B} \rightarrow \mathbb{N}$ be such that
+	\begin{alignat*}{2}
+		H(B)=
+		\begin{cases}
+			1                    & \text{ in case \ref{def:BT1}} \\
+			\max \{H(B_1),H(B_2) \} +1 & \text{ in case \ref{def:BT2}}
+		\end{cases}
+	\end{alignat*}
+\end{definition}
+
+\begin{definition}[\#leafs of a binary tree]
+	May $L \colon \mathbb{B} \rightarrow \mathbb{N}$ be such that
+	\begin{alignat*}{2}
+		L(B)=
+		\begin{cases}
+			1             & \text{ in case \ref{def:BT1}} \\
+			L(B_1)+L(B_2) & \text{ in case \ref{def:BT2}}
+		\end{cases}
+	\end{alignat*}
+\end{definition}
+
+\begin{theorem}
+\begin{equation*}
+	\forall B \in \mathbb{B}, L(B) \leq 2^{H(B)}
+\end{equation*}
+\end{theorem}
+
+\begin{proof}
+Base case: $B$ is a single node.
+\begin{equation*}
+	L(B) \leq 2^{H(B)}
+	\iff 1 \leq 2^1
+	\iff 1 \leq 2
+\end{equation*}
+Inductive hypothesis: $L(B_1) \leq 2^{H(B_1)}$, $L(B_2) \leq 2^{H(B_2)}$.\\
+Inductive step: let $B=B_1 \cdot B_2$.
+\begin{alignat*}{3}
+	L(B) \leq 2^{H(B)}
+	&\iff L(B_1)    &&+L(B_2)     && \leq 2^{\max \{ H(B_1),H(B_2) \} +1 }\\
+	&\iff 2^{H(B_1)}&&+2^{H(B_2)} && \leq 2^{\max \{ H(B_1),H(B_2) \} +1 }
+\end{alignat*}
+By lemma \ref{lem:CA01_max}, the inductive step is proven.\\
+Having proven the theorem for the base case and the inductive step, the theorem is proven correct.
+\end{proof}

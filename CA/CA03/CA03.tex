@@ -1,0 +1,99 @@
+\setcounter{section}{2}
+\section{Challenge Activity 3 - NFAs}%
+{
+\renewcommand{\thesubsection}{\thesection.\alph{subsection}}
+\subsection{Item a}
+\begin{center}
+	\begin{minipage}[c]{0.33\textwidth}
+		\begin{alignat*}{2}
+			NFA      &= (\Sigma, Q_N, \delta_N,0,F_N)\\
+			\Sigma   &= \{a,b\}\\
+			Q_N      &= \{0,1\}\\
+			F_N      &= \{1\}\\
+			\delta_N &\colon Q_N \times \Sigma \rightarrow \mathscr{P}(Q_N)		
+		\end{alignat*}
+	\end{minipage}%
+	\begin{minipage}[c]{0.27\textwidth}
+		\begin{tabular}{ r | c c }
+			$\delta_N$ & $a$ & $b$ \\ \hline
+			$\rightarrow 0$ & $\{1\}$ & $\{0,1\}$ \\
+			$^\ast       1$ & $\emptyset$ & $\emptyset$
+		\end{tabular}
+	\end{minipage}%
+	\begin{minipage}[c]{0.22\textwidth}
+		\includegraphics[scale=0.12]{CA03_a_11}
+	\end{minipage}
+\end{center}
+\begin{center}
+	\begin{minipage}[c]{0.33\textwidth}
+		\begin{alignat*}{2}
+			DFA      &= (\Sigma, Q_D, \delta_D,\{0\},F_D)\\
+			\Sigma   &= \{a,b\}\\
+			Q_D      &= \{\emptyset, \{0\}, \{1\}, \{0,1\}\}\\
+			F_D      &= \{\{1\}, \{0,1\}\}\\
+			\delta_D &\colon Q_D \times \Sigma \rightarrow Q_D		
+		\end{alignat*}
+	\end{minipage}%
+	\begin{minipage}[c]{0.28\textwidth}
+		\begin{tabular}{ r | c c }
+			$\delta_D$ & $a$ & $b$ \\ \hline
+			$\emptyset          $ & $\emptyset$ & $\emptyset$ \\
+			$\rightarrow \{0\}$ & $\{1\}$ & $\{0,1\}$ \\
+			$^\ast       \{1\}$ & $\emptyset$ & $\emptyset$ \\
+			$^\ast       \{0,1\}$ & $\{1\}$ & $\{0,1\}$
+		\end{tabular}
+	\end{minipage}%
+	\begin{minipage}[c]{0.38\textwidth}
+		\includegraphics[scale=0.12]{CA03_a_12}
+	\end{minipage}
+\end{center}
+\begin{center}
+	\begin{minipage}[c]{0.30\textwidth}
+		\begin{alignat*}{2}
+			NFA      &= (\Sigma, Q_N, \delta_N,0,F_N)\\
+			\Sigma   &= \{a,b\}\\
+			Q_N      &= \{0,1,2\}\\
+			F_N      &= \{2\}\\
+			\delta_N &\colon Q_N \times \Sigma \rightarrow \mathscr{P}(Q_N)		
+		\end{alignat*}
+	\end{minipage}%
+	\begin{minipage}[c]{0.35\textwidth}
+		\begin{tabular}{ r | c c c }
+			$\delta_N$ & $a$ & $b$ & $c$ \\ \hline
+			$\rightarrow 0$ & $\emptyset$ & $\{1\}  $ & $\{2\}  $\\
+			$            1$ & $\{1,2\}  $ & $\{0,2\}$ & $\{0,1\}$\\
+			$            2$ & $\{0,1,2\}$ & $\emptyset$ & $\emptyset$\\
+		\end{tabular}
+	\end{minipage}%
+	\begin{minipage}[c]{0.25\textwidth}
+		\includegraphics[scale=0.12]{CA03_a_21}
+	\end{minipage}
+\end{center}
+\begin{center}
+	\begin{minipage}[c]{0.55\textwidth}
+		\begin{alignat*}{2}
+			DFA      &= (\Sigma, Q_D, \delta_D,\{0\},F_N)\\
+			\Sigma   &= \{a,b\}\\
+			Q_D      &= \{\emptyset, \{0\},\{1\},\{2\}, \{0,1\},\{0,2\},\{1,2\},\{0,1,2\}\}\\
+			F_N      &= \{\{2\},\{0,2\},\{1,2\},\{0,1,2\}\}\\
+			\delta_D &\colon Q_D \times \Sigma \rightarrow Q_D		
+		\end{alignat*}
+	\end{minipage}%
+	\begin{minipage}[c]{0.40\textwidth}
+		\begin{tabular}{ r | c c c }
+			$\delta_N$ & $a$ & $b$ & $c$ \\ \hline
+			$\emptyset        $ & $\emptyset$ & $\emptyset$ & $\emptyset$ \\
+			$\rightarrow \{0\}$ & $\emptyset$ & $\{1\}    $ & $\{2\}  $\\
+			$            \{1\}$ & $\{1,2\}  $ & $\{0,2\}  $ & $\{0,1\}$\\
+			$^\ast       \{2\}$ & $\{0,1,2\}$ & $\emptyset$ & $\emptyset$\\
+			$          \{0,1\}$ & $\{1,2\}  $ & $\{0,1,2\}$ & $\{0,1,2\}$\\
+			$^\ast     \{0,2\}$ & $\{0,1,2\}$ & $\{1    \}$ & $\{2    \}$\\
+			$^\ast     \{1,2\}$ & $\{0,1,2\}$ & $\{0,2  \}$ & $\{0,1\}$\\
+			$^\ast   \{0,1,2\}$ & $\{0,1,2\}$ & $\{0,1,2\}$ & $\{0,1,2\}$
+		\end{tabular}
+	\end{minipage}%
+\end{center}
+\begin{center} \includegraphics[scale=0.41]{CA03_a_22} \end{center}
+\subsection{Item b}
+It is true that it is easier to implement a DFA than an NFA, given each state-symbol pair maps to only one node, while in an NFA a state-symbol pair maps to a subset of all nodes. However, an NFA is much more compact than its equivalent DFA, given the DFA equivalent to an NFA with $n$ states can have up to $2^n$ reachable states.
+}
