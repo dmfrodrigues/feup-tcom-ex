@@ -1,0 +1,17 @@
+digraph TP03_02 {
+	rankdir=LR;
+	graph [dpi = 300];
+	ratio=.22
+	node [shape = doublecircle]; q,s,qr,qs,rs,pqr,qrs;
+	node [shape = circle];
+	∅   -> ∅   [label="0,1"];
+	p   -> qs  [label="0"]; p   -> q   [label="1"];
+	q   -> r   [label="0"]; q   -> qr  [label="1"];
+	r   -> s   [label="0"]; r   -> p   [label="1"];
+	s   -> ∅   [label="0"]; s   -> p   [label="1"];
+	qr  -> rs  [label="0"]; qr  -> pqr [label="1"];
+	qs  -> r   [label="0"]; qr  -> pqr [label="1"];
+	rs  -> s   [label="0"]; rs  -> p   [label="1"];
+	pqr -> qrs [label="0"]; pqr -> pqr [label="1"];
+	qrs -> rs  [label="0"]; qrs -> pqr [label="1"];
+}

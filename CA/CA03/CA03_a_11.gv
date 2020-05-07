@@ -1,0 +1,9 @@
+digraph CA03_a_11 {
+	rankdir=LR;
+	graph [dpi = 300];
+	node [shape = doublecircle]; 1;
+	node [shape = circle];
+	0 -> 1 [ label = "a,b" ];
+	0 -> 0 [ label = "b"];
+}
+

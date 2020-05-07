@@ -1,0 +1,9 @@
+digraph A2007T1_7 {
+	rankdir=LR;
+	graph [dpi = 300];
+	node [shape = doublecircle]; 1,3;
+	node [shape = circle];
+	1->2[label="a"]; 1->3[label="a"];
+	2->1[label="b"];
+}
+

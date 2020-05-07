@@ -1,0 +1,10 @@
+digraph TP04_4 {
+	rankdir=LR;
+	graph [dpi = 300];
+	node [shape = doublecircle]; pqr,qrs,pqrs;
+	node [shape = circle];
+	pqr->pqrs[label="a,d"]; pqr->qrs[label="b"  ]; pqr->pqr [label="c"];
+	qrs->qrs [label="a"  ]; qrs->pqr[label="b,c"]; qrs->pqrs[label="d"];
+	pqrs->pqrs[label="a,b,d"]; pqrs->pqr[label="c"]; 
+}
+

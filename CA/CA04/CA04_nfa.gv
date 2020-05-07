@@ -1,0 +1,12 @@
+digraph nfa {
+	rankdir=LR;
+	graph [dpi = 300];
+	node [shape = doublecircle]; 10;
+	node [shape = circle];
+	01247 ->123467 [label="a"]; 01247 ->8 [label="a"]; 01247 ->124567 [label="b"];
+    123467->123467 [label="a"]; 123467->8 [label="a"]; 123467->124567 [label="b"];
+    124567->123467 [label="a"]; 124567->8 [label="a"]; 124567->124567 [label="b"];
+                                                       8     ->9      [label="b"];
+                                                       9     ->10     [label="b"];
+}
+

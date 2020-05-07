@@ -1,0 +1,7 @@
+digraph TP03_04_b {
+	rankdir=LR;
+	graph [dpi = 300];
+	node [shape = doublecircle]; q0;
+	node [shape = circle];
+	q0 -> q0 [label="0"];
+}
