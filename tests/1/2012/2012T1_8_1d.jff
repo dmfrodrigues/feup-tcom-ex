@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><!--Created with JFLAP 7.1.--><structure>
+	<type>fa</type>
+	<automaton>
+		<!--The list of states.-->
+		<state id="0" name="qi">
+			<x>3.0</x>
+			<y>-8.0</y>
+			<initial/>
+		</state>
+		<state id="1" name="L1">
+			<x>78.0</x>
+			<y>-34.0</y>
+		</state>
+		<state id="2" name="L2">
+			<x>148.0</x>
+			<y>-34.0</y>
+		</state>
+		<state id="3" name="L2">
+			<x>76.0</x>
+			<y>17.0</y>
+		</state>
+		<state id="4" name="L1">
+			<x>147.0</x>
+			<y>15.0</y>
+		</state>
+		<state id="5" name="qf">
+			<x>219.0</x>
+			<y>-8.0</y>
+		</state>
+		<!--The list of transitions.-->
+		<transition>
+			<from>1</from>
+			<to>2</to>
+			<read>ε</read>
+		</transition>
+		<transition>
+			<from>0</from>
+			<to>3</to>
+			<read>ε</read>
+		</transition>
+		<transition>
+			<from>4</from>
+			<to>5</to>
+			<read>ε</read>
+		</transition>
+		<transition>
+			<from>2</from>
+			<to>5</to>
+			<read>ε</read>
+		</transition>
+		<transition>
+			<from>3</from>
+			<to>4</to>
+			<read>ε</read>
+		</transition>
+		<transition>
+			<from>0</from>
+			<to>1</to>
+			<read>ε</read>
+		</transition>
+	</automaton>
+</structure>
