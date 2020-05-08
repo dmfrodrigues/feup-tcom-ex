@@ -63,5 +63,31 @@
 	$      ^\ast \{1,2,3,4\}$ & $\{1,3,4\}$ & $\{1,2,3,4\}$
 \end{tabular}
 \end{center}
-\begin{center} \includegraphics[scale=0.12]{PA04_d} \end{center}
+\begin{center}
+	\begin{tikzpicture}[->,>=stealth',node distance=2.3cm,initial text=$ $,]
+		\node[state, initial] (1) {$1$};
+		\node[state, right of=1] (123) {$123$};
+		\node[state, accepting, below of=1] (14) {$14$};
+		\node[state, accepting, right of=123] (1234) {$1234$};
+		\node[state, accepting, below of=1234] (134) {$134$};
+		
+
+		\draw   (1) 	edge[loop above	        ] node{$0$} (1)
+				(1) 	edge[above	   		    ] node{$1$} (123)
+				
+				(14) 	edge[left	   		    ] node{$0$} (1)
+				(14) 	edge[right				] node{$1$} (123)
+
+				(123) 	edge[left	   		    ] node{$0$} (134)
+				(123) 	edge[above				] node{$1$} (1234)
+
+				(134) 	edge[above	   		    ] node{$0$} (14)
+				(134) 	edge[right, bend right=10] node{$1$} (1234)
+
+				(1234) 	edge[left, bend right=10] node{$0$} (134)
+				(1234) 	edge[loop above			] node{$1$} (1234)
+				
+				;
+	\end{tikzpicture}
+\end{center}
 }
