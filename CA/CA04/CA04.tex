@@ -57,7 +57,33 @@ Replacing sets by the $\varepsilon$-closures they correspond to, we have
  $        \ast 10$ & $\emptyset$ & $\emptyset$  %eclose(10)
 \end{tabular}
 \end{center}
-\begin{center} \includegraphics[scale=0.12]{CA04_nfa_v2} \end{center}
+\begin{center}
+	\begin{tikzpicture}[->,>=stealth',node distance=2.5cm,initial text=$ $,]
+		\node[state, initial] (0) {$0$};
+		\node[state, right of=0] (3) {$3$};
+		\node[state, above right of=3] (5) {$5$};
+		\node[state, below right of=3] (8) {$8$};
+		\node[state, right of=8] (9) {$9$};
+		\node[state, accepting, right of=9] (10) {$10$};
+
+		\draw   (0)	edge[above                 	] node{$a$} (3)
+				(0)	edge[below                 	] node{$a$} (8)
+				(0)	edge[above, bend left=24   	] node{$b$} (5)
+
+				(3)	edge[loop above            	] node{$a$} (3)
+				(3)	edge[above	            	] node{$a$} (8)
+
+				(3)	edge[right, bend right=10  	] node{$b$} (5)
+				(5)	edge[above, bend right=10  	] node{$a$} (3)
+
+				(5)	edge[loop above            	] node{$b$} (5)
+				(5)	edge[right		           	] node{$a$} (8)
+
+				(8)	edge[above		           	] node{$b$} (9)
+				(9)	edge[above		           	] node{$b$} (10)
+		;
+	\end{tikzpicture}
+\end{center}
 Both the provided $\varepsilon$-NFA and the constructed NFA accept the same strings: those ended in $abb$.
 \subsection{Exercise 3}
 I think my scheme can be applied to every $\varepsilon$-NFA.
