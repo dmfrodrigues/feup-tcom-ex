@@ -17,7 +17,7 @@ Given an infinite regular language $L \in \Sigma^*$,
 \subsection{Exercise 1}
 \subsubsection{Item a}
 \begin{theorem}
-	$L=\{0^n1^{2n}\;|\;n\geq 1\}$ is not a regular language.
+	$L=\{0^n1^{2n}\mid n\geq 1\}$ is not a regular language.
 \end{theorem}
 \begin{proof}
 Assume by absurd that $L$ is a regular language. Then by the pumping lemma \eqref{lem:pump},
@@ -68,7 +68,7 @@ which is trivially false given that $b \geq 1$. Now all that is left to do is co
 \pagebreak
 \subsubsection{Item b}
 \begin{theorem}
-$L=\{v1^{|v|}\,|\,v \in \{0,1\}^*\}$ is not a regular language.
+$L=\{v1^{|v|}\mid v \in \{0,1\}^*\}$ is not a regular language.
 \end{theorem}
 \begin{proof}
 Assume  by absurd that $L$ is a regular language. The by the pumping lemma \eqref{lem:pump},
@@ -121,7 +121,7 @@ If the language can be represented by a RE, then it is regular. Thus, the langua
 Idem.
 \subsubsection{Item e}
 \begin{theorem}
-$L=\{0^n\,|\,n \text{ is a perfect square}\}$ is not a regular language.
+$L=\{0^n\mid n \text{ is a perfect square}\}$ is not a regular language.
 \end{theorem}
 \begin{proof}
 Assume  by absurd that $L$ is a regular language. The by the pumping lemma \eqref{lem:pump},
@@ -221,7 +221,7 @@ It is trivial that $a \backslash L=(L^{-1}/a)^{-1}$. Given that regular language
 \end{itemize}
 \subsection{Exercise 3}
 \begin{theorem}
-Given $L_2=\{0^n1^n\,|\,n \geq 0\}$ is not a regular language, $L_1=\{0^i1^j\,|\,i \neq j\}$ is not a regular language.
+Given $L_2=\{0^n1^n\mid n \geq 0\}$ is not a regular language, $L_1=\{0^i1^j\mid i \neq j\}$ is not a regular language.
 \end{theorem}
 \begin{proof}
 $L_2=\overline{L_1} \cap L(0^*1^*)$. Assuming $L_1$ is regular, and given regular languages are closed to negation $\overline{L}$ and intersection $\cap$, and since $L(0^*1^*)$ is regular, then $L_2$ is also regular. The theorem we want to prove is the contrapositive of what was just said, so the theorem is thus proven correct.

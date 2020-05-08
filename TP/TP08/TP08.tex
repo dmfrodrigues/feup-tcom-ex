@@ -114,10 +114,10 @@ The accepted language is the set of all strings started and ended with zeros tha
 \end{minipage}
 \subsubsection{Item c}
 \begin{theorem}
-	$L=\{0^m 1^n 2^n 0^{2m}~|~n \equiv 1 \pmod{2} \}$ is equivalent to grammar ${G=(\{S,B,C\},\{0,1,2\},P,S)}$
+	$L=\{0^m 1^n 2^n 0^{2m}\mid n \equiv 1 \pmod{2} \}$ is equivalent to grammar ${G=(\{S,B,C\},\{0,1,2\},P,S)}$
 	\begin{alignat*}{2}
-		S &\rightarrow 0S00~|~B \\
-		B &\rightarrow 11B22~|~C \\
+		S &\rightarrow 0S00\mid B \\
+		B &\rightarrow 11B22\mid C \\
 		C &\rightarrow 12
 	\end{alignat*}
 \end{theorem}
@@ -182,7 +182,7 @@ This means that $0W00 \in G$. One can also easily check that, given that $W=0^m 
 \subsection{Exercise 3}
 \subsubsection{Item a}
 \begin{theorem}
-Given grammar $G$ defined by $S \rightarrow aS~|~Sb~|~a~|~b$, $L(G) \subseteq \{a^m b^n \colon m+n \geq 1\}$.
+Given grammar $G$ defined by $S \rightarrow aS\mid Sb\mid a\mid b$, $L(G) \subseteq \{a^m b^n \colon m+n \geq 1\}$.
 \end{theorem}
 \begin{proof}
 Base case: $w=a=a^1 b^0$, so $w \in L$.\\
@@ -211,7 +211,7 @@ With this, one can state that all RLs can be represented by a DFA, which can in 
 \subsection{Exercise 5}
 \subsubsection{Item a}
 \begin{alignat*}{2}
-	E \rightarrow EE~|~(E)~|~E+E~|~E^*~|~\emptyset~|~0~|~1~|~e
+	E \rightarrow EE\mid (E)\mid E+E\mid E^*\mid \emptyset\mid 0\mid 1\mid e
 \end{alignat*}
 \subsubsection{Item b}
 $W=e+0+1$.\\
@@ -247,11 +247,11 @@ $W=e+0+1$.\\
 \end{minipage}
 \subsubsection{Item c}
 \begin{alignat*}{2}
-	E &\rightarrow S+E~|~S \\
-	S &\rightarrow GS~|~G \\
-	G &\rightarrow F^*~|~F \\
-	F &\rightarrow (E)~|~I \\
-	I &\rightarrow e~|~0~|~1~|~\emptyset
+	E &\rightarrow S+E\mid S \\
+	S &\rightarrow GS\mid G \\
+	G &\rightarrow F^*\mid F \\
+	F &\rightarrow (E)\mid I \\
+	I &\rightarrow e\mid 0\mid 1\mid \emptyset
 \end{alignat*}
 Precedence is respected, given each symbol either performs an operation or "downgrades" the variable, and ordering from less to more precedence is respected (including parenthesis that upgrade a factor to an expression).\par
 Association is respected, given that in associative operations (+ and concatenation), the right-hand side keeps the same rank but the left-hand side is downgraded.
@@ -279,7 +279,7 @@ It is thus understandable that, in a syntax tree, there are as many leafs as ter
 \subsection{Exercise 8}
 \subsubsection{Item a}
 \begin{definition}
-$G$ is the grammar defined by $S \rightarrow aSb~|~bSa~|~SS~|~\varepsilon$.
+$G$ is the grammar defined by $S \rightarrow aSb\mid bSa\mid SS\mid \varepsilon$.
 \end{definition}
 \begin{definition}
 $L=\{w \in \{a,b\}^*\colon \#_aw=\#_bw\}$.
@@ -352,19 +352,19 @@ $G$ is ambiguous. Consider the string $w=abab$, which has at least two distinct 
 \subsubsection{Item a}
 \begin{alignat*}{2}
 	S &\rightarrow 0T \\
-	T &\rightarrow 00T1~|~\varepsilon
+	T &\rightarrow 00T1\mid \varepsilon
 \end{alignat*}
 \subsubsection{Item b}
 \begin{alignat*}{2}
 	S &\rightarrow Tb \\
-	T &\rightarrow Tb~|~aTb~|~aaTb~|~\varepsilon
+	T &\rightarrow Tb\mid aTb\mid aaTb\mid \varepsilon
 \end{alignat*}
 \subsubsection{Item c}
 \begin{alignat*}{2}
 	S &\rightarrow T1 \\
-	T &\rightarrow T1~|~0T1~|~U \\
+	T &\rightarrow T1\mid 0T1\mid U \\
 	U &\rightarrow 1V \\
-	V &\rightarrow 1V~|~1V0~|~\varepsilon
+	V &\rightarrow 1V\mid 1V0\mid \varepsilon
 \end{alignat*}
 \subsection{Exercise 10}
 Language of all binary strings that, when inverted and negated, are read the same.

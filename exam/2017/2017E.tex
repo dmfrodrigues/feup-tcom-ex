@@ -398,7 +398,7 @@ $G$ is not ambiguous, because no string can have two different syntax trees or t
 The recursivity in $G$ is to derive nested parenthesis, and to derive sequences of parenthesis.
 \subsubsection{Item c}
 \begin{alignat*}{2}
-	S &\rightarrow TS ~|~\varepsilon\\
+	S &\rightarrow TS \mid \varepsilon\\
 	T &\rightarrow U) \\
 	U &\rightarrow (S 
 \end{alignat*}
@@ -431,7 +431,7 @@ The PDA is non-deterministic, given $\delta(1,\varepsilon,S)=\{(1,(S)S),(1,\vare
 \end{alignat*}
 \subsubsection{Item g}
 \begin{alignat*}{2}
-	S &\rightarrow (S)S~|~\varepsilon
+	S &\rightarrow (S)S\mid \varepsilon
 \end{alignat*}
 \subsection{Group IV}
 \subsubsection{Item a}

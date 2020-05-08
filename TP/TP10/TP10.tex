@@ -32,73 +32,73 @@ All CFLs can be represented by a NPDA, but not by a DPDA.
 \subsection{Exercise 4}
 \begin{minipage}[c]{0.25\textwidth} \begin{alignat*}{2}
 	S &\rightarrow A1B \\
-	A &\rightarrow 0A\,|\,\varepsilon\\
-	B &\rightarrow 0B\,|\,1B\,|\,\varepsilon
+	A &\rightarrow 0A\mid \varepsilon\\
+	B &\rightarrow 0B\mid 1B\mid \varepsilon
 \end{alignat*} \end{minipage}%
 \begin{minipage}[c]{0.25\textwidth} \begin{alignat*}{2}
-	S &\rightarrow 1B\,|\,A1B \\
-	A &\rightarrow 0A\,|\,0\\
-	B &\rightarrow 0B\,|\,1B\,|\,\varepsilon
+	S &\rightarrow 1B\mid A1B \\
+	A &\rightarrow 0A\mid 0\\
+	B &\rightarrow 0B\mid 1B\mid \varepsilon
 \end{alignat*} \end{minipage}%
 \begin{minipage}[c]{0.25\textwidth} \begin{alignat*}{2}
-	S &\rightarrow 1\,|\,1B\,|\,A1\,|\,A1B \\
-	A &\rightarrow 0A\,|\,0\\
-	B &\rightarrow 0\,|\,1\,|\,0B\,|\,1B
+	S &\rightarrow 1\mid 1B\mid A1\mid A1B \\
+	A &\rightarrow 0A\mid 0\\
+	B &\rightarrow 0\mid 1\mid 0B\mid 1B
 \end{alignat*} \end{minipage}%
 \begin{minipage}[c]{0.25\textwidth} \begin{alignat*}{2}
-	S &\rightarrow 1\,|\,1B\,|\,A1\,|\,AE_1 \\
+	S &\rightarrow 1\mid 1B\mid A1\mid AE_1 \\
 	E_1 &\rightarrow 1B\\
-	A &\rightarrow 0A\,|\,0\\
-	B &\rightarrow 0\,|\,1\,|\,0B\,|\,1B
+	A &\rightarrow 0A\mid 0\\
+	B &\rightarrow 0\mid 1\mid 0B\mid 1B
 \end{alignat*} \end{minipage}
 \begin{alignat*}{2}
-	S &\rightarrow G_1\,|\,G_1B\,|\,AG_1\,|\,AE_1 \\
+	S &\rightarrow G_1\mid G_1B\mid AG_1\mid AE_1 \\
 	E_1 &\rightarrow G_1B\\
-	A &\rightarrow G_0A\,|\,G_0\\
-	B &\rightarrow G_0\,|\,G_1\,|\,G_0B\,|\,G_1B\\
+	A &\rightarrow G_0A\mid G_0\\
+	B &\rightarrow G_0\mid G_1\mid G_0B\mid G_1B\\
 	G_0 &\rightarrow 0\\
 	G_1 &\rightarrow 1
 \end{alignat*}
 \subsection{Exercise 5}
 \begin{center}
 \begin{minipage}[c]{0.3\textwidth} \begin{alignat*}{2}
-	S &\rightarrow 0S00\,|\,0B0\,|\,B\\
-	B &\rightarrow 11B22\,|\,12\,|\,C\\
-	C &\rightarrow 0\,|\,\varepsilon
+	S &\rightarrow 0S00\mid 0B0\mid B\\
+	B &\rightarrow 11B22\mid 12\mid C\\
+	C &\rightarrow 0\mid \varepsilon
 \end{alignat*} \end{minipage}%
 \begin{minipage}[c]{0.3\textwidth} \begin{alignat*}{2}
-	S &\rightarrow 0S00\,|\,0B0\,|\,B\\
-	B &\rightarrow 11B22\,|\,12\,|\,0\,|\,\varepsilon
+	S &\rightarrow 0S00\mid 0B0\mid B\\
+	B &\rightarrow 11B22\mid 12\mid 0\mid \varepsilon
 \end{alignat*} \end{minipage}%
 \begin{minipage}[c]{0.4\textwidth} \begin{alignat*}{2}
-	S &\rightarrow 0S00\,|\,00\,|\,0B0\,|\,B\,|\,\varepsilon\\
-	B &\rightarrow 11B22\,|\,1122\,|\,12\,|\,0
+	S &\rightarrow 0S00\mid 00\mid 0B0\mid B\mid \varepsilon\\
+	B &\rightarrow 11B22\mid 1122\mid 12\mid 0
 \end{alignat*} \end{minipage}
 \end{center}
 \begin{center}
 \begin{minipage}[c]{0.3\textwidth} \begin{alignat*}{2}
-	S &\rightarrow 0E_1\,|\,00\,|\,0E_2\,|\,B\,|\,\varepsilon\\
+	S &\rightarrow 0E_1\mid 00\mid 0E_2\mid B\mid \varepsilon\\
 	E_1 &\rightarrow S00\\
 	E_2 &\rightarrow B0\\
-	B &\rightarrow 11B22\,|\,1122\,|\,12\,|\,0
+	B &\rightarrow 11B22\mid 1122\mid 12\mid 0
 \end{alignat*} \end{minipage}%
 \begin{minipage}[c]{0.3\textwidth} \begin{alignat*}{2}
-	S &\rightarrow 0E_1\,|\,00\,|\,0E_2\,|\,B\,|\,\varepsilon\\
+	S &\rightarrow 0E_1\mid 00\mid 0E_2\mid B\mid \varepsilon\\
 	E_1 &\rightarrow SE_3\\
 	E_2 &\rightarrow B0\\
 	E_3 &\rightarrow 00\\
-	B &\rightarrow 1E_4\,|\,1E_5\,|\,12\,|\,0\\
+	B &\rightarrow 1E_4\mid 1E_5\mid 12\mid 0\\
 	E_4 &\rightarrow 1E_6\\
 	E_5 &\rightarrow 1E_7 \\
 	E_6 &\rightarrow BE_7\\
 	E_7 &\rightarrow 22\\
 \end{alignat*} \end{minipage}%
 \begin{minipage}[c]{0.4\textwidth} \begin{alignat*}{2}
-	S &\rightarrow G_0E_1\,|\,G_0G_0\,|\,G_0E_2\,|\,B\,|\,\varepsilon\\
+	S &\rightarrow G_0E_1\mid G_0G_0\mid G_0E_2\mid B\mid \varepsilon\\
 	E_1 &\rightarrow SE_3\\
 	E_2 &\rightarrow BG_0\\
 	E_3 &\rightarrow G_0G_0\\
-	B &\rightarrow G_1E_4\,|\,G_1E_5\,|\,G_1G_2\,|\,G_0\\
+	B &\rightarrow G_1E_4\mid G_1E_5\mid G_1G_2\mid G_0\\
 	E_4 &\rightarrow G_1E_6\\
 	E_5 &\rightarrow G_1E_7 \\
 	E_6 &\rightarrow BE_7\\
@@ -110,7 +110,7 @@ All CFLs can be represented by a NPDA, but not by a DPDA.
 \end{center}
 \subsection{Exercise 6}
 \begin{theorem}
-The language $L=\{a^nb^nc^i\,|\,n \leq i \leq 2n\}$ is not a CFL.
+The language $L=\{a^nb^nc^i\mid n \leq i \leq 2n\}$ is not a CFL.
 \end{theorem}
 \begin{proof}
 Assume by absurd that $L$ is a CFL. By the pumping lemma \eqref{lem:pumpCFL},
@@ -133,7 +133,7 @@ We have thus arrived at a contradiction in all cases, meaning we have proven the
 \end{proof}
 \subsection{Exercise 7}
 \begin{theorem}
-	$L=\{0^p\,|\,p \text{ is prime}\}$ is not a CFL.
+	$L=\{0^p\mid p \text{ is prime}\}$ is not a CFL.
 \end{theorem}
 \begin{proof}
 Assume by absurd that $L$ is a CFL. By the pumping lemma \eqref{lem:pumpCFL},
@@ -231,9 +231,9 @@ This question demands a lot of effort for the relatively low return, given it as
 	&11100\}
 \end{alignat*}
 \subsubsection{Item b}
-$L_1=L(0^*)$ and $L_2=\{0^n1^n\,|\,n\geq 0\}$.
+$L_1=L(0^*)$ and $L_2=\{0^n1^n\mid n\geq 0\}$.
 \begin{equation*}
-	\inter(L_1,L_2)=\{w=0^a1z\,|\,z \in \{0,1\}^* \wedge \#1\geq a\}
+	\inter(L_1,L_2)=\{w=0^a1z\mid z \in \{0,1\}^* \wedge \#1\geq a\}
 \end{equation*}
 \subsubsection{Item c}
 \begin{theorem}
