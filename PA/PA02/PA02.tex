@@ -3,7 +3,27 @@
 {
 \renewcommand{\thesubsection}{\thesection.\alph{subsection}}
 \subsection{Item a}
-\begin{center} \includegraphics[scale=0.12]{PA02_a} \end{center}
+\begin{center}
+	\begin{tikzpicture}[->,>=stealth',node distance=2cm,initial text=$ $,]
+		\footnotesize
+		\node[state, initial] (q0) {$q_0$};
+		\node[state, above right of=q0] (q1) {$q_1$};
+		\node[state, accepting, right of=q1] (q2) {$q_2$};
+		\node[state, below right of=q0] (e) {$\emptyset$};
+		
+		\draw   (q0) 	edge[left		        ] node{$a$} (q1)
+				(q0) 	edge[left		        ] node{$b$} (e)
+		
+				(q2)	edge[below, bend left  	] node{$a$} (q1)
+				(q2) 	edge[loop above         ] node{$b$} (q2)
+				(q1)	edge[above, bend left  	] node{$b$} (q2)
+				(q1) 	edge[loop above         ] node{$a$} (q1)
+				
+				(e) 	edge[loop above	        ] node{$a,b$} (e)
+
+				;
+	\end{tikzpicture}
+\end{center}
 \subsection{Item b}
 \begin{center}
 \begin{minipage}[c]{0.25\textwidth}
