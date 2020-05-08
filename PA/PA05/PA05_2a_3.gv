@@ -1,7 +1,0 @@
-digraph PA05_2a_3 {
-	rankdir=LR;
-	graph [dpi = 300];
-	node [shape = doublecircle]; q4;
-	node [shape = circle];
-	q1->q4 [label="(0+1)*1(ε+0+1)(0+1)"];
-}

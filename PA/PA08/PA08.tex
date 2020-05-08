@@ -5,7 +5,26 @@
 \subsection{Exercise 1}
 \subsubsection{Item a}
 \begin{center}
-	\includegraphics[scale=0.12]{PA08_1a}
+	\begin{tikzpicture}[->,>=stealth',node distance=2cm,initial text=$ $,]
+		\node[state, initial, accepting] (q0) {$q_0$};
+
+		\draw   (q0) 	edge[loop above, align=center	] node{
+			{
+			\setlength\tabcolsep{0pt}
+			\begin{tabular}{r l l}
+				$\varepsilon$, &$ $ S & /A1B \\
+				$\varepsilon$, &$ $ A & /0A \\
+				$\varepsilon$, &$ $ A & /$\varepsilon$ \\
+				$\varepsilon$, &$ $ B & /0B \\
+				$\varepsilon$, &$ $ B & /1B \\
+				$\varepsilon$, &$ $ B & /$\varepsilon$ \\
+				0,             &$ $ 0 & /$\varepsilon$ \\
+				1,             &$ $ 1 & /$\varepsilon$
+			\end{tabular}
+			}
+		} (q0)
+				;
+	\end{tikzpicture}
 \end{center}
 \subsubsection{Item b}
 \begin{center}
