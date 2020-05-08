@@ -54,5 +54,20 @@ The presented FA is a NFA, because from state $1$ and having as input $a$ the au
 	$      ^\ast \{1,2,3\}$ & $\{1,2,3\}$ & $\{1,2,3\}$ & $\{1,2,3\}$ & $\{1,2,3\}$ \\
 \end{tabular}
 \end{center}
-\begin{center} \includegraphics[scale=0.12]{PA03_d} \end{center}
+\begin{center}
+	\begin{tikzpicture}[->,>=stealth',node distance=2.3cm,initial text=$ $,]
+		\node[state, initial] (1) {$\{1\}$};
+		\node[state, right of=1] (12) {$\{1,2\}$};
+		\node[state, accepting, right of=12] (123) {$\{1,2,3\}$};
+		
+		\draw   (1) 	edge[loop above	        ] node{$b, c, d$} (1)
+				(1) 	edge[above	   		    ] node{$a$} (12)
+
+				(12) 	edge[loop above	        ] node{$a, c, d$} (12)
+				(12) 	edge[above	   		    ] node{$b$} (123)
+
+				(123) 	edge[loop above	        ] node{$a, b, c, d$} (123)
+				;
+	\end{tikzpicture}
+\end{center}
 }

@@ -1,9 +1,0 @@
-digraph CA03_d {
-	rankdir=LR;
-	graph [dpi = 300];
-	node [shape = doublecircle]; 123;
-	node [shape = circle];
-	1 -> 1 [label="b,c,d"]; 1->12 [label="a"];
-    12->12 [label="a,c,d"]; 12->123 [label="b"];
-    123->123 [label="a,b,c,d"];
-}
