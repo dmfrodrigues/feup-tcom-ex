@@ -16,9 +16,9 @@
 		\begin{center}
 		\begin{tabular}{ r | c c c c c c}
  			$\delta              $ & $0  $ & $1  $ & $2  $ & $A  $ & $B  $ & $C  $ \\ \hline
- 			$\rightarrow^\ast q_0$ & $q_0$ & $q_1$ & $q_2$ & $q_0$ & $q_1$ & $q_2$ \\  
- 			$           ^\ast q_1$ & $q_0$ & $q_1$ & $q_2$ & $q_0$ & $q_1$ & $q_2$ \\
- 			$           ^\ast q_2$ & $q_0$ & $q_1$ & $q_2$ & $q_0$ & $q_1$ & $q_2$    
+ 			$\rightarrow^* q_0$ & $q_0$ & $q_1$ & $q_2$ & $q_0$ & $q_1$ & $q_2$ \\  
+ 			$           ^* q_1$ & $q_0$ & $q_1$ & $q_2$ & $q_0$ & $q_1$ & $q_2$ \\
+ 			$           ^* q_2$ & $q_0$ & $q_1$ & $q_2$ & $q_0$ & $q_1$ & $q_2$    
 		\end{tabular}
 		\end{center}
 	\end{minipage}
@@ -73,16 +73,6 @@ Buttons A,0 send the elevator to floor 0, buttons B,1 to floor 1, and buttons C,
 				(m2) 	edge[above	] node{$-$} (d0)
 				(d0) 	edge[above	] node{$0-9$} (d1)
 				(d1) 	edge[above	] node{$0-9$} (d2)
-				% (q1) 	edge[loop right,align=center] node{$B,$\\$1$} (q1)
-				% (q2) 	edge[loop above				] node{$C,2$} (q2)
-
-				% (q0) 	edge[left	, bend left=10	] node{$B,1$} (q1)
-				% (q1) 	edge[right 	, bend left=10	] node{$A,0$} (q0)
-				% (q1) 	edge[left	, bend left=10	] node{$C,2$} (q2)
-				% (q2) 	edge[right 	, bend left=10	] node{$B,1$} (q1)
-
-				% (q0) 	edge[left	, bend left=80	] node{$C,2$} (q2)
-				% (q2) 	edge[right 	, bend left=80	] node{$A,0$} (q0)
 				;
 	\end{tikzpicture}
 \end{center}
@@ -110,7 +100,7 @@ Buttons A,0 send the elevator to floor 0, buttons B,1 to floor 1, and buttons C,
  			$            m_2$ & $\emptyset$ & $d_0      $ \\
  			$            d_0$ & $d_1      $ & $\emptyset$ \\
  			$            d_1$ & $d_2      $ & $\emptyset$ \\
- 			$      ^\ast d_2$ & $\emptyset$ & $\emptyset$ \\
+ 			$      ^* d_2$ & $\emptyset$ & $\emptyset$ \\
  			$\emptyset      $ & $\emptyset$ & $\emptyset$
 		\end{tabular}
 		\end{center}
@@ -121,19 +111,68 @@ Buttons A,0 send the elevator to floor 0, buttons B,1 to floor 1, and buttons C,
 \begin{center} \vspace*{-20pt}
 \begin{tabular}{p{48mm} p{48mm} p{48mm}}
 	\subsubsection{Item a}
-	\begin{center} \includegraphics[scale=0.12]{TP02_03_a} \end{center}
+	\begin{center}
+		\begin{tikzpicture}[->,>=stealth',node distance=2cm,initial text=$ $,]
+			\footnotesize
+			\node[state, initial] (q0) {$q_0$};
+			\node[state, above right of=q0] (q1) {$q_1$};
+			\node[state, accepting, below right of=q0] (q2) {$q_2$};
+			
+			\draw   (q0) 	edge[loop above				] node{$1$} (q0)
+					(q0) 	edge[right, bend right=10	] node{$0$} (q1)
+					(q1) 	edge[above, bend right=10	] node{$1$} (q0)
+					(q1) 	edge[right					] node{$0$} (q2)
+					(q2) 	edge[loop right				] node{$0$} (q2)
+					(q2) 	edge[left					] node{$1$} (q0)
+					;
+		\end{tikzpicture}
+	\end{center}
 	&
 	\subsubsection{Item b}
-	\begin{center} \includegraphics[scale=0.12]{TP02_03_b} \end{center}
+	\begin{center}
+		\begin{tikzpicture}[->,>=stealth',node distance=2cm,initial text=$ $,]
+			\footnotesize
+			\node[state, initial] (q0) {$q_0$};
+			\node[state, above right of=q0] (q1) {$q_1$};
+			\node[state, below right of=q0] (q2) {$q_2$};
+			\node[state, accepting, right of=q2] (q3) {$q_3$};
+			
+			\draw   (q0) 	edge[loop above				] node{$1$} (q0)
+					(q0) 	edge[right, bend right=10	] node{$0$} (q1)
+					(q1) 	edge[above, bend right=10	] node{$1$} (q0)
+					(q1) 	edge[right					] node{$0$} (q2)
+					(q2) 	edge[above					] node{$0$} (q3)
+					(q2) 	edge[left					] node{$1$} (q0)
+					(q3) 	edge[loop above				] node{$0,1$} (q3)
+					;
+		\end{tikzpicture}
+	\end{center}
 	&
 	\subsubsection{Item c}
-	\begin{center} \includegraphics[scale=0.12]{TP02_03_c} \end{center}
+	\begin{center}
+		\begin{tikzpicture}[->,>=stealth',node distance=2cm,initial text=$ $,]
+			\footnotesize
+			\node[state, initial] (q0) {$q_0$};
+			\node[state, above right of=q0] (q1) {$q_1$};
+			\node[state, below right of=q0] (q2) {$q_2$};
+			\node[state, accepting, right of=q2] (q3) {$q_3$};
+			
+			\draw   (q0) 	edge[loop above				] node{$1$} (q0)
+					(q0) 	edge[right, bend right=10	] node{$0$} (q1)
+					(q1) 	edge[above, bend right=10	] node{$0$} (q0)
+					(q1) 	edge[right					] node{$1$} (q2)
+					(q2) 	edge[above					] node{$1$} (q3)
+					(q2) 	edge[left					] node{$0$} (q0)
+					(q3) 	edge[loop above				] node{$0,1$} (q3)
+					;
+		\end{tikzpicture}
+	\end{center}
 \end{tabular}
 \end{center}
 \subsection{Exercise 4}
 \begin{definition}[Extended transition function]
 \label{def:ext_trans}
-May $\hat{\delta}\colon Q\times \Sigma^\ast \rightarrow Q$ be recursively defined as:
+Let $\hat{\delta}\colon Q\times \Sigma^* \rightarrow Q$ be recursively defined as:
 \begin{alignat*}{2}
 	\hat{\delta}(q,w)= \begin{cases}
 		  q                           & \text{if } w=\varepsilon\\
@@ -143,7 +182,7 @@ May $\hat{\delta}\colon Q\times \Sigma^\ast \rightarrow Q$ be recursively define
 \end{definition}
 \begin{theorem}
 	\begin{equation*}
-		\forall x,y \in \Sigma^\ast,\hat{\delta}(q,xy)=\hat{\delta}(\hat{\delta}(q,x),y)
+		\forall x,y \in \Sigma^*,\hat{\delta}(q,xy)=\hat{\delta}(\hat{\delta}(q,x),y)
 	\end{equation*}
 \end{theorem}
 \begin{proof}
@@ -183,7 +222,7 @@ The important principle of this item is that $q_i$ represents the remainder of t
 		\begin{center}
 		\begin{tabular}{ r | c c }
  			$\delta              $ & $0  $ & $1  $ \\ \hline
- 			$\rightarrow^\ast q_0$ & $q_0$ & $q_1$ \\  
+ 			$\rightarrow^* q_0$ & $q_0$ & $q_1$ \\  
  			$                 q_1$ & $q_2$ & $q_3$ \\
  			$                 q_2$ & $q_4$ & $q_0$ \\
  			$                 q_3$ & $q_1$ & $q_2$ \\
@@ -192,7 +231,28 @@ The important principle of this item is that $q_i$ represents the remainder of t
 		\end{center}
 	\end{minipage}
 	\begin{minipage}[c]{0.45\textwidth}
-		\begin{center} \includegraphics[scale=0.12]{TP02_05_a} \end{center}
+		\begin{center}
+			\begin{tikzpicture}[->,>=stealth',node distance=2cm,initial text=$ $,]
+				\footnotesize
+				\node[state, accepting, initial] (q0) {$q_0$};
+				\node[state, above right of=q0] (q1) {$q_1$};
+				\node[state, below right of=q0] (q2) {$q_2$};
+				\node[state, right of=q1] (q3) {$q_3$};
+				\node[state, right of=q2] (q4) {$q_4$};
+				
+				\draw   (q0) 	edge[loop above				] node{$0$} (q0)
+						(q0) 	edge[left					] node{$1$} (q1)
+						(q1) 	edge[left					] node{$0$} (q2)
+						(q1) 	edge[below, bend right=10	] node{$1$} (q3)
+						(q2) 	edge[above					] node{$0$} (q4)
+						(q2) 	edge[left					] node{$1$} (q0)
+						(q3) 	edge[above, bend right=10	] node{$0$} (q1)
+						(q3) 	edge[left					] node{$1$} (q2)
+						(q4) 	edge[right					] node{$0$} (q3)
+						(q4) 	edge[loop right				] node{$1$} (q4)
+						;
+			\end{tikzpicture}
+		\end{center}
 	\end{minipage}
 \end{center}
 \subsubsection{Item b}
@@ -210,7 +270,7 @@ The important principle of this item is that $q_i$ represents the remainder of t
 		\begin{center}
 		\begin{tabular}{ r | c c }
  			$\delta              $ & $0  $ & $1  $ \\ \hline
- 			$\rightarrow^\ast q_0$ & $q_0$ & $q_2$ \\  
+ 			$\rightarrow^* q_0$ & $q_0$ & $q_2$ \\  
  			$                 q_1$ & $q_3$ & $q_0$ \\
  			$                 q_2$ & $q_1$ & $q_3$ \\
  			$                 q_3$ & $q_4$ & $q_1$ \\
@@ -219,7 +279,28 @@ The important principle of this item is that $q_i$ represents the remainder of t
 		\end{center}
 	\end{minipage}
 	\begin{minipage}[c]{0.45\textwidth}
-		\begin{center} \includegraphics[scale=0.12]{TP02_05_b} \end{center}
+		\begin{center}
+			\begin{tikzpicture}[->,>=stealth',node distance=2cm,initial text=$ $,]
+				\footnotesize
+				\node[state, accepting, initial] (q0) {$q_0$};
+				\node[state, above right of=q0] (q1) {$q_1$};
+				\node[state, below right of=q0] (q2) {$q_2$};
+				\node[state, right of=q1] (q3) {$q_3$};
+				\node[state, right of=q2] (q4) {$q_4$};
+				
+				\draw   (q0) 	edge[loop above				] node{$0$} (q0)
+						(q0) 	edge[left					] node{$1$} (q2)
+						(q1) 	edge[above, bend left=10	] node{$0$} (q3)
+						(q1) 	edge[left					] node{$1$} (q0)
+						(q2) 	edge[left					] node{$0$} (q1)
+						(q2) 	edge[left					] node{$1$} (q3)
+						(q3) 	edge[right					] node{$0$} (q4)
+						(q3) 	edge[below, bend left=10	] node{$1$} (q1)
+						(q4) 	edge[above					] node{$0$} (q2)
+						(q4) 	edge[loop right				] node{$1$} (q4)
+						;
+			\end{tikzpicture}
+		\end{center}
 	\end{minipage}
 \end{center}
 }
