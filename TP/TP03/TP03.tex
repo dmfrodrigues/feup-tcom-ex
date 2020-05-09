@@ -45,7 +45,7 @@
  			$            q_2$ & $\{q_3    \}$ & $\{q_3\}$ \\
  			$            q_3$ & $\{q_4    \}$ & $\{q_4\}$ \\
  			$            q_4$ & $\{q_1    \}$ & $\{q_1\}$ \\
- 			$      ^\ast q_5$ & $\{q_5    \}$ & $\{q_5\}$ 
+ 			$      ^* q_5$ & $\{q_5    \}$ & $\{q_5\}$ 
 		\end{tabular}
 		\end{center}
 	\end{minipage}
@@ -67,14 +67,14 @@
  \hline
  $\emptyset              $ & $\emptyset  $ & $\emptyset  $ \\
  $\rightarrow \{p      \}$ & $\{  q,  s\}$ & $\{  q    \}$ \\  
- $^\ast       \{  q    \}$ & $\{    r  \}$ & $\{  q,r  \}$ \\
+ $^*       \{  q    \}$ & $\{    r  \}$ & $\{  q,r  \}$ \\
  $            \{    r  \}$ & $\{      s\}$ & $\{p      \}$ \\
- $^\ast       \{      s\}$ & $\emptyset  $ & $\{p      \}$ \\
- $^\ast       \{  q,r  \}$ & $\{    r,s\}$ & $\{p,q,r  \}$ \\
- $^\ast       \{  q,  s\}$ & $\{    r  \}$ & $\{p,q,r  \}$ \\
- $^\ast       \{    r,s\}$ & $\{      s\}$ & $\{p      \}$ \\
- $^\ast       \{p,q,r  \}$ & $\{  q,r,s\}$ & $\{p,q,r  \}$ \\
- $^\ast       \{  q,r,s\}$ & $\{    r,s\}$ & $\{p,q,r  \}$
+ $^*       \{      s\}$ & $\emptyset  $ & $\{p      \}$ \\
+ $^*       \{  q,r  \}$ & $\{    r,s\}$ & $\{p,q,r  \}$ \\
+ $^*       \{  q,  s\}$ & $\{    r  \}$ & $\{p,q,r  \}$ \\
+ $^*       \{    r,s\}$ & $\{      s\}$ & $\{p      \}$ \\
+ $^*       \{p,q,r  \}$ & $\{  q,r,s\}$ & $\{p,q,r  \}$ \\
+ $^*       \{  q,r,s\}$ & $\{    r,s\}$ & $\{p,q,r  \}$
 \end{tabular}
 \end{center}
 \pagebreak
@@ -99,7 +99,7 @@ Incomplete DFA, given all transitions are to one or zero states, meaning the tra
  		$\delta_D$ & $a$ & $b$ \\ \hline
  		$\emptyset    $ & $\emptyset$ & $\emptyset$ \\
  		$\rightarrow 1$ & $2        $ & $3        $ \\  
- 		$^\ast       2$ & $1        $ & $\emptyset$ \\
+ 		$^*       2$ & $1        $ & $\emptyset$ \\
  		$            3$ & $\emptyset$ & $2        $ \\
 	\end{tabular}
 	\end{center}
@@ -127,7 +127,7 @@ False, because for instance the DFA
 	\begin{center}
 	\begin{tabular}{ r | c c }
  		$\delta            $ & $\Sigma$ \\ \hline
- 		$\rightarrow^\ast 0$ & $0     $ \\  
+ 		$\rightarrow^* 0$ & $0     $ \\  
 	\end{tabular}
 	\end{center}
 \end{minipage}
@@ -153,10 +153,10 @@ recognizes arbitrarily large strings.
 \begin{tabular}{ r | c c }
  $\delta_D$ & $0$ & $1$ \\
  \hline
- $^\ast \emptyset             $ & $\emptyset  $ & $\emptyset  $ \\
- $\rightarrow^\ast \{p      \}$ & $\{  q,  s\}$ & $\{  q    \}$ \\  
+ $^* \emptyset             $ & $\emptyset  $ & $\emptyset  $ \\
+ $\rightarrow^* \{p      \}$ & $\{  q,  s\}$ & $\{  q    \}$ \\  
  $                 \{  q    \}$ & $\{    r  \}$ & $\{  q,r  \}$ \\
- $^\ast            \{    r  \}$ & $\{      s\}$ & $\{p      \}$ \\
+ $^*            \{    r  \}$ & $\{      s\}$ & $\{p      \}$ \\
  $                 \{      s\}$ & $\emptyset  $ & $\{p      \}$ \\
  $                 \{  q,r  \}$ & $\{    r,s\}$ & $\{p,q,r  \}$ \\
  $                 \{  q,  s\}$ & $\{    r  \}$ & $\{p,q,r  \}$ \\

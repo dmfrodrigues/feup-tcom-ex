@@ -33,9 +33,9 @@ We will use the DFA from \ref{sssec:TP04_2_c} to answer to this item. The only r
 \begin{center}
 \begin{tabular}{ r | c c c }
     $\delta_D$ & $a$ & $b$ & $c$ \\ \hline
-    $\rightarrow^\ast \{p,q,r\}$ & $\{p,q,r\}$ & $\{  q,r\}$ & $\{p,q,r\}$ \\
-    $           ^\ast \{  q,r\}$ & $\{p,q,r\}$ & $\{    r\}$ & $\{p,q,r\}$ \\
-    $           ^\ast \{    r\}$ & $\emptyset$ & $\emptyset$ & $\{p,q,r\}$\\
+    $\rightarrow^* \{p,q,r\}$ & $\{p,q,r\}$ & $\{  q,r\}$ & $\{p,q,r\}$ \\
+    $           ^* \{  q,r\}$ & $\{p,q,r\}$ & $\{    r\}$ & $\{p,q,r\}$ \\
+    $           ^* \{    r\}$ & $\emptyset$ & $\emptyset$ & $\{p,q,r\}$\\
     $ \emptyset                $ & $\emptyset$ & $\emptyset$ & $\emptyset$
 \end{tabular}
 \end{center}
@@ -58,7 +58,7 @@ This $\varepsilon$-NFA is actually a regular NFA; suggestions for a simpler, wor
 		\begin{center}
 		\begin{tabular}{ r | c c c }
  			$\delta_E          $ & $\varepsilon$ & $a    $ & $b    $ \\ \hline
- 			$\rightarrow^\ast 0$ & $\emptyset$ & $\{1\}$ & $\{0\}$ \\  
+ 			$\rightarrow^* 0$ & $\emptyset$ & $\{1\}$ & $\{0\}$ \\  
  			$                 1$ & $\emptyset$ & $\{2\}$ & $\{0\}$ \\
  			$                 2$ & $\emptyset$ & $\emptyset$ & $\{0\}$
 		\end{tabular}
@@ -84,7 +84,7 @@ This $\varepsilon$-NFA is actually a regular NFA; suggestions for a simpler, wor
 		\begin{center}
 		\begin{tabular}{ r | c c c c }
  			$\delta_E           $ & $\varepsilon$ & $a    $ & $b    $ & $c$ \\ \hline
- 			$\rightarrow^\ast 00$ & $\emptyset  $ & $\{10\}$ & $\{10\}$ & $\{11\}$ \\  
+ 			$\rightarrow^* 00$ & $\emptyset  $ & $\{10\}$ & $\{10\}$ & $\{11\}$ \\  
  			$                 01$ & $\emptyset  $ & $\{11\}$ & $\{11\}$ & $\{10\}$ \\
  			$                 10$ & $\emptyset  $ & $\{00\}$ & $\{00\}$ & $\{01\}$\\
  			$                 11$ & $\emptyset  $ & $\{01\}$ & $\{01\}$ & $\{00\}$
@@ -113,9 +113,9 @@ This $\varepsilon$-NFA is actually a regular NFA; suggestions for a simpler, wor
 \begin{center}
 \begin{tabular}{ r | c c c c }
     $\delta_D                    $ & $a          $ & $b          $ & $c          $ & $d          $ \\ \hline
-    $\rightarrow{^\ast} \{p,q,r  \}$ & $\{p,q,r,s\}$ & $\{  q,r,s\}$ & $\{p,q,r  \}$ & $\{p,q,r,s\}$ \\
-    $           {^\ast} \{  q,r,s\}$ & $\{  q,r,s\}$ & $\{p,q,r  \}$ & $\{p,q,r  \}$ & $\{p,q,r,s\}$ \\
-    $           {^\ast} \{p,q,r,s\}$ & $\{p,q,r,s\}$ & $\{p,q,r,s\}$ & $\{p,q,r  \}$ & $\{p,q,r,s\}$ \\
+    $\rightarrow{^*} \{p,q,r  \}$ & $\{p,q,r,s\}$ & $\{  q,r,s\}$ & $\{p,q,r  \}$ & $\{p,q,r,s\}$ \\
+    $           {^*} \{  q,r,s\}$ & $\{  q,r,s\}$ & $\{p,q,r  \}$ & $\{p,q,r  \}$ & $\{p,q,r,s\}$ \\
+    $           {^*} \{p,q,r,s\}$ & $\{p,q,r,s\}$ & $\{p,q,r,s\}$ & $\{p,q,r  \}$ & $\{p,q,r,s\}$ \\
 \end{tabular}
 \end{center}
 }
