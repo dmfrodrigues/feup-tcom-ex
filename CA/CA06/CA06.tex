@@ -5,7 +5,7 @@
 \renewcommand{\thesubsubsection}{\thesubsection\alph{subsubsection}}
 \subsubsection{Item a}
 \begin{theorem}\label{theo:L1}
-Given $L_1$ defined by the regular expression $(01+10)(01+10)^\ast$,
+Given $L_1$ defined by the regular expression $(01+10)(01+10)^*$,
 \begin{equation*}
 	\forall w \in L_1, |w| \equiv 0 \pmod{2}
 \end{equation*}
@@ -63,7 +63,7 @@ It is true, given the language of the lexemes in any Python program can be split
 	\item All the identifiers and literals, which have some rules associated but are still representable as DFAs/regular expressions:
 	\begin{itemize}
 		\item Numeric literals are either special values like $True$, $False$, $None$, or must conform to a well known format (dot-separated, scientific notation,...)
-		\item String literals are roughly defined as the elements of $\{"w" | w \in \Sigma^\ast \} \cup \{'w' | w \in \Sigma^\ast \}$.
+		\item String literals are roughly defined as the elements of $\{"w" | w \in \Sigma^* \} \cup \{'w' | w \in \Sigma^* \}$.
 		\item Identifiers obey a simple set of rules, like not starting with a digit, only being composed of digits, uppercase and lowercase letters; aside from that, they can be any length, which is no problem to represent as a DFA.
 	\end{itemize}
 \end{enumerate}

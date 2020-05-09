@@ -4,10 +4,10 @@
 \renewcommand{\thesubsubsection}{\thesubsection\alph{subsubsection}}
 \subsection{Exercise 1}
 \begin{lemma}[Pumping lemma] \label{lem:pump}
-Given a regular language $L \in \Sigma^\ast$,
+Given a regular language $L \in \Sigma^*$,
 \begin{equation*}
 	\exists p \in \mathbb{N}^+ \colon \forall w \in L, |w|\geq p \implies
-	\exists x,y,z \in \Sigma^\ast \colon
+	\exists x,y,z \in \Sigma^* \colon
 	\begin{cases}
 		w=xyz\\
 		|y|\geq 1\\
@@ -23,7 +23,7 @@ Given a regular language $L \in \Sigma^\ast$,
 Assume by absurd that $L$ is a regular language, which means the pumping lemma \eqref{lem:pump} applies to $L$. We will now instantiate the $p$ that verifies the lemma as the symbol $q$, yielding
 	\begin{equation} \label{eq:1}
 	\forall w \in L, |w|\geq q \implies
-	\exists x,y,z \in \Sigma^\ast \colon
+	\exists x,y,z \in \Sigma^* \colon
 	\begin{cases}
 		w=xyz\\
 		|y|\geq 1\\
@@ -33,7 +33,7 @@ Assume by absurd that $L$ is a regular language, which means the pumping lemma \
 \end{equation}
 Consider the string $v=1^k$ where $k\geq q$ is a perfect square. This string trivially verifies $v \in L$ and $|v|\geq q$. Thus, by \eqref{eq:1} we have as truth that
 \begin{equation}\label{eq:3}
-	\exists x,y,z \in \Sigma^\ast \colon
+	\exists x,y,z \in \Sigma^* \colon
 	\begin{cases}
 		v=xyz\\
 		|y|\geq 1\\
