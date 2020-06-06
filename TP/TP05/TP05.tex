@@ -10,9 +10,102 @@
 \subsubsection{Item b}
 I prefer an $\varepsilon$-NFA because it simplifies the task of recognizing the $\varepsilon$'s of the regular expression when converting from RE to a FA.
 \subsubsection{Item c}
-\begin{center} \includegraphics[scale=0.5]{TP05_1_c_0} \end{center}
-This $\varepsilon$-NFA can be trivially converted to the following incomplete DFA.
-\begin{center} \includegraphics[scale=0.5]{TP05_1_c_1} \end{center}
+\begin{center}
+	\begin{tikzpicture}[->,>=stealth',node distance=1.5cm,initial text=$ $,]
+		\footnotesize
+		\node[state, initial] at (0,-1.8) (0) {$0$};
+		\node[state] at (1.2, -0.0) (100) {$100$};
+		\node[state] at (1.2, -1.2) (110) {$110$};
+		\node[state] at (1.2, -2.4) (120) {$120$};
+		\node[state] at (1.2, -3.6) (130) {$130$};
+
+		\node[state] at(2.4, -1.2) (111) {$111$};
+		\node[state] at(2.4, -2.4) (121) {$121$}; \node[state] at(3.6, -2.4) (122) {$122$};
+		\node[state] at(2.4, -3.6) (131) {$131$}; \node[state] at(3.6, -3.6) (132) {$132$}; \node[state] at(4.8, -3.6) (133) {$133$};
+		
+		\node[state] at(6.0, -1.8) (2) {$2$};
+
+		
+		\node[state] at(7.2, -1.8) (30) {$30$};
+		\node[state, below right of=30] (31) {$31$};
+		\node[state, below left  of=31] (32) {$32$};
+		\node[state, above left  of=32] (33) {$33$};
+
+		\node[state] at(8.4, -1.8) (4) {$4$};
+
+		\node[state] at(9.6, -0.0) (500) {$500$};
+		\node[state] at(9.6, -1.2) (510) {$510$}; \node[state] at(10.8, -1.2) (511) {$511$};
+		\node[state] at(9.6, -2.4) (520) {$520$}; \node[state] at(10.8, -2.4) (521) {$521$}; \node[state] at(12.0, -2.4) (522) {$522$};
+		\node[state] at(9.6, -3.6) (530) {$530$}; \node[state] at(10.8, -3.6) (531) {$531$}; \node[state] at(12.0, -3.6) (532) {$532$}; \node[state] at(13.2, -3.6) (533) {$533$};
+
+		\node[state, accepting] at(14.4, -1.8) (6) {$6$};
+
+		\draw   (0)	edge[left	] node{$\varepsilon$} (100)
+				(0)	edge[above	] node{$\varepsilon$} (110)
+				(0)	edge[below	] node{$\varepsilon$} (120)
+				(0)	edge[left	] node{$\varepsilon$} (130)
+
+				(110) edge[above] node{$a$} (111)
+				(120) edge[above] node{$a$} (121) (121) edge[above] node{$a$} (122)
+				(130) edge[above] node{$a$} (131) (131) edge[above] node{$a$} (132) (132) edge[above] node{$a$} (133)
+				
+				(100)	edge[above	] node{$\varepsilon$} (2)
+				(111)	edge[above	] node{$\varepsilon$} (2)
+				(122)	edge[below	] node{$\varepsilon$} (2)
+				(133)	edge[below	] node{$\varepsilon$} (2)
+
+				(2) edge[above] node{$\varepsilon$} (30)
+
+				(30) edge[left	] node{$b$} (31)
+				(31) edge[above	] node{$a$} (32)
+				(32) edge[right	] node{$a$} (33)
+				(33) edge[below	] node{$a$} (30)
+
+				(30) edge[above] node{$\varepsilon$} (4)
+
+				(4)	edge[left	] node{$\varepsilon$} (500)
+				(4)	edge[above	] node{$\varepsilon$} (510)
+				(4)	edge[below	] node{$\varepsilon$} (520)
+				(4)	edge[left	] node{$\varepsilon$} (530)
+
+				(510) edge[above] node{$b$} (511)
+				(520) edge[above] node{$b$} (521) (521) edge[above] node{$a$} (522)
+				(530) edge[above] node{$b$} (531) (531) edge[above] node{$a$} (532) (532) edge[above] node{$a$} (533)
+				
+				(500)	edge[above	] node{$\varepsilon$} (6)
+				(511)	edge[above	] node{$\varepsilon$} (6)
+				(522)	edge[below	] node{$\varepsilon$} (6)
+				(533)	edge[below	] node{$\varepsilon$} (6)
+				;
+	\end{tikzpicture}
+\end{center}
+This $\varepsilon$-NFA can be trivially simplified into the following $\varepsilon$-DFA.
+\begin{center}
+	\begin{tikzpicture}[->,>=stealth',node distance=1.5cm,initial text=$ $,]
+		\footnotesize
+		\node[state, initial] (100) {$100$};
+		\node[state, below of=100] (111) {$111$};
+		\node[state, below of=111] (122) {$122$};
+		
+		\node[state, accepting, right of=111] (30) {$30$};
+		\node[state, accepting, above of=30] (31) {$31$};
+		\node[state, accepting, right of=31] (32) {$32$};
+		\node[state, accepting, right of=30] (33) {$33$};
+
+		\draw   (100)	edge[left	] node{$a$} (111)
+				(111)	edge[left	] node{$a$} (122)
+
+				(100)	edge[above	] node{$\varepsilon, a$} (30)
+				(111)	edge[above	] node{$a$} (30)
+				(122)	edge[below	] node{$a$} (30)
+
+				(30) edge[left	] node{$b$} (31)
+				(31) edge[above	] node{$a$} (32)
+				(32) edge[right	] node{$a$} (33)
+				(33) edge[below	] node{$a$} (30)
+				;
+	\end{tikzpicture}
+\end{center}
 \subsection{Exercise 2}
 \subsubsection{Item a}
 \begin{alignat*}{3}
@@ -51,19 +144,67 @@ True. The proof is the fact there is an algorithm that transforms a regular expr
 \subsection{Exercise 6}
 \subsubsection{Item a}
 \begin{center}
-\begin{tabular}{c c}
-\includegraphics[scale=0.5]{TP05_6_a_1} &
-\includegraphics[scale=0.5,trim={0 22mm 0 0}]{TP05_6_a_2} \\
-\includegraphics[scale=0.5,trim={0 22mm 0 0}]{TP05_6_a_3} &
-\includegraphics[scale=0.5,trim={0 21mm 0 0}]{TP05_6_a_4}
+\begin{tabular}{c c c c}
+\begin{tikzpicture}[->,>=stealth',node distance=1.4cm,initial text=$ $,]
+	\footnotesize
+	\node[state, initial] (1) {$1$};
+	\node[state, below of=1] (2) {$2$};
+	\node[state, accepting, below of=2] (5) {$5$};
+	\node[state, right of=2] (3) {$3$};
+	\node[state, right of=3] (4) {$4$};
+
+	\draw   (1)	edge[left	] node{$a$} (2)
+			(2)	edge[left	] node{$.$} (5)
+			(2)	edge[bend left, above	] node{$\oplus$} (3)
+			(3)	edge[bend left, below	] node{$b$} (2)
+			(3)	edge[bend left, above	] node{$c$} (4)
+			(4)	edge[bend left, below	] node{$\otimes$} (3)
+			;
+\end{tikzpicture}
+&
+\begin{tikzpicture}[->,>=stealth',node distance=1.4cm,initial text=$ $,]
+	\footnotesize
+	\node[state, initial] (1) {$1$};
+	\node[state, below of=1] (2) {$2$};
+	\node[state, accepting, below of=2] (5) {$5$};
+	\node[state, right of=2] (3) {$3$};
+
+	\draw   (1)	edge[left	] node{$a$} (2)
+			(2)	edge[left	] node{$.$} (5)
+			(2)	edge[bend left, above	] node{$\oplus$} (3)
+			(3)	edge[bend left, below	] node{$b$} (2)
+			(3)	edge[loop above	] node{$c\otimes$} (3)
+			;
+\end{tikzpicture}
+&
+\begin{tikzpicture}[->,>=stealth',node distance=1.4cm,initial text=$ $,]
+	\footnotesize
+	\node[state, initial] (1) {$1$};
+	\node[state, below of=1] (2) {$2$};
+	\node[state, accepting, below of=2] (5) {$5$};
+
+	\draw   (1)	edge[left	] node{$a$} (2)
+			(2)	edge[loop right	] node{$\oplus(c\otimes)^* b$} (2)
+			(2)	edge[left	] node{$.$} (5)
+			;
+\end{tikzpicture}
+&
+\begin{tikzpicture}[->,>=stealth',node distance=2.8cm,initial text=$ $,]
+	\footnotesize
+	\node[state, initial] (1) {$1$};
+	\node[state, accepting, below of=1] (5) {$5$};
+
+	\draw   (1)	edge[right	] node{$a(\oplus (c \otimes)^* b)^* .$} (5)
+			;
+\end{tikzpicture}
 \end{tabular}
 \end{center}
 \begin{equation*}
-	\text{a}(\oplus (\text{c} \otimes )^* \text{b})^* .
+	a(\oplus (c \otimes )^* b)^* .
 \end{equation*}
 \subsubsection{Item b}
 \begin{equation*}
-	\text{a}.
+	a.
 \end{equation*}
 \subsubsection{Item c}
 An infinite number of strings, given the use of the closure operator $^*$.
@@ -110,28 +251,141 @@ An infinite number of strings, given the use of the closure operator $^*$.
 \end{tabular} \end{center}
 \end{minipage}%
 \begin{minipage}[c]{0.24\textwidth}
-	\begin{center} \includegraphics[scale=0.5]{TP05_7_a} \end{center}
+	\begin{tikzpicture}[->,>=stealth',node distance=2cm,initial text=$ $,]
+		\footnotesize
+		\node[state, initial] (AC) {$\{A,C\}$};
+		\node[state, right of=AC] (BC) {$\{B,C\}$};
+		\node[state, accepting, above of=AC] (CD) {$\{C,D\}$};
+		\node[state, above of=BC] (C) {$\{C\}$};
+	
+		\draw   (AC)	edge[above	] node{$0$} (BC)
+				(AC)	edge[left	] node{$1$} (CD)
+
+				(BC)	edge[right	] node{$0$} (C)
+				(BC)	edge[below	] node{$1$} (CD)
+
+				(CD)	edge[bend left=10,above	] node{$0$} (C)
+				(CD)	edge[loop above	] node{$1$} (CD)
+
+				(C)	edge[loop above	] node{$0$} (C)
+				(C)	edge[bend left=10, below	] node{$1$} (CD)
+				;
+	\end{tikzpicture}
 \end{minipage}
 \end{center}
 \subsubsection{Item b}
-\begin{center} \includegraphics[scale=0.5]{TP05_7_b_1} \end{center}
-\begin{center} \includegraphics[scale=0.5]{TP05_7_b_2} \end{center}
-\begin{center} \includegraphics[scale=0.5]{TP05_7_b_3} \end{center}
+\begin{center}
+	\begin{tabular}{c c c c}
+		\begin{tikzpicture}[->,>=stealth',node distance=1.4cm,initial text=$ $,]
+			\footnotesize
+			\node[state, initial] (A) {$A$};
+			\node[state, above of=A] (C) {$C$};
+			\node[state, right of=A] (B) {$B$};
+			\node[state, accepting, right of=C] (D) {$D$};
+		
+			\draw   (A)	edge[left	] node{$\varepsilon$} (C)
+					(C)	edge[loop above	] node{$0,1$} (C)
+					(C)	edge[above	] node{$1$} (D)
+					(A)	edge[below	] node{$0$} (B)
+					(B)	edge[right	] node{$1$} (D)
+					;
+		\end{tikzpicture}
+		&
+		\begin{tikzpicture}[->,>=stealth',node distance=1.4cm,initial text=$ $,]
+			\footnotesize
+			\node[state, initial] (A) {$A$};
+			\node[state, right of=A] (B) {$B$};
+			\node[state, accepting, above of=B] (D) {$D$};
+		
+			\draw   (A)	edge[left	] node{$(0+1)^*$} (D)
+					(A)	edge[below	] node{$0$} (B)
+					(B)	edge[right	] node{$1$} (D)
+					;
+		\end{tikzpicture}
+		&
+		\begin{tikzpicture}[->,>=stealth',node distance=1.9cm,initial text=$ $,]
+			\footnotesize
+			\node[state, initial] (A) {$A$};
+			\node[state, accepting, above right of=A] (D) {$D$};
+		
+			\draw   (A)	edge[bend left, left	] node{$(0+1)^*$} (D)
+					(A)	edge[bend right, below	] node{$01$} (D)
+					;
+		\end{tikzpicture}
+		&
+		\begin{tikzpicture}[->,>=stealth',node distance=1.9cm,initial text=$ $,]
+			\footnotesize
+			\node[state, initial] (A) {$A$};
+			\node[state, accepting, above right of=A] (D) {$D$};
+		
+			\draw   (A)	edge[left	] node{$01+(0+1)^*$} (D)
+					;
+		\end{tikzpicture}
+	\end{tabular}
+\end{center}
 \begin{equation*}
 	01+(0+1)^* 1 = (0+(0+1)^*) 1 = (0+1)^* 1
 \end{equation*}
 \pagebreak
 \subsection{Exercise 8}
 \subsubsection{Item a}
-\begin{center} \includegraphics[scale=0.5]{TP05_8_a} \end{center}
+\begin{center}
+	\begin{tikzpicture}[->,>=stealth',node distance=1.4cm,initial text=$ $,]
+		\footnotesize
+		\node[state, initial] (0) {$0$};
+		\node[state, below of=0] (1) {$1$};
+		\node[state, right of=0] (2) {$2$};
+		\node[state, accepting, right of=1] (3) {$3$};
+	
+		\draw   (0)	edge[left	] node{$a$} (1)
+				(1)	edge[left	] node{$b$} (2)
+				(2)	edge[right	] node{$a$} (3)
+				(1)	edge[bend left=10, above	] node{$b$} (3)
+				(3)	edge[bend left=10, below	] node{$a$} (1)
+				;
+	\end{tikzpicture}
+\end{center}
 $ab$, $abab$, $aba$ are accepted.
 \subsubsection{Item b}
 Language of strings started in $a$ with no consecutive $b$'s and at most two consecutive $a$'s.
 \subsubsection{Item c}
 \begin{center} \begin{tabular}{c c c}
-\includegraphics[scale=0.5]{TP05_8_c_1} &
-\includegraphics[scale=0.5]{TP05_8_c_2} &
-\includegraphics[scale=0.5,trim={0 7mm 0 0}]{TP05_8_c_3} 
+\begin{tikzpicture}[->,>=stealth',node distance=1.7cm,initial text=$ $,]
+	\footnotesize
+	\node[state, initial] (0) {$0$};
+	\node[state, below of=0] (1) {$1$};
+	\node[state, right of=0] (2) {$2$};
+	\node[state, accepting, right of=1] (3) {$3$};
+
+	\draw   (0)	edge[left	] node{$a$} (1)
+			(1)	edge[left	] node{$b$} (2)
+			(2)	edge[right	] node{$a$} (3)
+			(1)	edge[bend left=10, above	] node{$b$} (3)
+			(3)	edge[bend left=10, below	] node{$a$} (1)
+			;
+\end{tikzpicture}
+&
+\begin{tikzpicture}[->,>=stealth',node distance=1.7cm,initial text=$ $,]
+	\footnotesize
+	\node[state, initial] (0) {$0$};
+	\node[state, below of=0] (1) {$1$};
+	\node[state, accepting, right of=1] (3) {$3$};
+
+	\draw   (0)	edge[left	] node{$a$} (1)
+			(1)	edge[bend left=10, above	] node{$ba+b$} (3)
+			(3)	edge[bend left=10, below	] node{$a$} (1)
+			;
+\end{tikzpicture}
+&
+\begin{tikzpicture}[->,>=stealth',node distance=2.3cm,initial text=$ $,]
+	\footnotesize
+	\node[state, initial] (0) {$0$};
+	\node[state, accepting, below right of=0] (3) {$3$};
+
+	\draw   (0)	edge[left	] node{$a(ba+b)$} (3)
+			(3) edge[loop right] node{$a(ba+b)$} (3)
+			;
+\end{tikzpicture}
 \end{tabular} \end{center}
 \begin{equation*}
 	ab(\varepsilon+a)(ab(\varepsilon+a))^*=(ab(\varepsilon+a))^+

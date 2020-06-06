@@ -1,0 +1,44 @@
+\setcounter{section}{0}
+\section{Exam unknown}
+{
+\renewcommand{\thesubsubsection}{\thesubsection\alph{subsubsection}}
+\subsection{Group IV}
+\subsubsection{Item a}
+A strategy to implement a TM to answer this question would be:
+\begin{enumerate}
+	\item \label{itm:tm-2} Go right until you find the first $x$, replace it by $X$ and go left until you find the first $0$/$1$.
+	\item Increment this number: if $0$ or $B$, replace by $1$ and you're done; if $1$, replace by $0$, go left and do this step again. Once you're done, go to step \ref{itm:tm-2}.
+\end{enumerate}
+\subsubsection{Item b}
+\begin{minipage}[c]{0.68\textwidth}
+	\begin{center}
+		\begin{tabular}{r | c c c c c}
+								& 0     				& 1 					& $X$ 					& $x$ 					& $B$ 					\\ \hline
+			$\rightarrow q_1  $	& $(q_1,0,\rightarrow)$	& $(q_1,1,\rightarrow)$	& $(q_1,X,\rightarrow)$	& $(q_2,X,\leftarrow)$ 	& $(f,B,\rightarrow)$	\\
+			$            q_2  $ & $(q_1,1,\rightarrow)$	& $(q_2,0,\leftarrow)$	& $(q_2,X,\leftarrow)$	& 						& $(q_1,1,\rightarrow)$	\\
+			$            f    $ &                       &                       &                       &                       &                       
+		\end{tabular}
+	\end{center}
+\end{minipage}
+\begin{minipage}[c]{0.27\textwidth}
+	\begin{center}
+		\begin{tikzpicture}[->,>=stealth',node distance=2cm,initial text=$ $,]
+			\node[state, initial	] (q1) {$q_1$};
+			\node[state, right of=q1] (q2) {$q_2$};
+			\node[state, below of=q1] (f) {$f$};
+			
+			\draw	(q1)  edge[loop above,align=center		] node{$0/0\rightarrow$\\$1/1\rightarrow$\\$X/X\rightarrow$} (q1)
+					(q1)  edge[bend left, above				] node{$x/X\leftarrow$} (q2)
+					(q2)  edge[bend left, below,align=center] node{$0/1\rightarrow$\\$B/1\rightarrow$} (q1)
+					(q2)  edge[loop above,align=center		] node{$1/0\leftarrow$\\$X/X\leftarrow$} (q2)
+					(q1)  edge[left							] node{$B/B\rightarrow$} (f)
+					;
+		\end{tikzpicture}
+	\end{center}
+\end{minipage}
+\subsubsection{Item c}
+\begin{alignat*}{12}
+			& BB q_1 xxB &&\vdash B q_2 BXxB &&\vdash B1 q_1 XxB &&\vdash B1X q_1 xB &&\vdash B1 q_2 XXB &&\vdash B q_2 1XXB &&\\
+	\vdash 	&  q_2 B0XXB &&\vdash 1 q_1 0XXB &&\vdash 10 q_1 XXB &&\vdash 10X q_1 XB &&\vdash 10XX q_1 B &&\vdash 10XXB f
+\end{alignat*}
+}
