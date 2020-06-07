@@ -28,7 +28,7 @@ jobs:
     - name: Stash documents
       run: |
         mkdir $HOME/docs
-        mv **/*.pdf $HOME/docs
+        mv `find . -type f -name "*.pdf" | paste -sd " "` $HOME/docs
 
     - name: Checkout gh-actions-builds branch
       uses: actions/checkout@v1
