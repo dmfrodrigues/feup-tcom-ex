@@ -44,3 +44,9 @@ jobs:
         git add docs
         git commit -m "Add changes"
 
+    - name: Push reports
+      uses: ad-m/github-push-action@v0.5.0
+      with:
+        branch: gh-pages
+        force: false
+        github_token: ${{ secrets.GITHUB_TOKEN }}
