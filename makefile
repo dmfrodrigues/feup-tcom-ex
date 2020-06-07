@@ -1,4 +1,4 @@
-LATEX=latexmk -quiet -synctex=1 -interaction=nonstopmode -pdf
+LATEX=latexmk -synctex=1 -interaction=nonstopmode -pdf
 # -outdir=%OUTDIR% %DOC%
 
 OUTFILES=CA/TCOM_resol_CA.pdf \
