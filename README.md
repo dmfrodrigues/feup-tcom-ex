@@ -14,6 +14,6 @@ This repository is made available by Diogo Rodrigues ([dmfrodrigues2000@gmail.co
 
 1. If you do not change these documents, you are free to read and distribute them.
 2. If you create your own documents based on these documents (i.e., if your work is derivated from any of the documents in this repository), you must:
-  1. Use the same license
-  1. Document those changes
-  2. Reference the original document, including at least my name (Diogo Rodrigues), email address ([dmfrodrigues2000@gmail.com](mailto:dmfrodrigues2000@gmail.com)) and a link to the original document.
+    1. Use the same license
+    2. Document those changes
+    3. Reference the original document, including at least my name (Diogo Rodrigues), email address ([dmfrodrigues2000@gmail.com](mailto:dmfrodrigues2000@gmail.com)) and a link to the original document.
