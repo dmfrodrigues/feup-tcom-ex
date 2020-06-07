@@ -247,8 +247,8 @@ This language belongs to the family of recursively enumerated languages.
 		   &             &&                   &&\vdash BCC q_{lb} DDB &&\vdash BC q_{lb} CDDB &&\vdash B q_{lb} CCDDB &&\vdash  q_{lb} BCCDDB &&\\
 		   &             &&\vdash B q_b CCDDB &&\vdash BC q_b CDDB    &&\vdash BCC q_b DDB    &&\\
 		   &             &&                   &&\vdash BC q_{le} CDDB &&\vdash B q_{le} CCDDB &&\vdash q_{le} BCCDDB  &&\\
-		   &             &&                   &&\vdash B q_e CCDDB    &&\vdash BA q_e CDDB    &&\vdash BAA q_e DDB    &&\vdash BAAA q_e DB    &&\vdash BAAAA q_e B &&\\
-	\vdash & BAAAAB q_f 
+		   &             &&                   &&\vdash B q_e CCDDB    &&\vdash BA q_e CDDB    &&\vdash BAA q_e DDB    &&\vdash BAAA q_e DB    &&\\
+	\vdash & BAAAA q_e B &&\vdash BAAAAB q_f 
 \end{alignat*}
 \subsection{Exercise 5}
 \subsubsection{Item a}
@@ -489,25 +489,25 @@ This TM only processes correctly numbers with the same number of binary digits. 
 	\vdash & BB s 0,B0B  &&\vdash BBB s_0 ,B0B &&\vdash BBB, t_0 B0B  &&\vdash BBB,B t_0 0B  &&\vdash BBB, u BBB    &&\vdash BBB u ,BBB   &&\vdash BB r B,BBB   &&\\
 	\vdash & BBB s ,BBB  &&\vdash BBB, f BBB   
 \end{alignat*}
-	\begin{center}
-		\begin{tikzpicture}[->,>=stealth',node distance=3cm,initial text=$ $,]
-			\node[state, initial] (q0) {$q_{0}$};
-			\node[state, above right of=q0] (s1) {$s_{1}$};
-			\node[state, below right of=q0] (s0) {$s_{0}$};
-			\node[state, below right of=s1] (l) {$l$};
+\begin{center}
+	\begin{tikzpicture}[->,>=stealth',node distance=3cm,initial text=$ $,]
+		\node[state, initial] (q0) {$q_{0}$};
+		\node[state, above right of=q0] (s1) {$s_{1}$};
+		\node[state, below right of=q0] (s0) {$s_{0}$};
+		\node[state, below right of=s1] (l) {$l$};
+		
+		\draw	(q0) edge[left] node{$0/B\rightarrow$} (s1)
+				(s1) edge[loop left,align=center		] node{$0/0\rightarrow$\\$X/X\rightarrow$} (s1)
+				(s1) edge[right] node{$1/X\leftarrow$} (l)
+				
+				(q0) edge[left] node{$1/B\rightarrow$} (s0)
+				(s0) edge[loop left,align=center		] node{$1/1\rightarrow$\\$X/X\rightarrow$} (s0)
+				(s0) edge[right] node{$0/X\leftarrow$} (l)
+				
+				(l) edge[loop right,align=center] node{$0/0\leftarrow$\\$1/1\leftarrow$\\$X/X\leftarrow$} (l)
+				(l) edge[above] node{$B/B\rightarrow$} (q0)
+				;
 			
-			\draw	(q0) edge[left] node{$0/B\rightarrow$} (s1)
-					(s1) edge[loop above,align=center		] node{$0/0\rightarrow$\\$X/X\rightarrow$} (s1)
-					(s1) edge[right] node{$1/X\leftarrow$} (l)
-					
-					(q0) edge[left] node{$1/B\rightarrow$} (s0)
-					(s0) edge[loop below,align=center		] node{$1/1\rightarrow$\\$X/X\rightarrow$} (s0)
-					(s0) edge[right] node{$0/X\leftarrow$} (l)
-					
-					(l) edge[loop right,align=center] node{$0/0\leftarrow$\\$1/1\leftarrow$\\$X/X\leftarrow$} (l)
-					(l) edge[above] node{$B/B\rightarrow$} (q0)
-					;
-			  
-		\end{tikzpicture}
-	\end{center}
+	\end{tikzpicture}
+\end{center}
 }
