@@ -10,7 +10,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: apt
+    - name: Install dependencies via apt
       run: sudo apt install -y texlive-latex-extra texlive-science latexmk curl
 
     - name: Checkout submodules
@@ -25,27 +25,22 @@ jobs:
     - name: Make all documents
       run: make
 
-    - uses: actions/upload-artifact@v2
-      with:
-        name: TCOM_resol_CA.pdf
-        path: CA/TCOM_resol_CA.pdf
+    - name: Stash documents
+      run: |
+        mkdir $HOME/docs
+        mv **/*.pdf $HOME/docs
 
-    - uses: actions/upload-artifact@v2
+    - name: Checkout gh-actions-builds branch
+      uses: actions/checkout@v1
       with:
-        name: TCOM_resol_exam.pdf
-        path: exam/TCOM_resol_exam.pdf
+        ref: gh-pages
 
-    - uses: actions/upload-artifact@v2
-      with:
-        name: TCOM_resol_PA.pdf
-        path: PA/TCOM_resol_PA.pdf
+    - name: Commit reports
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name = "GitHub Action"
+        rm -rf docs
+        mv $HOME/docs $(pwd)
+        git add docs
+        git commit -m "Add changes"
 
-    - uses: actions/upload-artifact@v2
-      with:
-        name: TCOM_resol_test1.pdf
-        path: tests/1/TCOM_resol_test1.pdf
-
-    - uses: actions/upload-artifact@v2
-      with:
-        name: TCOM_resol_TP.pdf
-        path: TP/TCOM_resol_TP.pdf
