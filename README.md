@@ -13,6 +13,6 @@
 This repository is made available by Diogo Rodrigues ([dmfrodrigues2000@gmail.com](mailto:dmfrodrigues2000@gmail.com)) under the [Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International](LICENSE). To spare you from reading it, the main points are:
 
 1. You are free to copy and redistribute these works, as long as:
-    a. You give appropriate credit, including at least my name (Diogo Rodrigues), email address ([dmfrodrigues2000@gmail.com](mailto:dmfrodrigues2000@gmail.com)).
-    b. You don't use it for commercial purposes (don't sell it).
-    c. You don't remix, transform or build upon this material. Documents must be redistributed as-is, without modification. You can contribute by suggesting changes, and proper credit will be given to you.
+    1. You give appropriate credit, including at least my name (Diogo Rodrigues) and email address ([dmfrodrigues2000@gmail.com](mailto:dmfrodrigues2000@gmail.com)).
+    2. You don't use it for commercial purposes (don't sell it).
+    3. You don't remix, transform or build upon this material. Documents must be redistributed as-is, without modification. You can contribute by suggesting changes, and proper credit will be given to you.
