@@ -10,10 +10,9 @@
 
 ## License
 
-This repository is made available by Diogo Rodrigues ([dmfrodrigues2000@gmail.com](mailto:dmfrodrigues2000@gmail.com)) under the [GNU Lesser General Public License v2.1](LICENSE.md). To spare you from reading it, the main goals I had in mind were:
+This repository is made available by Diogo Rodrigues ([dmfrodrigues2000@gmail.com](mailto:dmfrodrigues2000@gmail.com)) under the [Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International](LICENSE). To spare you from reading it, the main points are:
 
-1. If you do not change these documents, you are free to read and distribute them.
-2. If you create your own documents based on these documents (i.e., if your work is derivated from any of the documents in this repository), you must:
-    1. Use the same license
-    2. Document those changes
-    3. Reference the original document, including at least my name (Diogo Rodrigues), email address ([dmfrodrigues2000@gmail.com](mailto:dmfrodrigues2000@gmail.com)) and a link to the original document.
+1. You are free to copy and redistribute these works, as long as:
+    a. You give appropriate credit, including at least my name (Diogo Rodrigues), email address ([dmfrodrigues2000@gmail.com](mailto:dmfrodrigues2000@gmail.com)).
+    b. You don't use it for commercial purposes (don't sell it).
+    c. You don't remix, transform or build upon this material. Documents must be redistributed as-is, without modification. You can contribute by suggesting changes, and proper credit will be given to you.
