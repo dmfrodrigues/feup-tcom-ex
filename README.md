@@ -27,3 +27,5 @@ Documents are compiled by Github Actions, to see them go to [`Actions`](https://
 © 2019-2020 Diogo Rodrigues
 
 This repository is made available under the [Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International](LICENSE) by **© 2019-2020 Diogo Rodrigues**.
+
+The files not authored by me are presented as a fundamental complement to the presented solutions, and are made available under *fair use for education*.
