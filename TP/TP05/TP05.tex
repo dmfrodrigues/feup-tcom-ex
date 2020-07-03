@@ -330,8 +330,7 @@ An infinite number of strings, given the use of the closure operator $^*$.
 \subsection{Exercise 8}
 \subsubsection{Item a}
 \begin{center}
-	\begin{tikzpicture}[->,>=stealth',node distance=1.4cm,initial text=$ $,]
-		\footnotesize
+	\begin{tikzpicture}[->,>=stealth',node distance=2cm,initial text=$ $,]
 		\node[state, initial] (0) {$0$};
 		\node[state, below of=0] (1) {$1$};
 		\node[state, right of=0] (2) {$2$};
@@ -350,8 +349,7 @@ $ab$, $abab$, $aba$ are accepted.
 Language of strings started in $a$ with no consecutive $b$'s and at most two consecutive $a$'s.
 \subsubsection{Item c}
 \begin{center} \begin{tabular}{c c c}
-\begin{tikzpicture}[->,>=stealth',node distance=1.7cm,initial text=$ $,]
-	\footnotesize
+\begin{tikzpicture}[->,>=stealth',node distance=2cm,initial text=$ $,]
 	\node[state, initial] (0) {$0$};
 	\node[state, below of=0] (1) {$1$};
 	\node[state, right of=0] (2) {$2$};
@@ -365,8 +363,7 @@ Language of strings started in $a$ with no consecutive $b$'s and at most two con
 			;
 \end{tikzpicture}
 &
-\begin{tikzpicture}[->,>=stealth',node distance=1.7cm,initial text=$ $,]
-	\footnotesize
+\begin{tikzpicture}[->,>=stealth',node distance=2cm,initial text=$ $,]
 	\node[state, initial] (0) {$0$};
 	\node[state, below of=0] (1) {$1$};
 	\node[state, accepting, right of=1] (3) {$3$};
@@ -377,8 +374,7 @@ Language of strings started in $a$ with no consecutive $b$'s and at most two con
 			;
 \end{tikzpicture}
 &
-\begin{tikzpicture}[->,>=stealth',node distance=2.3cm,initial text=$ $,]
-	\footnotesize
+\begin{tikzpicture}[->,>=stealth',node distance=2.7cm,initial text=$ $,]
 	\node[state, initial] (0) {$0$};
 	\node[state, accepting, below right of=0] (3) {$3$};
 
@@ -404,8 +400,7 @@ Language of strings started in $a$ with no consecutive $b$'s and at most two con
 \end{minipage}
 \begin{minipage}{0.30\textwidth}
 	\begin{center}
-		\begin{tikzpicture}[->,>=stealth',node distance=1.7cm,initial text=$ $,]
-			\footnotesize
+		\begin{tikzpicture}[->,>=stealth',node distance=2cm,initial text=$ $,]
 			\node[state, initial] (0) {$\{0\}$};
 			\node[state, right of=0] (1) {$\{1\}$};
 			\node[state, accepting, right of=1] (23) {$\{2,3\}$};
@@ -480,12 +475,10 @@ The correct answer is \ref{itm:5_9_2}.
 \begin{center}
 \begin{minipage}{0.30\textwidth}
 	\begin{center}
-		\begin{tikzpicture}[->,>=stealth',node distance=1.7cm,initial text=$ $,]
-			\footnotesize
+		\begin{tikzpicture}[->,>=stealth',node distance=2cm,initial text=$ $,]
 			\node[state, initial] (q1) {$q_1$};
 			\node[state, below right of=q1] (q2) {$q_2$};
 			\node[state, accepting, above right of=q2] (q3) {$q_3$};
-			
 			
 			\draw   (q1)	edge[bend left= 7, above] node{$1$} (q3)
 					(q3)	edge[bend left= 7, below] node{$1$} (q1)
@@ -496,9 +489,21 @@ The correct answer is \ref{itm:5_9_2}.
 					;
 		\end{tikzpicture}
 	\end{center}
-	\begin{center} \includegraphics[scale=0.5]{TP05_10_b_2} \end{center}
+	\begin{center}
+		\begin{tikzpicture}[->,>=stealth',node distance=2.9cm,initial text=$ $,]
+			\node[state, initial] (q1) {$q_1$};
+			\node[state, accepting, right of=q1] (q3) {$q_3$};
+			
+			\draw   (q1)	edge[bend left= 7, above] node{$1+01$} (q3)
+					(q3)	edge[bend left= 7, below] node{$1+00$} (q1)
+					(q1)	edge[loop above] node{$00$} (q1)
+					(q3)	edge[loop above] node{$01$} (q3)
+			;
+		\end{tikzpicture}
+	\end{center}
 \end{minipage}%
 \begin{minipage}{0.60\textwidth}
+	Simplifying,
 	\begin{alignat*}{2}
 	 	 & (00)^*(1+01)           &&(01 + (1+00)(00)^*(1+01))^*\\
 		=& (00)^*(\varepsilon+0)1 &&(01 + 1(00)^*(1+01)+00(00)^*(1+01))^*\\
@@ -514,13 +519,47 @@ The correct answer is \ref{itm:5_9_2}.
 	\end{alignat*}
 \end{minipage}
 \end{center}
+\hlinetext
 \begin{center}
 \begin{minipage}{0.30\textwidth}
-	\begin{center} \includegraphics[scale=0.5,trim={0  7mm 0 0}]{TP05_10_b_1_2} \end{center}
-	\begin{center} \includegraphics[scale=0.5,trim={0 20mm 0 0}]{TP05_10_b_2_2} \end{center}
-	\begin{center} \includegraphics[scale=0.5,trim={0 20mm 0 0}]{TP05_10_b_3_2} \end{center}
+	\begin{center}
+		\begin{tikzpicture}[->,>=stealth',node distance=2cm,initial text=$ $,]
+			\node[state, accepting, initial] (q1) {$q_1$};
+			\node[state, below right of=q1] (q2) {$q_2$};
+			\node[state, above right of=q2] (q3) {$q_3$};
+			
+			\draw   (q1)	edge[bend left= 7, above] node{$1$} (q3)
+					(q3)	edge[bend left= 7, below] node{$1$} (q1)
+					(q1)	edge[bend left=10, right] node{$0$} (q2)
+					(q2)	edge[bend left=10, left ] node{$0$} (q1)
+					(q3)	edge[bend left=10, right] node{$0$} (q2)
+					(q2)	edge[bend left=10, left ] node{$1$} (q3)
+					;
+		\end{tikzpicture}
+	\end{center}
+	\begin{center}
+		\begin{tikzpicture}[->,>=stealth',node distance=2.9cm,initial text=$ $,]
+			\node[state, accepting, initial] (q1) {$q_1$};
+			\node[state, right of=q1] (q3) {$q_3$};
+			
+			\draw   (q1)	edge[bend left= 7, above] node{$1+01$} (q3)
+					(q3)	edge[bend left= 7, below] node{$1+00$} (q1)
+					(q1)	edge[loop above] node{$00$} (q1)
+					(q3)	edge[loop above] node{$01$} (q3)
+			;
+		\end{tikzpicture}
+	\end{center}
+	\begin{center}
+		\begin{tikzpicture}[->,>=stealth',node distance=2.9cm,initial text=$ $,]
+			\node[state, accepting, initial] (q1) {$q_1$};
+			
+			\draw   (q1)	edge[loop above] node{$00+(1+01)(01)^*(1+00)$} (q1)
+					;
+		\end{tikzpicture}
+	\end{center}
 \end{minipage}%
 \begin{minipage}{0.60\textwidth}
+	Simplifying,
 	\begin{alignat*}{2}
 	 	 & (00+(1+01)(01)^*(1+00))^*\\
 		=& (00+(1+01)01^*(0+1))^* \\
@@ -528,10 +567,21 @@ The correct answer is \ref{itm:5_9_2}.
 	\end{alignat*}
 \end{minipage}
 \end{center}
+\hlinetext
 \begin{alignat*}{2}
 	0^*1((0+1)0^*1)^* + (00+(\varepsilon+0)101^*(0+1))^*
 \end{alignat*}
 \subsection{Exercise 11}
 The correct answer is NE.
-\begin{center} \includegraphics[scale=0.5]{TP05_11} \end{center}
+\begin{center}
+	\begin{tikzpicture}[->,>=stealth',node distance=2.2cm,initial text=$ $,]
+		\node[state, initial] (1) {};
+		\node[state, accepting, right of=1] (2) {};
+		
+		\draw   (1)	edge[bend left=10, above] node{$1$} (2)
+				(2)	edge[bend left=10, below] node{$1$} (1)
+				(1)	edge[loop above] node{$0$} (1)
+		;
+	\end{tikzpicture}
+\end{center}
 }
