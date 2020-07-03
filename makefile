@@ -9,7 +9,7 @@ OUTFILES=CA/TCOM_resol_CA.pdf \
 
 all: $(OUTFILES)
 
-%.pdf: %.tex
+%.pdf: %.tex tcomstyle.sty
 	cd $(<D) && $(LATEX) $(<F)
 
 clean:
