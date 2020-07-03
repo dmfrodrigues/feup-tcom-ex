@@ -3,7 +3,7 @@
 *.out
 *.synctex.gz
 *.toc
-*.pdf
+TCOM_*.pdf
 *.docx
 *.fls
 *.fdb_latexmk
