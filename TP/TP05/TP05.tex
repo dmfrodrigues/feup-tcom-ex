@@ -483,15 +483,16 @@ The correct answer is \ref{itm:5_9_2}.
 		\begin{tikzpicture}[->,>=stealth',node distance=1.7cm,initial text=$ $,]
 			\footnotesize
 			\node[state, initial] (q1) {$q_1$};
-			\node[state, accepting, below right of=q1] (q3) {$q_3$};
-			\node[state, above right of=q3] (q2) {$q_2$};
+			\node[state, below right of=q1] (q2) {$q_2$};
+			\node[state, accepting, above right of=q2] (q3) {$q_3$};
 			
-			\draw   (q1)	edge[bend left=10, right] node{$1$} (q3)
-					(q3)	edge[bend left=10, left ] node{$1$} (q1)
-					(q1)	edge[bend left= 7, above] node{$0$} (q2)
-					(q2)	edge[bend left= 7, below] node{$0$} (q1)
-					(q3)	edge[bend left=10, left ] node{$0$} (q2)
-					(q2)	edge[bend left=10, right] node{$1$} (q3)
+			
+			\draw   (q1)	edge[bend left= 7, above] node{$1$} (q3)
+					(q3)	edge[bend left= 7, below] node{$1$} (q1)
+					(q1)	edge[bend left=10, right] node{$0$} (q2)
+					(q2)	edge[bend left=10, left ] node{$0$} (q1)
+					(q3)	edge[bend left=10, right] node{$0$} (q2)
+					(q2)	edge[bend left=10, left ] node{$1$} (q3)
 					;
 		\end{tikzpicture}
 	\end{center}
