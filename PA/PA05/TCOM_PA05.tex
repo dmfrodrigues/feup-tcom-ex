@@ -1,12 +1,53 @@
-\documentclass[a4paper]{article}
-% Hyperreferences
-\usepackage{hyperref}
-% TCOM style
-\usepackage{import}
-\usepackage[title={TCOM Preparation Activities (PA) - PA05},
-            author={Diogo Rodrigues},
-            email={up201806429@fe.up.pt}]{tcomstyle}
-% Document
+\documentclass[docid=PA05]{tcom_PA}
 \begin{document}
-\input{PA05.tex}
+\setcounter{section}{4}
+\section{Preparation Activity 5 - REs}
+{
+\renewcommand{\thesubsubsection}{\thesubsection\alph{subsubsection}}
+\subsection{Exercise 1}
+\begin{equation*}
+	(a+b+c)^* ((abc(\varepsilon+(a+b+c)^* c)ba)+(cba(\varepsilon + (a+b+c)^* a)bc))(a+b+c)^*
+\end{equation*}
+\subsection{Exercise 2}
+\subsubsection{Item a}
+\begin{center}
+	\begin{tikzpicture}[->,>=stealth',node distance=2cm,initial text=$ $,]
+		\node[state, initial] at (0,0) (q1) {$q_1$};
+		\node[state] at (3, 0) (q2) {$q_2$};
+		\node[state] at (6, 0) (q3) {$q_3$};
+		\node[state] at (9, 0) (q4) {$q_4$};
+		
+
+		\draw   (q1) 	edge[loop above	        ] node{$0,1$} (q1)
+				(q1) 	edge[above	   		    ] node{$1$} (q2)
+				(q2) 	edge[above	   		    ] node{$\varepsilon, 0, 1$} (q3)
+				(q3) 	edge[above	   		    ] node{$0, 1$} (q4)
+				;
+	\end{tikzpicture}
+\end{center}
+\begin{center}
+	\begin{tikzpicture}[->,>=stealth',node distance=2cm,initial text=$ $,]
+		\node[state, initial] at(0,0) (q1) {$q_1$};
+		\node[state] at (3, 0) (q2) {$q_2$};
+		\node[state, accepting] at (9,0) (q4) {$q_4$};
+
+		\draw   (q1) 	edge[above	   		    ] node{$(0+1)^*1$} (q2)
+				(q2) 	edge[above	   		    ] node{$(\varepsilon+0+1)(0+1)$} (q4)
+				;
+	\end{tikzpicture}
+\end{center}
+\begin{center}
+	\begin{tikzpicture}[->,>=stealth',node distance=2cm,initial text=$ $,]
+		\node[state, initial] at (0,0) (q1) {$q_1$};
+		\node[state, accepting] at (9,0) (q4) {$q_4$};
+
+		\draw   (q1) 	edge[above	   		    ] node{$(0+1)^*1(\varepsilon+0+1)(0+1)$} (q4)
+				;
+	\end{tikzpicture}
+\end{center}
+\begin{equation*}
+	(0+1)^* 1(\varepsilon+0+1)(0+1)
+\end{equation*}
+\textcolor{red}{Incomplete}
+}
 \end{document}

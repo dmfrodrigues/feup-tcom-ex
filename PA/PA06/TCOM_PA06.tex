@@ -1,12 +1,87 @@
-\documentclass[a4paper]{article}
-% Hyperreferences
-\usepackage{hyperref}
-% TCOM style
-\usepackage{import}
-\usepackage[title={TCOM Preparation Activities (PA) - PA06},
-            author={Diogo Rodrigues},
-            email={up201806429@fe.up.pt}]{tcomstyle}
-% Document
+\documentclass[docid=PA06]{tcom_PA}
 \begin{document}
-\input{PA06.tex}
+\setcounter{section}{5}
+\section{Preparation Activity 6 - Regular Languages}
+{
+\renewcommand{\thesubsubsection}{\thesubsection\alph{subsubsection}}
+\subsection{Exercise 1}
+\begin{lemma}[Pumping lemma] \label{lem:pump}
+Given a regular language $L \in \Sigma^*$,
+\begin{equation*}
+	\exists p \in \mathbb{N}^+ \colon \forall w \in L, |w|\geq p \implies
+	\exists x,y,z \in \Sigma^* \colon
+	\begin{cases}
+		w=xyz\\
+		|y|\geq 1\\
+		|xy|\leq p\\
+		\forall n \geq 0, x y^n z \in L
+	\end{cases}
+\end{equation*}
+\end{lemma}
+\begin{theorem}
+	$L=\{1^{n^2} | n>0\}$ is not a regular language.
+\end{theorem}
+\begin{proof}
+Assume by absurd that $L$ is a regular language, which means the pumping lemma \eqref{lem:pump} applies to $L$. We will now instantiate the $p$ that verifies the lemma as the symbol $q$, yielding
+	\begin{equation} \label{eq:1}
+	\forall w \in L, |w|\geq q \implies
+	\exists x,y,z \in \Sigma^* \colon
+	\begin{cases}
+		w=xyz\\
+		|y|\geq 1\\
+		|xy|\leq q\\
+		\forall n \geq 0, x y^n z \in L
+	\end{cases}
+\end{equation}
+Consider the string $v=1^k$ where $k\geq q$ is a perfect square. This string trivially verifies $v \in L$ and $|v|\geq q$. Thus, by \eqref{eq:1} we have as truth that
+\begin{equation}\label{eq:3}
+	\exists x,y,z \in \Sigma^* \colon
+	\begin{cases}
+		v=xyz\\
+		|y|\geq 1\\
+		|xy|\leq q\\
+		\forall n \geq 0, x y^n z \in L
+	\end{cases}
+\end{equation}
+Given \eqref{eq:3} is true, let us instantiate the tuple $(x,y,z)$ that verifies it as $(x_0,y_0,z_0)$. Given $v$ only contains $1$'s, $x_0$, $y_0$ and $z_0$ are of the form
+\begin{gather*}
+	x_0=1^a\\
+	y_0=1^b\\
+	z_0=1^c
+\end{gather*}
+where $a$, $b$ and $c$ must obey
+\begin{gather*}
+	0 \leq a \leq q-1\\
+	1 \leq b \leq q-a\\
+	c = k-a-b
+\end{gather*}
+The last equation of \eqref{eq:3} can thus be rewritten as
+\begin{alignat*}{2}
+	\forall m \geq 0, x_0 y_0^m z_0 \in L
+	&\iff \forall m \geq 0, 1^a {(1^b)}^m 1^{k-a-b} &&\in L\\
+	&\iff \forall m \geq 0, 1^a 1^{bm} 1^{k-a-b}    &&\in L\\
+	&\iff \forall m \geq 0, 1^{a+bm+k-a-b}          &&\in L\\
+	&\iff \forall m \geq 0, 1^{b(m-1)+k}            &&\in L
+\end{alignat*}
+Using the definition of $L$, the last equation is equivalent to
+\begin{equation*}
+	\forall m \geq 0, b(m-1)+k \text{ is a perfect square}\end{equation*}
+which means we need to prove there is a way to choose $n \geq 0$ and $k \geq q$ such that
+\begin{gather}
+	\label{eq:4} k \text{ is a perfect square}\\
+	\label{eq:5} b(n-1)+k \text{ is not a perfect square}
+\end{gather}
+while knowing that $1 \leq b \leq q$.
+We will therefore choose the following values for $n$ and $k$:
+\begin{gather*}
+	n = 2\\
+	k = q^2
+\end{gather*}
+That means \eqref{eq:5} becomes $b+q^2$. The minimum and maximum values this expression can assume are $q^2+1$ and $q^2+q$. It is trivial that $q^2$ and $(q+1)^2=q^2+2q+1$ are consecutive perfect squares. It is also obvious that the range of values our expression might assume $[q^2+1,q^2+q]$ is completely contained in the space between the two consecutive perfect squares $(q^2, q^2+2q+1)$, meaning it is impossible to find a perfect square in $[q^2+1,q^2+q]$.\\
+This mean that, regardless of the tuple $(x,y,z)$ we choose that obeys the first three equations of \eqref{eq:3}, the fourth equation will always be false. We have however stated \eqref{eq:3} was true, thus reaching a contradiction. We have this proven by absurd that the theorem is correct.
+\end{proof}
+\subsection{Exercise 2}
+The statement is false, given the pumping lemma only guarantees that, if $L$ is a regular language, then it verifies a given property (it is thus a one-way implication, not a bidirectional implication), even more because it is possible to define languages that are not regular but verify the property described in the pumping lemma.\\
+The contrapositive version of the pumping lemma can however be used to prove that a language is not regular, if one manages to prove that the language does not abide to the property the pumping lemma states.
+}
 \end{document}

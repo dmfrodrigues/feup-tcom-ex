@@ -1,12 +1,76 @@
-\documentclass[a4paper]{article}
-% Hyperreferences
-\usepackage{hyperref}
-% TCOM style
-\usepackage{import}
-\usepackage[title={TCOM Preparation Activities (PA) - PA03},
-            author={Diogo Rodrigues},
-            email={up201806429@fe.up.pt}]{tcomstyle}
-% Document
+\documentclass[docid=PA03]{tcom_PA}
 \begin{document}
-\input{PA03.tex}
+\setcounter{section}{2}
+\section{Preparation Activity 3 - NFAs}
+{
+\renewcommand{\thesubsection}{\thesection.\alph{subsection}}
+\subsection{Item a}
+The presented FA is a NFA, because from state $1$ and having as input $a$ the automaton can transition to $2$ or stay in $1$.
+\subsection{Item b}
+\begin{center}
+\begin{minipage}[c]{0.30\textwidth}
+	\begin{alignat*}{2}
+		NFA    &= (Q_N, \Sigma, \delta_N, 1, F_N)\\
+		Q_N    &= \{1,2,3\}\\
+		\Sigma &= \{a,b,c,d\}\\
+		F_N    &= \{3\}\\
+		\delta_N &\colon Q_N \times \Sigma \rightarrow \mathscr{P}(Q_N)
+	\end{alignat*}
+\end{minipage}%
+\begin{minipage}[c]{0.30\textwidth}
+	\begin{alignat*}{2}
+		\delta_N(1,a) &= \{1,2\}\\
+		\delta_N(1,b) &= \{1\}\\
+		\delta_N(1,c) &= \{1\}\\
+		\delta_N(1,d) &= \{1\}\\
+		\delta_N(2,a) &= \{2\}\\
+		\delta_N(2,b) &= \{2,3\}
+	\end{alignat*}
+\end{minipage}%
+\begin{minipage}[c]{0.30\textwidth}
+	\begin{alignat*}{2}
+		\delta_N(2,c) &= \{2\}\\
+		\delta_N(2,d) &= \{2\}\\
+		\delta_N(3,a) &= \{3\}\\
+		\delta_N(3,b) &= \{3\}\\
+		\delta_N(3,c) &= \{3\}\\
+		\delta_N(3,d) &= \{3\}
+	\end{alignat*}
+\end{minipage}
+\end{center}
+\subsection{Item c}
+\begin{center}
+\begin{tabular}{r | c c c c}
+	$     \delta_N$ & $a      $ & $b      $ & $c    $ & $d    $ \\ \hline
+	$\rightarrow 1$ & $\{1,2\}$ & $\{1\}  $ & $\{1\}$ & $\{1\}$ \\
+	$            2$ & $\{2\}  $ & $\{2,3\}$ & $\{2\}$ & $\{2\}$ \\
+	$      ^* 3$ & $\{3\}  $ & $\{3\}  $ & $\{3\}$ & $\{3\}$
+\end{tabular}
+\end{center}
+\subsection{Item d}
+\begin{center}
+\begin{tabular}{r | c c c c}
+	$             \delta_N$ & $a      $ & $b      $ & $c    $ & $d    $ \\ \hline
+	$\rightarrow \{1    \}$ & $\{1,2\}$ & $\{1\}  $ & $\{1\}$ & $\{1\}$ \\
+	$            \{1,2  \}$ & $\{1,2\}$ & $\{1,2,3\}$ & $\{1,2\}$ & $\{1,2\}$ \\
+	$      ^* \{1,2,3\}$ & $\{1,2,3\}$ & $\{1,2,3\}$ & $\{1,2,3\}$ & $\{1,2,3\}$ \\
+\end{tabular}
+\end{center}
+\begin{center}
+	\begin{tikzpicture}[->,>=stealth',node distance=2.3cm,initial text=$ $,]
+		\node[state, initial] (1) {$\{1\}$};
+		\node[state, right of=1] (12) {$\{1,2\}$};
+		\node[state, accepting, right of=12] (123) {$\{1,2,3\}$};
+		
+		\draw   (1) 	edge[loop above	        ] node{$b, c, d$} (1)
+				(1) 	edge[above	   		    ] node{$a$} (12)
+
+				(12) 	edge[loop above	        ] node{$a, c, d$} (12)
+				(12) 	edge[above	   		    ] node{$b$} (123)
+
+				(123) 	edge[loop above	        ] node{$a, b, c, d$} (123)
+				;
+	\end{tikzpicture}
+\end{center}
+}
 \end{document}

@@ -1,11 +1,66 @@
-\documentclass{report}
-% Hyperreferences
-\usepackage{hyperref}
-% TCOM style
-\usepackage[title={TCOM Preparation Activities (PA) - PA08},
-            author={Diogo Miguel Ferreira Rodrigues},
-            email={up201806429@fe.up.pt}]{tcomstyle}
-% Document
+\documentclass[docid=PA08]{tcom_PA}
 \begin{document}
-\input{PA08.tex}
+\setcounter{section}{7}
+\section{Preparation Activity 8 - CFGs and Pushdown Automata}
+{
+\renewcommand{\thesubsubsection}{\thesubsection\alph{subsubsection}}
+\subsection{Exercise 1}
+\subsubsection{Item a}
+\begin{center}
+	\begin{tikzpicture}[->,>=stealth',node distance=2cm,initial text=$ $,]
+		\node[state, initial, accepting] (q0) {$q_0$};
+
+		\draw   (q0) 	edge[loop above, align=center	] node{
+			{
+			\setlength\tabcolsep{0pt}
+			\begin{tabular}{r l l}
+				$\varepsilon$, &$ $ S & /A1B \\
+				$\varepsilon$, &$ $ A & /0A \\
+				$\varepsilon$, &$ $ A & /$\varepsilon$ \\
+				$\varepsilon$, &$ $ B & /0B \\
+				$\varepsilon$, &$ $ B & /1B \\
+				$\varepsilon$, &$ $ B & /$\varepsilon$ \\
+				0,             &$ $ 0 & /$\varepsilon$ \\
+				1,             &$ $ 1 & /$\varepsilon$
+			\end{tabular}
+			}
+		} (q0)
+				;
+	\end{tikzpicture}
+\end{center}
+\subsubsection{Item b}
+\begin{center}
+\begin{minipage}[c]{0.5\textwidth}
+	\begin{alignat*}{2}
+		PDA    &=  (Q, \Sigma, \Gamma, \delta, q_0, Z_0)\\
+		Q      &= \{q_0\}\\
+		\Sigma &= \{\text{0},\text{1}\}\\
+		\Gamma &= \{\text{0},\text{1},\text{A},\text{B},\text{S}\}\\
+		Z_0    &= \text{S}\\
+		\delta &\colon Q \times (\Sigma \cup \{\varepsilon\} ) \times \Gamma \rightarrow \mathscr{P}(Q \times \Sigma^*)
+	\end{alignat*}
+\end{minipage}%
+\begin{minipage}[c]{0.5\textwidth}
+	\begin{alignat*}{2}
+		&\delta(q_0, \varepsilon ,\text{S}&&) = \{(q_0, \text{A1B})\}\\
+		&\delta(q_0, \varepsilon, \text{A}&&) = \{(q_0, \text{0A} ), (q_0,\varepsilon)\}\\
+		&\delta(q_0, \varepsilon, \text{B}&&) = \{(q_0, \text{0B} ), (q_0, \text{1B}), (q_0,\varepsilon)\}\\
+		\forall s \in \Sigma ,\, &\delta(q_0,s,s&&) = \{(q_0,\varepsilon)\}
+	\end{alignat*}
+\end{minipage}%
+\end{center}
+\subsubsection{Item c}
+To trace the computations of the PDA, we will assume the top of the stack is on the left.
+\begin{alignat*}{9}
+	(q_0, \text{10}, \text{S})
+	&\vdash (q_0, &\text{10}   &, &\text{A1B}  &)\\
+	&\vdash (q_0, &\text{10}   &, &\text{1B}   &)\\
+	&\vdash (q_0, &\text{0}    &, &\text{B}    &)\\
+	&\vdash (q_0, &\text{0}    &, &\text{0B}   &)\\
+	&\vdash (q_0, &\varepsilon &, &\text{B}    &)\\
+	&\vdash (q_0, &\varepsilon &, &\varepsilon &)
+\end{alignat*}
+\subsubsection{Item d}
+This PDA is non-deterministic, given there is at least one triple $(q,a,t) \in Q \times (\Sigma \cup \{\varepsilon\} ) \times \Gamma $ such that $\#\delta(q,a,t) > 1$. This is true given we can present the case $(q_0,\varepsilon,\text{A})$, that maps to either $(q_0,\text{0A})$ or $(q_0,\varepsilon)$.
+}
 \end{document}
