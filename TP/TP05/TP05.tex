@@ -479,7 +479,22 @@ The correct answer is \ref{itm:5_9_2}.
 \subsubsection{Item b}
 \begin{center}
 \begin{minipage}{0.30\textwidth}
-	\begin{center} \includegraphics[scale=0.5]{TP05_10_b_1} \end{center}
+	\begin{center}
+		\begin{tikzpicture}[->,>=stealth',node distance=1.7cm,initial text=$ $,]
+			\footnotesize
+			\node[state, initial] (q1) {$q_1$};
+			\node[state, accepting, below right of=q1] (q3) {$q_3$};
+			\node[state, above right of=q3] (q2) {$q_2$};
+			
+			\draw   (q1)	edge[bend left=10, right] node{$1$} (q3)
+					(q3)	edge[bend left=10, left ] node{$1$} (q1)
+					(q1)	edge[bend left= 7, above] node{$0$} (q2)
+					(q2)	edge[bend left= 7, below] node{$0$} (q1)
+					(q3)	edge[bend left=10, left ] node{$0$} (q2)
+					(q2)	edge[bend left=10, right] node{$1$} (q3)
+					;
+		\end{tikzpicture}
+	\end{center}
 	\begin{center} \includegraphics[scale=0.5]{TP05_10_b_2} \end{center}
 \end{minipage}%
 \begin{minipage}{0.60\textwidth}
