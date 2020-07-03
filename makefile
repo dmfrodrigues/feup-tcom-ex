@@ -12,7 +12,7 @@ OUTFILES_EXTRA = $(shell find . -name "TCOM_*.tex" | sed 's/.tex/.pdf/g')
 
 extra: $(OUTFILES_EXTRA)
 
-%.pdf: %.tex tcomstyle.sty
+%.pdf: %.tex tcomstyle.sty tcom.cls
 	cd $(<D) && $(LATEX) $(<F)
 
 clean:
