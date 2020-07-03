@@ -11,11 +11,11 @@
 
 ## Contents
 
-- Theoretical-practical lessons (TP)
-- Practical activities (PA)
-- Challenge activities (CA)
-- Test 1 solutions (tests/1)
-- Exam solutions (exam)
+- [Theoretical-practical lessons](TP)
+- [Practical activities](PA)
+- [Challenge activities](CA)
+- [Test 1 solutions](tests/1)
+- [Exam solutions](exam)
 
 ## Documents
 
