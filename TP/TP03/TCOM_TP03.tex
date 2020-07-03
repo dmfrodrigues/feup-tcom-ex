@@ -1,7 +1,364 @@
-\documentclass[a4paper]{article}
-\usepackage[title={TCOM TP Classes - TP03},
-            author={Diogo Rodrigues},
-            email={dmfrodrigues2000@gmail.com}]{tcomstyle}
+\documentclass[docid=TP03]{tcom_TP}
 \begin{document}
-\include{TP03}
+\setcounter{section}{2}
+\section{TP03 - NFAs}
+{
+\renewcommand{\thesubsubsection}{\thesubsection\alph{subsubsection}}
+\subsection{Exercise 1}
+\subsubsection{Item a}
+\begin{center}
+	\begin{tikzpicture}[->,>=stealth',node distance=1.5cm,initial text=$ $,]
+		\tiny
+		\node[state, initial] at (7.35, 0) (qi) {$q_i$};
+		\node[state] at ( 0.0, -2) (q0) {$q_0$};
+		\node[state] at ( 1.5, -2) (q1) {$q_1$};
+		\node[state] at ( 3.0, -2) (q2) {$q_2$};
+		\node[state] at ( 4.5, -2) (q3) {$q_3$};
+		\node[state] at ( 6.0, -2) (q4) {$q_4$};
+		\node[state] at ( 8.0, -2) (q5) {$q_5$};
+		\node[state] at ( 9.5, -2) (q6) {$q_6$};
+		\node[state] at (11.0, -2) (q7) {$q_7$};
+		\node[state] at (12.5, -2) (q8) {$q_8$};
+		\node[state] at (14.0, -2) (q9) {$q_9$};
+		\node[state, accepting] at (7.35, -4) (qf) {$q_f$};
+		
+		\draw   (qi) 	edge[right		] node{$\Sigma$} (qf)
+
+				(q0)    edge[loop right ] node{$\Sigma \backslash 0$} (q0)
+				(q1)    edge[loop right ] node{$\Sigma \backslash 1$} (q1)
+				(q2)    edge[loop right ] node{$\Sigma \backslash 2$} (q2)
+				(q3)    edge[loop right ] node{$\Sigma \backslash 3$} (q3)
+				(q4)    edge[loop right ] node{$\Sigma \backslash 4$} (q4)
+				(q5)    edge[loop right ] node{$\Sigma \backslash 5$} (q5)
+				(q6)    edge[loop right ] node{$\Sigma \backslash 6$} (q6)
+				(q7)    edge[loop right ] node{$\Sigma \backslash 7$} (q7)
+				(q8)    edge[loop right ] node{$\Sigma \backslash 8$} (q8)
+				(q9)    edge[loop right ] node{$\Sigma \backslash 9$} (q9)
+				
+				(qi)    edge[left       ] node{$\Sigma \backslash 0$} (q0)
+				(qi)    edge[left       ] node{$\Sigma \backslash 1$} (q1)
+				(qi)    edge[left       ] node{$\Sigma \backslash 2$} (q2)
+				(qi)    edge[left       ] node{$\Sigma \backslash 3$} (q3)
+				(qi)    edge[left       ] node{$\Sigma \backslash 4$} (q4)
+				(qi)    edge[right      ] node{$\Sigma \backslash 5$} (q5)
+				(qi)    edge[right      ] node{$\Sigma \backslash 6$} (q6)
+				(qi)    edge[right      ] node{$\Sigma \backslash 7$} (q7)
+				(qi)    edge[right      ] node{$\Sigma \backslash 8$} (q8)
+				(qi)    edge[right      ] node{$\Sigma \backslash 9$} (q9)
+
+				(q0)    edge[left       ] node{$0$} (qf)
+				(q1)    edge[left       ] node{$1$} (qf)
+				(q2)    edge[left       ] node{$2$} (qf)
+				(q3)    edge[left       ] node{$3$} (qf)
+				(q4)    edge[left       ] node{$4$} (qf)
+				(q5)    edge[right      ] node{$5$} (qf)
+				(q6)    edge[right      ] node{$6$} (qf)
+				(q7)    edge[right      ] node{$7$} (qf)
+				(q8)    edge[right      ] node{$8$} (qf)
+				(q9)    edge[right      ] node{$9$} (qf)
+
+				;
+	\end{tikzpicture}
+\end{center}
+\begin{center}
+	\begin{minipage}[c]{0.45\textwidth}
+		\begin{alignat*}{2}
+			NFA    &= (\Sigma, Q, \delta_N, q_i, F)\\
+			\Sigma &= \{0,1,2,3,4,5,6,7,8,9\}\\
+			Q      &= \{q_i,q_0,q_1,q_2,q_3,q_4,q_5,q_6,q_7,q_8,q_9,q_f\}\\
+			F      &= \{q_f\}\\
+			\delta_N &\colon Q \times \Sigma \rightarrow \mathscr{P}(Q)\\
+		\end{alignat*}
+	\end{minipage}
+	\begin{minipage}[c]{0.40\textwidth}
+		\begin{alignat*}{2}
+			\delta_N(q_i,a)&=Q-\{q_a\}, a \in \Sigma \\
+			\delta_N(q_a,a)&=\{q_f\}  , a \in \Sigma \\
+			\delta_N(q_a,b)&=\{q_a\}  , a,b \in \Sigma \wedge a \neq b\\
+			\delta_N(q_f,a)&=\emptyset, a \in \Sigma
+		\end{alignat*}
+	\end{minipage}
+\end{center}
+\subsubsection{Item b}
+\begin{center}
+	\begin{tikzpicture}[->,>=stealth',node distance=1.5cm,initial text=$ $,]
+		\footnotesize
+		\node[state, initial] (q0) {$q_0$};
+		\node[state, below right of=q0] (q1) {$q_1$};
+		\node[state, below right of=q1] (q2) {$q_2$};
+		\node[state, below left of=q2] (q3) {$q_3$};
+		\node[state, below left of=q1] (q4) {$q_4$};
+		\node[state, accepting, above right of=q1] (q5) {$q_5$};
+		
+		\draw   (q0) 	edge[loop above		] node{$0, 1$} (q0)
+				(q0)    edge[left           ] node{$0$}    (q1)
+				(q1)    edge[above          ] node{$1$}    (q2)
+				(q2)    edge[right          ] node{$0,1$}  (q3)
+				(q3)    edge[left           ] node{$0,1$}  (q4)
+				(q4)    edge[left           ] node{$0,1$}  (q1)
+				(q1)    edge[right          ] node{$0$}    (q5)
+				(q5)    edge[loop above     ] node{$0,1$}  (q5)
+				;
+	\end{tikzpicture}
+\end{center}
+\begin{center}
+	\begin{minipage}[c]{0.30\textwidth}
+		\begin{alignat*}{2}
+			NFA       &= (\Sigma, Q, \delta_N, q_0, F)\\
+			\Sigma    &= \{0,1\}\\
+			Q         &= \{q_0,q_1,q_2,q_3,q_4,q_5\}\\
+			F         &= \{q_5\}\\
+			\delta_N &\colon Q \times \Sigma \rightarrow \mathscr{P}(Q)
+		\end{alignat*}
+	\end{minipage}
+	\begin{minipage}[c]{0.25\textwidth}
+		\begin{center}
+		\begin{tabular}{ r | c c }
+ 			$\delta_N$ & $0$ & $1$ \\ \hline
+ 			$\rightarrow q_0$ & $\{q_0,q_1\}$ & $\{q_0\}$ \\  
+ 			$            q_1$ & $\{q_5    \}$ & $\{q_2\}$ \\
+ 			$            q_2$ & $\{q_3    \}$ & $\{q_3\}$ \\
+ 			$            q_3$ & $\{q_4    \}$ & $\{q_4\}$ \\
+ 			$            q_4$ & $\{q_1    \}$ & $\{q_1\}$ \\
+ 			$      ^* q_5$ & $\{q_5    \}$ & $\{q_5\}$ 
+		\end{tabular}
+		\end{center}
+	\end{minipage}
+\end{center}
+\pagebreak
+\subsection{Exercise 2}
+\label{subsec:03_02}
+\begin{alignat*}{2}
+	DFA       &= (\Sigma, Q_D, \delta_D, \{p\}, F_D)\\
+	\Sigma    &= \{0,1\}\\
+	Q_D       &= \{\emptyset,\{p\},\{q\},\{r\},\{s\},\{q,r\},\{q,s\},\{r,s\},\{p,q,r\},\{q,r,s\}\}\\
+	F_D       &= \{\{q\},\{s\},\{q,r\},\{q,s\},\{r,s\},\{p,q,r\},\{q,r,s\}\}\\
+	\delta_D &\colon Q_D \times \Sigma \rightarrow Q_D
+\end{alignat*}
+\begin{center}
+\begin{tabular}{ r | c c }
+ $\delta_D$ & $0$ & $1$ \\
+ \hline
+ $\emptyset              $ & $\emptyset  $ & $\emptyset  $ \\
+ $\rightarrow \{p      \}$ & $\{  q,  s\}$ & $\{  q    \}$ \\  
+ $^*       \{  q    \}$ & $\{    r  \}$ & $\{  q,r  \}$ \\
+ $            \{    r  \}$ & $\{      s\}$ & $\{p      \}$ \\
+ $^*       \{      s\}$ & $\emptyset  $ & $\{p      \}$ \\
+ $^*       \{  q,r  \}$ & $\{    r,s\}$ & $\{p,q,r  \}$ \\
+ $^*       \{  q,  s\}$ & $\{    r  \}$ & $\{p,q,r  \}$ \\
+ $^*       \{    r,s\}$ & $\{      s\}$ & $\{p      \}$ \\
+ $^*       \{p,q,r  \}$ & $\{  q,r,s\}$ & $\{p,q,r  \}$ \\
+ $^*       \{  q,r,s\}$ & $\{    r,s\}$ & $\{p,q,r  \}$
+\end{tabular}
+\end{center}
+\subsection{Exercise 3} \label{subsec:03_03}
+\subsubsection{Item a}
+Incomplete DFA, given all transitions are to one or zero states, meaning the transitions to zero states are to a hidden dead state that, if included in the automata, would make it a DFA.
+\subsubsection{Item b}
+\begin{center}
+	\begin{tikzpicture}[->,>=stealth',node distance=1.5cm,initial text=$ $,]
+		\footnotesize
+		\node[state, initial] (1) {$1$};
+		\node[state, accepting, above right of=1] (2) {$2$};
+		\node[state, below right of=1] (3) {$3$};
+		\node[state, below right of=2] (0) {$\emptyset$};
+		
+		\draw   (0) 	edge[loop right				] node{$0, 1$} (0)
+
+				(1) 	edge[bend right=10, right	] node{$0$} (2)
+				(1) 	edge[left   				] node{$1$} (3)
+
+				(2) 	edge[bend right=10, left	] node{$0$} (1)
+				(2) 	edge[right   				] node{$1$} (0)
+
+				(3) 	edge[right					] node{$0$} (0)
+				(3) 	edge[right   				] node{$1$} (2)
+				
+				;
+	\end{tikzpicture}
+\end{center}
+\begin{center}
+\begin{minipage}[c]{0.30\textwidth}
+	\begin{alignat*}{2}
+		DFA    &= (\Sigma, Q_D, \delta_D, 1, F_D)\\
+		\Sigma &= \{a,b\}\\
+		Q_D    &= \{1,2,3\}\\
+		F_D    &= \{2\}\\
+		\delta_D &\colon Q_D \times \Sigma \rightarrow Q_D
+	\end{alignat*}
+\end{minipage}%
+\begin{minipage}[c]{0.20\textwidth}
+	\begin{center}
+	\begin{tabular}{ r | c c }
+ 		$\delta_D$ & $a$ & $b$ \\ \hline
+ 		$\emptyset    $ & $\emptyset$ & $\emptyset$ \\
+ 		$\rightarrow 1$ & $2        $ & $3        $ \\  
+ 		$^*       2$ & $1        $ & $\emptyset$ \\
+ 		$            3$ & $\emptyset$ & $2        $ \\
+	\end{tabular}
+	\end{center}
+\end{minipage}
+\end{center}
+\subsubsection{Item c}
+\label{subsubsec:03_03_c} Given a DFA that recognizes a language $L$, a DFA that recognizes the complement of $L$ is obtained by swapping accept states for reject states, and reject states for accept states.
+\pagebreak
+\subsection{Exercise 4}
+\subsubsection{Item a}
+True, because there is a general algorithm that transforms any NFA into an equivalent DFA.
+\subsubsection{Item b}
+False, because for instance the DFA
+\begin{center}
+	\begin{tikzpicture}[->,>=stealth',node distance=1.5cm,initial text=$ $,]
+		\footnotesize
+		\node[state, initial, accepting] (q0) {$q_0$};
+		
+		\draw   (q0) 	edge[loop above				] node{$0$} (q0)
+				;
+	\end{tikzpicture}
+\end{center}
+\begin{center}
+\begin{minipage}[c]{0.25\textwidth}
+	\begin{alignat*}{2}
+		DFA    &= (\Sigma, Q, \delta, q_0, F)\\
+		\Sigma &= \{0\}\\
+		Q      &= \{q_0\}\\
+		F      &= \{q_0\}\\
+		\delta &\colon Q \times \Sigma \rightarrow Q
+	\end{alignat*}
+\end{minipage}%
+\begin{minipage}[c]{0.2\textwidth}
+	\begin{center}
+	\begin{tabular}{ r | c c }
+ 		$\delta            $ & $\Sigma$ \\ \hline
+ 		$\rightarrow^* 0$ & $0     $ \\  
+	\end{tabular}
+	\end{center}
+\end{minipage}
+\end{center}
+recognizes arbitrarily large strings.
+
+\subsection{Exercise 5}
+\begin{remark}
+	Item \ref{subsubsec:03_03_c} mentions how we can get a DFA that recognizes the complement of $L$, given we have a DFA that recognizes $L$.
+\end{remark}
+\begin{remark}
+	The NFA presented is the same as in exercise \ref{subsec:03_02}, all we need to do is grab the equivalent DFA from that exercise and swap accept for reject states, and vice-versa.
+\end{remark}
+\begin{alignat*}{2}
+	DFA       &= (\Sigma, Q, \delta_D, \{p\}, F)\\
+	\Sigma    &= \{0,1\}\\
+	Q_D       &= \{\emptyset,\{p\},\{q\},\{r\},\{s\},\{q,r\},\{q,s\},\{r,s\},\{p,q,r\},\{q,r,s\}\}\\
+	F_D       &= \{\{q\},\{s\},\{q,r\},\{q,s\},\{r,s\},\{p,q,r\},\{q,r,s\}\}\\
+	\delta_D &\colon Q_D \times \Sigma \rightarrow Q_D
+\end{alignat*}
+\begin{center}
+\begin{tabular}{ r | c c }
+ $\delta_D$ & $0$ & $1$ \\
+ \hline
+ $^* \emptyset             $ & $\emptyset  $ & $\emptyset  $ \\
+ $\rightarrow^* \{p      \}$ & $\{  q,  s\}$ & $\{  q    \}$ \\  
+ $                 \{  q    \}$ & $\{    r  \}$ & $\{  q,r  \}$ \\
+ $^*            \{    r  \}$ & $\{      s\}$ & $\{p      \}$ \\
+ $                 \{      s\}$ & $\emptyset  $ & $\{p      \}$ \\
+ $                 \{  q,r  \}$ & $\{    r,s\}$ & $\{p,q,r  \}$ \\
+ $                 \{  q,  s\}$ & $\{    r  \}$ & $\{p,q,r  \}$ \\
+ $                 \{    r,s\}$ & $\{      s\}$ & $\{p      \}$ \\
+ $                 \{p,q,r  \}$ & $\{  q,r,s\}$ & $\{p,q,r  \}$ \\
+ $                 \{  q,r,s\}$ & $\{    r,s\}$ & $\{p,q,r  \}$
+\end{tabular}
+\end{center}
+\pagebreak
+\subsection{Exercise 6}
+The DFA equivalent to any NFA$=(\Sigma,Q_N,\delta_N,q_0,F_N)$ is
+\begin{alignat}{1}
+	DFA &= (\Sigma, Q_D, \delta_D, {q_0}, F_D)\\
+	Q_D &= \mathscr{P}(Q_N)\\
+	\forall S \in Q_D, \forall a \in \Sigma, \delta_D(S,a)&=\bigcup_{q\in S}{\delta_N(q,a)} \label{eq:NFA_DFA_trans}\\
+	F_D &= \{S\in Q_D: S \cap F_N \neq \emptyset S\}
+\end{alignat}
+\begin{lemma} \label{lem:NFA_DFA}
+	If we have a NFA such that
+	\begin{equation}
+	\label{lem:NFA}
+		\forall q \in Q_N, \forall a \in \Sigma, \#\delta_N(q,a)\leq 1
+	\end{equation}
+	then
+	\begin{equation}
+		\forall P \in Q_D, \#P \leq 1
+	\end{equation}
+\end{lemma}
+\begin{proof}
+	Assume all states $P$ that are in $Q_D$ are reachable.\\
+	Assume the absurd that
+	\begin{equation} \label{eq:absurd_NFA}
+		\exists P \in Q_D\colon\#P > 1
+	\end{equation}
+	That means that $P\in Q_D \colon \#P > 1$ is either reachable from another reachable state $S\in Q_D\colon\#S>1$ or from a reachable state $S\in Q_D\colon\#S\leq 1$. This means
+	\begin{equation}
+		\exists P \in Q_D\colon\#P>1
+		\iff \exists S \in Q_D\colon \#S\leq 1 \wedge \exists a \in \Sigma\colon \#\delta_D(S,a)>1
+	\end{equation}
+	We shall now instantiate the first existencial quantifier of the above equation for the new constant symbol $S'$, arriving at $\#S'\leq 1 \wedge \exists a \in \Sigma\colon \#\delta_D(S',a)>1$. Because $S'$ abides to $\#S'\leq 1$, we will consider the two possible cases and find contradictions 
+to
+	\begin{equation} \label{eq:absurd_NFA_2}
+		\exists a \in \Sigma\colon \#\delta_D(S',a)>1
+	\end{equation}
+	in both cases:
+	\begin{enumerate}
+		\item $\#S'=0$.
+			\begin{equation}
+				\#S'=0 \iff S'=\emptyset
+			\end{equation}
+			By convention, $\forall a \in \Sigma, \delta_D(\emptyset,a)=\emptyset$.
+			\begin{equation}
+				\forall a \in \Sigma, \delta_D(\emptyset,a)=\emptyset
+				\iff \forall a \in \Sigma, \delta_D(S',a)=\emptyset
+			\end{equation}
+			which contradicts the absurd \eqref{eq:absurd_NFA_2}.
+		\item $\#S'=1$.
+			\begin{equation}
+				\#S'=1 \iff \exists q \in Q_N\colon S'=\{q\}
+			\end{equation}
+			We shall instantiate the existencial quantifier of the above equation for the new constant symbol $q'$, arriving at $S'=\{q'\}$.\\
+			By instantiating the universal quantifier of equation \eqref{eq:NFA_DFA_trans} for $S'$ we have
+			\begin{equation} \label{eq:bunch_of_equivs}
+			\begin{alignedat}{3}
+				\forall a \in \Sigma, \delta_D(S',a)=\bigcup_{q\in S'}{\delta_N(q,a)}
+				&\iff     && \forall a \in \Sigma, \delta_D(S',a)  &&=\bigcup_{q\in \{q'\}}{\delta_N(q,a)}\\
+				&\iff     && \forall a \in \Sigma, \delta_D(S',a)  &&=\delta_N(q',a)\\
+				&\implies && \forall a \in \Sigma, \#\delta_D(S',a)&&=\#\delta_N(q',a)
+			\end{alignedat}
+			\end{equation}
+			By instantiating the first universal quantifier of assumption \eqref{lem:NFA} for state $q'$ we have
+			\begin{equation} \label{eq:inst_assump2_NFA}
+				\forall a \in \Sigma, \#\delta_N(q',a)\leq 1
+			\end{equation}
+			By joining the conclusion of \eqref{eq:bunch_of_equivs} and equation \eqref{eq:inst_assump2_NFA} we can form the system of equations
+			\begin{equation}
+				\forall a \in \Sigma, \begin{cases}
+						\#\delta_D(S',a)=\#\delta_N(q',a)\\
+						\#\delta_N(q',a)\leq 1
+					\end{cases}
+				\implies \forall a \in \Sigma, \#\delta_D(S',a)\leq 1
+			\end{equation}
+			This equation contradicts the absurd \eqref{eq:absurd_NFA_2}.
+	\end{enumerate}
+	Since we reached a contradiction in each case, we have hereby proven the lemma correct by contradiction. 
+\end{proof}
+\begin{theorem}
+	If we have a NFA such that
+	\begin{equation} \label{eq:assump_theor_NFA}
+		\forall q \in Q_N, \forall a \in \Sigma, \#\delta_N(q,a)\leq 1
+	\end{equation}
+	then
+	\begin{equation}
+		Q_D=\{\{q\}:q\in Q_N\} \vee Q_D=\{\{q\}:q\in Q_N\} \cup \{\emptyset\}
+	\end{equation}
+\end{theorem}
+\begin{proof}
+	By lemma \ref{lem:NFA_DFA}, given assumption \eqref{eq:assump_theor_NFA}, we know that $\forall P \in Q_D, \#P \leq 1$, so the only elements $Q_D$ can have are sets of one element (which are at most $N = \#Q_N=\#\{\{q\}:q\in Q_N\}$) or the empty set, thus setting an upper bound on the sets that can be elements of $Q_D$.\\
+	To set a lower bound, one can claim that, if the provided NFA is valid, all the states in $Q_N$ are reachable, meaning they should also exist in the corresponding DFA. That means for each reachable state $q$ from $Q_N$, then there should be a corresponding reachable state $\{q\}$ in $Q_D$. The empty set $\emptyset$ might or might not be in $Q_D$, given its existence depends on whether the transition function of the NFA always maps to a non-empty subset of $Q_N$ or not.\\
+	We have reached the conclusion that $\forall q \in Q_N, \{q\} \in Q_D$ and that the empty set $\emptyset$ is optional, as per the theorem statement, which is thus proven correct.
+\end{proof}
+}
 \end{document}

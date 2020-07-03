@@ -1,7 +1,516 @@
-\documentclass[a4paper]{article}
-\usepackage[title={TCOM TP Classes - TP11},
-            author={Diogo Rodrigues},
-            email={dmfrodrigues2000@gmail.com}]{tcomstyle}
+\documentclass[docid=TP11]{tcom_TP}
 \begin{document}
-\include{TP11}
+\setcounter{section}{10}
+\section{TP11 - Turing Machines}
+{
+\renewcommand{\thesubsubsection}{\thesubsection\alph{subsubsection}}
+\subsection{Exercise 1}
+\subsubsection{Item a}
+\begin{minipage}[c]{0.47\textwidth}
+	\begin{itemize}
+		\itemsep0em
+		\item $q_0$: find symbol to expect at end of string.
+		\item $r_0$: go right, expecting 0 at end of string.
+		\item $r_1$: go right, expecting 1 at end of string.
+		\item $s_0$: expect 0, replace by $B$ and go left.
+		\item $s_1$: expect 1, replace by $B$ and go left.
+		\item $l$: go left until beginning of string; go to first symbol.
+	\end{itemize}
+\end{minipage}
+\begin{minipage}[c]{0.47\textwidth}
+	\begin{center}
+		\begin{tabular}{r | c  c  c}
+			                  & 0                     & 1                     & $B$            \\ \hline
+			$\rightarrow q_0$ & $(f_0,B,\rightarrow)$ & $(f_1,B,\rightarrow)$ & $(q_f,B,\rightarrow)$ \\
+			$            f_0$ & $(r_0,0,\rightarrow)$ & $(r_0,1,\rightarrow)$ & $(q_f,B,\rightarrow)$ \\
+			$            f_1$ & $(r_1,0,\rightarrow)$ & $(r_1,1,\rightarrow)$ & $(q_f,B,\rightarrow)$ \\
+			$            r_0$ & $(r_0,0,\rightarrow)$ & $(r_0,1,\rightarrow)$ & $(s_0,B,\leftarrow )$ \\
+			$            r_1$ & $(r_1,0,\rightarrow)$ & $(r_1,1,\rightarrow)$ & $(s_1,B,\leftarrow )$ \\
+			$            s_0$ & $(l  ,B,\leftarrow )$ &                       &                       \\
+			$            s_1$ &                       & $(l  ,B,\leftarrow )$ &                       \\
+			$            l  $ & $(l  ,0,\leftarrow )$ & $(l  ,1,\leftarrow )$ & $(q_0,B,\rightarrow)$ \\
+			$         ^* q_f$ &                       &                       &                       
+		\end{tabular}
+	\end{center}
+\end{minipage}
+\begin{center}
+	\begin{tikzpicture}[->,>=stealth',node distance=2.5cm,initial text=$ $,]
+		\node[state, initial] (q0) {$q_0$};
+		\node[state, above of=q0] (f0) {$f_0$};
+		\node[state, below of=q0] (f1) {$f_1$};
+		\node[state, right of=f0] (r0) {$r_0$};
+		\node[state, right of=f1] (r1) {$r_1$};
+		\node[state, right of=r0] (s0) {$s_0$};
+		\node[state, right of=r1] (s1) {$s_1$};
+		\node[state, below of=s0] (l ) {$l  $};
+		\node[state, accepting, left of=f0] (qf) {$q_f$};
+		
+		\draw   (q0) edge[right                  ] node{$0/B \rightarrow$} (f0)
+				(q0) edge[right                  ] node{$1/B \rightarrow$} (f1)
+				(q0) edge[above                  ] node{$B/B \rightarrow$} (qf)
+				
+				(f0) edge[above,align=center     ] node{$0/0 \rightarrow$\\$1/1 \rightarrow$} (r0)
+				(f0) edge[above                  ] node{$B/B \rightarrow$} (qf)
+				
+				(f1) edge[below,align=center     ] node{$0/0 \rightarrow$\\$1/1 \rightarrow$} (r1)
+				(f1) edge[left                   ] node{$B/B \rightarrow$} (qf)
+				
+				(r0) edge[loop above,align=center] node{$0/0 \rightarrow$\\$1/1 \rightarrow$} (r0)			
+				(r0) edge[above                  ] node{$B/B \leftarrow $} (s0)
+				
+				(r1) edge[loop below,align=center] node{$0/0 \rightarrow$\\$1/1 \rightarrow$} (r1)			
+				(r1) edge[below                  ] node{$B/B \leftarrow $} (s1)
+				
+				(s0) edge[right                  ] node{$0/B \leftarrow $} (l )
+				(s1) edge[right                  ] node{$1/B \leftarrow $} (l )	
+				
+				(l ) edge[loop right,align=center] node{$0/0 \leftarrow $\\$1/1 \leftarrow $} (l )				
+				
+				(l ) edge[above                  ] node{$B/B \rightarrow$} (q0);
+	\end{tikzpicture}
+\end{center}
+\subsubsection{Item b}
+\begin{alignat*}{8}
+	& q_0 01110B  &&\vdash B f_0 1110B &&\vdash B1 r_0 110B &&\vdash B11 r_0 10B &&\vdash B111 r_0 0B &&\vdash B1110 r_0 B &&\\
+	&             &&\vdash B111 s_0 0B &&\vdash B11 l 1BB   &&\vdash B1 l 11BB   &&\vdash B l 111BB   &&\vdash l B111BB    &&\vdash \\
+	& B q_0 111BB &&\vdash BB f_1 11BB &&\vdash BB1 r_1 1BB &&\vdash BB11 r_1 BB \\
+	&			  &&\vdash BB1 s_1 1BB &&\vdash BB l 1BBB   &&\vdash B l B1BBB   &&\vdash\\
+	& BB q_0 1BBB &&\vdash BBB f_1 BBB &&\vdash BBBB q_f BB 
+\end{alignat*}
+\subsubsection{Item c}
+\textcolor{red}{Incomplete}\\
+This TM is deterministic, given that all transitions return a single tuple rather than a set of more than one tuples.
+\subsection{Exercise 2}
+\subsubsection{Item a}
+\begin{minipage}[c]{0.5\textwidth}
+	\begin{alignat*}{2}
+		TM &= (Q,\Sigma, \Gamma, \delta, q_{00}, B, F)\\
+		Q  &= \{q_{00},q_{01},q_{10},q_{11},q_f\}\\
+		\Sigma &= \{0,1\}\\
+		\Gamma &= \{0,1,B\}\\
+		F      &= \{q_f\}
+	\end{alignat*}
+	\begin{center}
+		\begin{tabular}{r | c c c}
+			$\delta            $ & 0                        & 1                        & $B$ \\ \hline
+			$\rightarrow q_{00}$ & $(q_{10},0,\rightarrow)$ & $(q_{01},1,\rightarrow)$ & $(q_f,B,\rightarrow)$ \\
+			$            q_{01}$ & $(q_{11},0,\rightarrow)$ & $(q_{00},1,\rightarrow)$ &                       \\
+			$            q_{10}$ & $(q_{00},0,\rightarrow)$ & $(q_{11},1,\rightarrow)$ &                       \\
+			$            q_{11}$ & $(q_{01},0,\rightarrow)$ & $(q_{10},1,\rightarrow)$ &                       \\
+			$         ^* q_f   $ &                          &                          & 
+		\end{tabular}
+	\end{center}
+\end{minipage}%
+	\begin{minipage}[c]{0.5\textwidth}
+	\begin{center}
+		\begin{tikzpicture}[->,>=stealth',node distance=3cm,initial text=$ $,]
+			\node[state, initial] (q00) {$q_{00}$};
+			\node[state, right of=q00] (q01) {$q_{01}$};
+			\node[state, below of=q00] (q10) {$q_{10}$};
+			\node[state, right of=q10] (q11) {$q_{11}$};
+			\node[state, accepting, above right of=q00] (qf) {$q_f$};
+			
+			\draw	(q00) edge[right,bend left=10	] node{$0/0\rightarrow$} (q10)
+					(q00) edge[above,bend left=10	] node{$1/1\rightarrow$} (q01)
+					(q00) edge[left					] node{$B/B\rightarrow$} (qf)
+
+					(q01) edge[right,bend left=10	] node{$0/0\rightarrow$} (q11)
+					(q01) edge[below,bend left=10	] node{$1/1\rightarrow$} (q00)
+
+					(q10) edge[left,bend left=10	] node{$0/0\rightarrow$} (q00)
+					(q10) edge[above,bend left=10	] node{$1/1\rightarrow$} (q11)
+
+					(q11) edge[left,bend left=10	] node{$0/0\rightarrow$} (q01)
+					(q11) edge[below,bend left=10	] node{$1/1\rightarrow$} (q10);
+		\end{tikzpicture}
+	\end{center}
+\end{minipage}
+\subsubsection{Item b}
+\begin{alignat*}{8}
+	& q_{00} 011110B &&\vdash 0 q_{10} 11110B &&\vdash 01 q_{11} 1110B &&\vdash 011 q_{10} 110B &&\vdash 0111 q_{11} 10B \\
+	&                &&\vdash 01111 q_{10} 0B &&\vdash 011110 q_{00} B &&\vdash 011110B q_f     &&
+\end{alignat*}
+\subsubsection{Item c}
+They are similar if we consider we only analyse a given symbol of the input once to deduce the state we are supposed to be at. Also, states are similar, with the minor exception that the TM has a final transition if it is at $q_{00}$ and finds a $B$ at the end of the input, while in a DFA the computation only stops if the whole input string is consumed.
+\pagebreak
+\subsection{Exercise 3}
+\subsubsection{Item a}
+\begin{center}
+	\begin{tabular}{r | c c c c c c}
+		$\delta$          & $a$                        & $b$                       & $\alpha $                  & $\beta $                  & $B$                   \\ \hline
+		$\rightarrow Q_0$ & $(Q_1,\alpha,\rightarrow)$ &                           &                            & $(F_1,\beta,\rightarrow)$ &                       \\
+		$            Q_1$ & $(Q_1,a     ,\rightarrow)$ & $(Q_2,\beta,\rightarrow)$ &                            & $(Q_1,\beta,\rightarrow)$ &                       \\
+		$            Q_2$ & $(Q_l,\beta ,\leftarrow )$ & $(Q_2,b    ,\rightarrow)$ &                            & $(Q_2,\beta,\rightarrow)$ &                       \\
+		$            Q_l$ & $(Q_l,a     ,\leftarrow )$ & $(Q_l,b    ,\leftarrow )$ & $(Q_0,\alpha,\rightarrow)$ & $(Q_l,\beta,\leftarrow )$ &                       \\
+		$            F_1$ &                            &                           &                            & $(F_1,\beta,\rightarrow)$ & $(F_2,B,\rightarrow)$ \\
+		$         ^* F_2$ &                            &                           &                            &                           & 
+	\end{tabular}
+\end{center}
+\begin{center}
+	\begin{tikzpicture}[->,>=stealth',node distance=3cm,initial text=$ $,]
+		\node[state, initial		] (Q0) {$Q_0$};
+		\node[state, right of = Q0	] (Q1) {$Q_1$};
+		\node[state, right of = Q1	] (Q2) {$Q_2$};
+		\node[state, below of = Q2	] (Ql) {$Q_l$};
+		\node[state, below of = Q0	] (F1) {$F_1$};
+		\node[state, accepting, right of = F1	] (F2) {$F_2$};
+		
+		\draw	(Q0) edge[above						] node{$a/\alpha\rightarrow$} (Q1)
+				(Q0) edge[left						] node{$\beta/\beta\rightarrow$} (F1)
+
+				(Q1) edge[loop above,align=center	] node{$a/a\rightarrow$\\$\beta/\beta\rightarrow$} (Q1)
+				(Q1) edge[above						] node{$b/\beta\rightarrow$} (Q2)
+
+				(Q2) edge[right                     ] node{$a/\beta\leftarrow$} (Ql)
+				(Q2) edge[loop above,align=center   ] node{$b/b\rightarrow$\\$\beta/\beta\rightarrow$} (Q2)
+
+				(Ql) edge[loop right,align=center   ] node{$a/a\leftarrow$\\$b/b\leftarrow$\\$\beta/\beta\leftarrow$} (Ql)
+				(Ql) edge[right                     ] node{$\alpha/\alpha\leftarrow$} (Q0)
+		
+				(F1) edge[loop left                 ] node{$\beta/\beta\rightarrow$} (F1)
+				(F1) edge[above						] node{$B/B\rightarrow$} (F2);
+	\end{tikzpicture}
+\end{center}
+\subsubsection{Item b}
+\begin{alignat*}{12}
+	& Q_0 aabbaaB &&\vdash \alpha  Q_1 abbaa B &&\vdash \alpha a Q_1 bbaa B &&\vdash \alpha a\beta  Q_2 baaB &&\vdash \alpha a\beta b Q_2 aaB \\
+	&             &&\vdash \alpha a\beta  Q_l b\beta aB &&\vdash \alpha a Q_l \beta b\beta aB &&\vdash \alpha Q_l a \beta b\beta a B &&\vdash Q_l \alpha a \beta b\beta aB &&\vdash \\
+	& \alpha Q_0 a \beta b\beta aB &&\vdash \alpha \alpha Q_1 \beta b\beta aB &&\vdash \alpha \alpha \beta Q_1 b\beta aB &&\vdash \alpha \alpha \beta \beta Q_2 \beta aB &&\vdash \alpha \alpha \beta \beta \beta Q_2 aB \\
+	&            &&\vdash \alpha \alpha \beta \beta Q_l \beta \beta B &&\vdash \alpha \alpha \beta Q_l \beta \beta \beta B &&\vdash \alpha \alpha Q_l \beta \beta \beta \beta B &&\vdash \alpha Q_l \alpha \beta \beta \beta \beta B && \vdash \\
+	& \alpha \alpha Q_0 \beta \beta \beta \beta B &&\vdash \alpha \alpha \beta F_1 \beta \beta \beta B &&\vdash \alpha \alpha \beta \beta F_1 \beta \beta B &&\vdash \alpha \alpha \beta \beta \beta F_1 \beta B &&\vdash \alpha \alpha \beta \beta \beta \beta F_1 B &&\vdash \alpha \alpha \beta \beta \beta \beta B F_2
+\end{alignat*}
+\subsubsection{Item c}
+This language belongs to the family of recursively enumerated languages.
+\pagebreak
+\subsection{Exercise 4}
+\subsubsection{Item a}
+\begin{itemize}
+	\itemsep0em
+	\item $q_0$: initial state, sets first symbol to $A$.
+	\item $q_e$: assumes to be past all $A$'s, and that before it comes $A^n$ where $n$ is a power of 2. Decide to finish or go to beginning.
+	\item $q_{lb}$: go back to beginning, return to $q_b$.
+	\item $q_{le}$: go back to beginning, return to $q_e$.
+	\item $q_b$: at the beginning of all the $A$'s.
+	\item $q_r$: go right until first zero
+	\item $q_f$: final state.
+\end{itemize}
+\begin{center}
+	\begin{tabular}{r | c c c c c}
+		$\delta$          & 0                     & $A$                   & $C$                   & $D$                      & $B$                   \\ \hline
+		$\rightarrow q_0   $ & $(q_e,A,\rightarrow)$ &                       &                       &                          &                       \\
+		$            q_e   $ & $(q_{lb},0,\leftarrow )$ &                       & $(q_e,A,\rightarrow)$ & $(q_e   ,A,\rightarrow)$ & $(q_f,B,\rightarrow)$ \\
+		$            q_{lb}$ &                       & $(q_{lb},A,\leftarrow )$ & $(q_{lb},C,\leftarrow )$ & $(q_{lb}   ,D,\leftarrow )$ & $(q_b,B,\rightarrow)$ \\
+		$            q_b   $ &                       & $(q_r,C,\rightarrow)$ & $(q_b,C,\rightarrow)$ & $(q_{le},D,\leftarrow )$ &                       \\
+		$            q_r   $ & $(q_{lb},D,\leftarrow )$ & $(q_r,A,\rightarrow)$ &                       & $(q_r   ,D,\rightarrow)$ &                       \\
+		$            q_{le}$ &                       & $(q_{le},A,\leftarrow )$ & $(q_{le},C,\leftarrow )$ & $(q_{le}   ,D,\leftarrow )$ & $(q_e,B,\rightarrow)$ \\ 
+		$         ^* q_f   $ &                       &                       &                       &                          & 
+	\end{tabular}
+\end{center}
+\begin{center}
+	\begin{tikzpicture}[->,>=stealth',node distance=3cm,initial text=$ $,]
+		\node[state, initial		] (q0) {$q_0$};
+		\node[state, right of=q0	] (qe) {$q_e$};
+		\node[state, right of=qe	] (qlb) {$q_{lb}$};
+		\node[state, right of=qlb	] (qr) {$q_r$};
+		\node[state, below of=qe	] (qle) {$q_{le}$};
+		\node[state, right of=qle	] (qb) {$q_b$};
+		\node[state, accepting, below of=q0	] (qf) {$q_f$};
+		
+		\draw	(q0)	edge[above					] node{$0/A\rightarrow$} (qe)
+
+				(qe)	edge[above					] node{$0/0\leftarrow$} (qlb)
+				(qe)	edge[loop above,align=center] node{$C/A\rightarrow$\\$D/A\rightarrow$} (qe)
+				(qe)	edge[left					] node{$B/B\rightarrow$} (qf)
+
+				(qlb)	edge[loop above,align=center] node{$A/A\leftarrow$\\$C/C\leftarrow$\\$D/D\leftarrow$} (qlb)
+				(qlb)	edge[left					] node{$B/B\rightarrow$} (qb)
+
+				(qb)	edge[right					] node{$A/C\rightarrow$} (qr)
+				(qb)	edge[loop below				] node{$C/C\rightarrow$} (qb)
+				(qb)	edge[below					] node{$D/D\leftarrow$} (qle)
+
+				(qr)	edge[above					] node{$0/D\leftarrow$} (qlb)
+				(qr)	edge[loop above,align=center] node{$A/A\rightarrow$\\$D/D\rightarrow$} (qr)
+		
+				(qle)	edge[loop below,align=center] node{$A/A\leftarrow$\\$C/C\leftarrow$\\$D/D\leftarrow$} (qle)
+				(qle)	edge[right					] node{$B/B\rightarrow$} (qe);
+	\end{tikzpicture}
+\end{center}
+\subsubsection{Item b}
+\begin{alignat*}{12}
+	       & B q_0 0000B &&\vdash BA q_e 000B &&\vdash B q_{lb} A000B &&\vdash q_{lb} BA000B  && \\
+	\vdash & B q_b A000B &&\vdash BC q_r 000B &&                      &&                      &&\vdash B q_{lb} CD00B &&\vdash q_{lb} BCD00B   && \\
+		   &             &&\vdash B q_b CD00B &&\vdash BC q_b D00B    &&\\
+		   &             &&                   &&\vdash B q_{le} CD00B &&\vdash q_{le} BCD00B  &&\\
+		   &             &&                   &&\vdash B q_e CD00B    &&\vdash BA q_e D00B    &&\vdash BAA q_e 00B    &&\\
+		   &             &&                   &&\vdash BA q_{lb} A 00B &&\vdash B q_{lb} AA00B &&\vdash q_{lb} BAA00B && \\
+	\vdash & B q_b AA00B &&\vdash BC q_r A00B &&\vdash BCA q_r 00B    &&\vdash BC q_{lb} AD0B &&\vdash B q_{lb} CAD0B &&\vdash q_{lb} BCAD0B   &&\\  
+		   &             &&\vdash B q_b CAD0B &&\vdash BC q_b AD0B    &&\vdash BCC q_r D0B    &&\vdash BCCD q_r 0B    &&\\
+		   &             &&                   &&\vdash BCC q_{lb} DDB &&\vdash BC q_{lb} CDDB &&\vdash B q_{lb} CCDDB &&\vdash  q_{lb} BCCDDB &&\\
+		   &             &&\vdash B q_b CCDDB &&\vdash BC q_b CDDB    &&\vdash BCC q_b DDB    &&\\
+		   &             &&                   &&\vdash BC q_{le} CDDB &&\vdash B q_{le} CCDDB &&\vdash q_{le} BCCDDB  &&\\
+		   &             &&                   &&\vdash B q_e CCDDB    &&\vdash BA q_e CDDB    &&\vdash BAA q_e DDB    &&\vdash BAAA q_e DB    &&\\
+	\vdash & BAAAA q_e B &&\vdash BAAAAB q_f 
+\end{alignat*}
+\subsection{Exercise 5}
+\subsubsection{Item a}
+\begin{center}
+	\begin{tabular}{r | c c c c c}
+		$\delta$             & 0                        & 1                        & $=$                      & $+$                      & $B$                      \\ \hline
+		$\rightarrow i_0   $ &                          &                          & $(i_1   ,=,\leftarrow )$ &                          &                          \\
+		$            i_1   $ &                          &                          &                          &                          & $(q_{??},0,\rightarrow)$ \\
+		$            q_{??}$ & $(q_{??},0,\rightarrow)$ & $(q_{??},1,\rightarrow)$ & $(q_{??},=,\rightarrow)$ & $(l_{??},+,\leftarrow )$ & $(q_{??},B,\rightarrow)$ \\
+		$            l_{??}$ & $(q_{0?},B,\rightarrow)$ & $(q_{1?},B,\rightarrow)$ & $(f     ,=,\rightarrow)$ &                          & $(l_{??},B,\leftarrow )$ \\
+		$            q_{0?}$ & $(q_{0?},0,\rightarrow)$ & $(q_{0?},1,\rightarrow)$ &                          & $(r_{0?},+,\rightarrow)$ & $(q_{0?},B,\rightarrow)$ \\
+		$            q_{1?}$ & $(q_{1?},0,\rightarrow)$ & $(q_{1?},1,\rightarrow)$ &                          & $(r_{1?},+,\rightarrow)$ & $(q_{1?},B,\rightarrow)$ \\
+		$            r_{0?}$ & $(r_{0?},0,\rightarrow)$ & $(r_{0?},1,\rightarrow)$ &                          &                          & $(l_{0?},B,\leftarrow )$ \\
+		$            r_{1?}$ & $(r_{1?},0,\rightarrow)$ & $(r_{1?},1,\rightarrow)$ &                          &                          & $(l_{1?},B,\leftarrow )$ \\
+		$            l_{0?}$ & $(l_{0 },B,\leftarrow )$ & $(l_{1 },B,\leftarrow )$ &                          &                          &                          \\
+		$            l_{1?}$ & $(l_{1 },B,\leftarrow )$ & $(l_{2 },B,\leftarrow )$ &                          &                          &                          \\
+		$            l_{0 }$ & $(l_{0 },0,\leftarrow )$ & $(l_{0 },1,\leftarrow )$ & $(q_{0 },=,\leftarrow )$ & $(l_{0 },+,\leftarrow )$ & $(l_{0 },B,\leftarrow )$ \\
+		$            l_{1 }$ & $(l_{1 },0,\leftarrow )$ & $(l_{1 },1,\leftarrow )$ & $(q_{1 },=,\leftarrow )$ & $(l_{1 },+,\leftarrow )$ & $(l_{1 },B,\leftarrow )$ \\
+		$            l_{2 }$ & $(l_{2 },0,\leftarrow )$ & $(l_{2 },1,\leftarrow )$ & $(q_{2 },=,\leftarrow )$ & $(l_{2 },+,\leftarrow )$ & $(l_{2 },B,\leftarrow )$ \\
+		$            q_{0 }$ & $(q_{0 },0,\leftarrow )$ & $(q_{0 },1,\leftarrow )$ &                          &                          & $(r_{0 },B,\rightarrow)$ \\
+		$            q_{1 }$ & $(q_{1 },0,\leftarrow )$ & $(q_{1 },1,\leftarrow )$ &                          &                          & $(r_{1 },B,\rightarrow)$ \\
+		$            q_{2 }$ & $(q_{2 },0,\leftarrow )$ & $(q_{2 },1,\leftarrow )$ &                          &                          & $(r_{2 },B,\rightarrow)$ \\
+		$            r_{0 }$ & $(s_0   ,0,\leftarrow )$ & $(s_0   ,1,\leftarrow )$ &                          &                          &                          \\
+		$            r_{1 }$ & $(s_0   ,1,\leftarrow )$ & $(s_1   ,0,\leftarrow )$ &                          &                          &                          \\
+		$            r_{2 }$ & $(s_1   ,0,\leftarrow )$ & $(s_1   ,1,\leftarrow )$ &                          &                          &                          \\
+		$            s_0   $ &                          &                          &                          &                          & $(q_{??},0,\rightarrow)$ \\
+		$            s_1   $ &                          &                          &                          &                          & $(q_{??},1,\rightarrow)$ \\
+		$            f     $ &                          &                          &                          &                          &
+	\end{tabular}
+\end{center}
+\begin{center} \scriptsize
+	\begin{tikzpicture}[->,>=stealth',node distance=1.9cm,initial text=$ $,]
+		\node[state, initial			] (i0) {$i_0$};
+		\node[state, above of=i0		] (i1) {$i_1$};
+		\node[state, above of=i1		] (q??) {$q_{??}$};
+		\node[state, right of=q??   	] (l??) {$l_{??}$};
+		\node[state, above right of=l??	] (q0?) {$q_{0?}$};
+		\node[state, below right of=l??	] (q1?) {$q_{1?}$};
+		\node[state, right of=q0?		] (r0?) {$r_{0?}$};
+		\node[state, right of=q1?		] (r1?) {$r_{1?}$};
+		\node[state, right of=r0?		] (l0?) {$l_{0?}$};
+		\node[state, right of=r1?		] (l1?) {$l_{1?}$};
+		\node[state, above right of=l0?	] (l0) {$l_{0 }$};
+		\node[state, below right of=l0?	] (l1) {$l_{1 }$};
+		\node[state, below right of=l1?	] (l2) {$l_{2 }$};
+		\node[state, right of=l0		] (q0) {$q_{0 }$};
+		\node[state, right of=l1		] (q1) {$q_{1 }$};
+		\node[state, right of=l2		] (q2) {$q_{2 }$};
+		\node[state, right of=q0		] (r0) {$r_{0 }$};
+		\node[state, right of=q1		] (r1) {$r_{1 }$};
+		\node[state, right of=q2		] (r2) {$r_{2 }$};
+		\node[state, right of=r0		] (s0) {$s_{0 }$};
+		\node[state, right of=r2		] (s1) {$s_{1 }$};
+		\node[state, accepting, right of=l??] (f) {$f$};
+
+		\draw	(i0)	edge[left					] node{$=/=\leftarrow$} (i1)
+		
+				(i1)	edge[left					] node{$B/0\rightarrow$} (q??)
+				
+				(q??)	edge[loop above,align=center] node{$0/0\rightarrow$\\$1/1\rightarrow$\\$=/=\rightarrow$\\$B/B\rightarrow$} (q??)
+				(q??)	edge[above					] node{$+/+\leftarrow $} (l??)
+
+				(l??)	edge[right					] node{$0/B\rightarrow $} (q0?)
+				(l??)	edge[left					] node{$1/B\rightarrow $} (q1?)
+				(l??)	edge[below					] node{$=/=\rightarrow $} (f)
+				(l??)	edge[loop above				] node{$B/B\leftarrow $} (l??)
+				
+				(q0?)	edge[loop above,align=center] node{$0/0\rightarrow$\\$1/1\rightarrow$\\$+/+\rightarrow$\\$B/B\rightarrow $} (q0?)
+				(q0?)	edge[above					] node{$+/+\rightarrow $} (r0?)
+				
+
+				(q1?)	edge[loop below,align=center] node{$0/0\rightarrow$\\$1/1\rightarrow$\\$+/+\rightarrow$\\$B/B\rightarrow $} (q1?)
+				(q1?)	edge[above					] node{$+/+\rightarrow $} (r1?)
+
+				(r0?)	edge[loop above,align=center] node{$0/0\rightarrow$\\$1/1\rightarrow$} (r0?)
+				(r0?)	edge[above					] node{$B/B\leftarrow$} (l0?)
+
+				(r1?)	edge[loop below,align=center] node{$0/0\rightarrow$\\$1/1\rightarrow$} (r1?)
+				(r1?)	edge[above					] node{$B/B\leftarrow$} (l1?)
+
+				(l0?)	edge[right					] node{$0/B\leftarrow$} (l0)
+				(l0?)	edge[right					] node{$1/B\leftarrow$} (l1)
+
+				(l1?)	edge[right					] node{$0/B\rightarrow$} (l1)
+				(l1?)	edge[right					] node{$1/B\rightarrow$} (l2)
+
+				(l0)	edge[loop left,align=center ] node{$0/0\leftarrow$\\$1/1\leftarrow$\\$+/+\leftarrow$\\$B/B\leftarrow$} (l0)
+				(l0)	edge[above					] node{$=/=\leftarrow$} (q0)
+
+				(l1)	edge[loop left,align=center ] node{$0/0\leftarrow$\\$1/1\leftarrow$\\$+/+\leftarrow$\\$B/B\leftarrow$} (l1)
+				(l1)	edge[above					] node{$=/=\leftarrow$} (q1)
+
+				(l2)	edge[loop left,align=center ] node{$0/0\leftarrow$\\$1/1\leftarrow$\\$+/+\leftarrow$\\$B/B\leftarrow$} (l2)
+				(l2)	edge[above					] node{$=/=\leftarrow$} (q2)
+
+				(q0)	edge[loop above,align=center] node{$0/0\leftarrow$\\$1/1\leftarrow$} (q0)
+				(q0)	edge[above					] node{$B/B\rightarrow$} (r0)
+
+				(q1)	edge[loop above,align=center] node{$0/0\leftarrow$\\$1/1\leftarrow$} (q1)
+				(q1)	edge[above					] node{$B/B\rightarrow$} (r1)
+
+				(q2)	edge[loop above,align=center] node{$0/0\leftarrow$\\$1/1\leftarrow$} (q2)
+				(q2)	edge[above					] node{$B/B\rightarrow$} (r2)
+
+				(r0)	edge[below,align=center		] node{$0/0\leftarrow$\\$1/1\leftarrow$} (s0)
+
+				(r1)	edge[right					] node{$0/1\leftarrow$} (s0)
+				(r1)	edge[right					] node{$1/0\leftarrow$} (s1)
+
+				(r2)	edge[above,align=center		] node{$0/0\leftarrow$\\$1/1\leftarrow$} (s1)
+
+				(s0)	edge[bend right=50,above	] node{$B/0\rightarrow$} (q??)
+				(s1)	edge[bend left =50,below	] node{$B/1\rightarrow$} (q??);
+	\end{tikzpicture}
+\end{center}
+The machine generally works as follows:
+\begin{enumerate}
+	\item Add a $0$ to the left of $=$.
+	\item \label{itm:2} Go right until $+$ is found, then get the least significant bit that was not yet analysed, replace it by $B$ and go to the corresponding state ($q_{0?}$ for a 0, $q_{1?}$ for a 1).
+	\item Go right until $+$ is found, then search for the first $B$. Replace the bit before that first $B$ by a $B$ and adjust the state as needed ($l_n$ denotes that the number $n$ is the new value).
+	\item Go back to the sum, find the most significant bits of the result and make proper changes.
+	\item Go to step \ref{itm:2}, until that step finds an equal sign ($=$) before it finds a bit. In that case, all digits are processed.
+\end{enumerate}
+This TM only processes correctly numbers with the same number of binary digits. Proper checks can be made \textit{a priori}.
+\subsubsection{Item b}
+\begin{alignat*}{12}
+	       & BBB i_0 =01+10B    &&\vdash BB i_1 B=01+10B    && \\
+	\vdash & BB0 q_{??} =01+10B &&\vdash BB0= q_{??} 01+10B &&\vdash BB0=0 q_{??} 1+10B &&\vdash BB0=01 q_{??} +10B &&\\
+	       &                    &&\vdash BB0=0 l_{??} 1+10B &&\\
+		   &                    &&\vdash BB0=0B q_{1?} +10B &&\vdash BB0=0B+ r_{1?} 10B &&\vdash BB0=0B+1 r_{1?} 0B &&\\
+		   &                    &&                          &&\vdash BB0=0B+10 r_{1?} B &&\\
+		   &                    &&\vdash BB0=0B+1 l_{1?} 0B &&\vdash BB0=0B+ l_{1 } 1BB &&\\
+		   &                    &&\vdash BB0=0B l_{1 } +1BB &&\vdash BB0=0 l_{1 } B+1BB &&\vdash BB0= l_{1 } 0B+1BB &&\\
+		   &                    &&                          &&\vdash BB0 l_{1 } =0B+1BB &&\\
+		   &                    &&\vdash BB q_{1 } 0=0B+1BB &&\vdash B q_{1 } B0=0B+1BB &&\\
+		   &                    &&\vdash BB r_{1 } 0=0B+1BB &&\vdash B s_0 B1=0B+1BB    &&\\
+		   &                    &&\vdash B0 q_{??} 1=0B+1BB &&\\
+	\vdash & B01 q_{??} =0B+1BB &&\vdash B01= q_{??} 0B+1BB &&\vdash B01=0 q_{??} B+1BB &&\vdash B01=0B q_{??} +1BB &&\\
+		   &                    &&\vdash B01=0 l_{??} B+1BB &&\vdash B01= l_{??} 0B+1BB &&\\
+		   &                    &&\vdash B01=B q_{0?} B+1BB &&\vdash B01=BB q_{0?} +1BB &&\vdash B01=BB+ r_{0?} 1BB &&\\
+		   &                    &&                          &&\vdash B01=BB+1 r_{0?} BB &&\\
+		   &                    &&\vdash B01=BB+ l_{0?} 1BB &&\vdash B01=BB l_{1 } +BBB &&\\
+		   &                    &&\vdash B01=B l_{1 } B+BBB &&\vdash B01= l_{1 } BB+BBB &&\vdash B01 l_{1 } =BB+BBB &&\\
+		   &                    &&                          &&\vdash B0 q_{1 } 1=BB+BBB &&\\
+		   &                    &&\vdash B q_{1 } 01=BB+BBB &&\vdash q_{1 } B01=BB+BBB  &&\\
+		   &                    &&\vdash B r_{1 } 01=BB+BBB &&\vdash s_0 B11=BB+BBB     &&\\
+		   &                    &&\vdash 0 q_{??} 11=BB+BBB &&\vdash 01 q_{??} 1=BB+BBB &&\\
+	\vdash & 011 q_{??} =BB+BBB &&\vdash 011= q_{??} BB+BBB &&\vdash 011=B q_{??} B+BBB &&\vdash 011=BB q_{??} +BBB &&\\
+		   &                    &&\vdash 011=B l_{??} B+BBB &&\vdash 011= l_{??} BB+BBB &&\vdash 011 l_{??} =BB+BBB &&\\
+	\vdash & 011= f BB+BBB      && 
+\end{alignat*}
+\subsection{Exercise 6}
+\subsubsection{Item a}
+\begin{center}
+	\begin{tabular}{r | c c c c c c}
+		$\delta$          & 0                     & 1                     & $[$                   & $,$                   & $]$                  & $B$ \\ \hline
+		$\rightarrow i_0$ & $(i_0,0,\rightarrow)$ & $(i_0,1,\rightarrow)$ & $(i_0,B,\rightarrow)$ & $(i_0,,,\rightarrow)$ & $(i_1,B,\leftarrow)$ &     \\
+		$            i_1$ & $(i_1,0,\leftarrow )$ & $(i_1,1,\leftarrow )$ &                       & $(q_1,B,\rightarrow)$ &                      &     \\
+		$            q_4$ & $(q_4,0,\leftarrow )$ & $(q_4,1,\leftarrow )$ &                       &                       &                      & $(r  ,,,\leftarrow )$ \\
+		$            r  $ & $(r  ,0,\leftarrow )$ & $(r  ,1,\leftarrow )$ &                       &                       &                      & $(s  ,B,\rightarrow)$ \\
+		$            s  $ & $(s_0,B,\rightarrow)$ & $(s_1,B,\rightarrow)$ &                       & $(f  ,,,\rightarrow)$ &                      &     \\
+		$            s_0$ & $(s_0,0,\rightarrow)$ & $(s_0,1,\rightarrow)$ &                       & $(t_0,,,\rightarrow)$ &                      &     \\
+		$            s_1$ & $(s_1,0,\rightarrow)$ & $(s_1,1,\rightarrow)$ &                       & $(t_1,,,\rightarrow)$ &                      &     \\
+		$            t_0$ & $(u  ,B,\leftarrow )$ & $(t_0,1,\rightarrow)$ &                       &                       &                      & $(t_0,B,\rightarrow)$ \\
+		$            t_1$ & $(t_1,0,\rightarrow)$ & $(u  ,B,\leftarrow )$ &                       &                       &                      & $(t_1,B,\rightarrow)$ \\
+		$            u  $ &                       &                       &                       & $(r  ,,,\leftarrow )$ &                      & $(u,B,\leftarrow)$ \\
+		$         ^* f  $ &                       &                       &                       &                       &                      &
+	\end{tabular}
+\end{center}
+\begin{center}
+	\begin{tikzpicture}[->,>=stealth',node distance=2.4cm,initial text=$ $,]
+		\node[state, initial			] (i0) {$i_0$};
+		\node[state, right of=i0		] (i1) {$i_1$};
+		\node[state, right of=i1		] (q1) {$q_1$};
+		\node[state, right of=q1		] (q2) {$q_2$};
+		\node[state, right of=q2		] (q3) {$q_3$};
+		\node[state, below of=q2		] (q4) {$q_4$};
+		\node[state, below of=i1		] (r) {$r$};
+		\node[state, below of=r			] (s) {$s$};
+		\node[state, left of=s			] (s0) {$s_0$};
+		\node[state, below of=s0		] (s1) {$s_1$};
+		\node[state, left of=s0			] (t0) {$t_0$};
+		\node[state, below of=t0		] (t1) {$t_1$};
+		\node[state, left of=t0			] (u) {$u$};
+		\node[state, accepting,right of=s			] (f) {$f$};
+
+		\draw	(i0)	edge[loop above,align=center] node{$0/0\rightarrow$\\$1/1\rightarrow$\\$[/B\rightarrow$\\$,/,\rightarrow$} (i0)
+				(i0)	edge[above					] node{$]/B\leftarrow$} (i1)
+				
+				(i1)	edge[loop above,align=center] node{$0/0\leftarrow$\\$1/1\leftarrow$} (i1)
+				(i1)	edge[above					] node{$,/B\rightarrow$} (q1)
+
+				(q1)	edge[loop above,align=center] node{$1/0\rightarrow$\\$0/1\rightarrow$} (q1)
+				(q1)	edge[above					] node{$B/B\leftarrow$} (q2)
+
+				(q2)	edge[loop above             ] node{$1/0\leftarrow$} (q2)
+				(q2)	edge[above					] node{$0/1\leftarrow$} (q3)
+				(q2)	edge[left					] node{$B/B\rightarrow$} (q4)
+				
+				(q3)	edge[loop above,align=center] node{$0/0\leftarrow$\\$1/1\leftarrow$} (q3)
+				(q3)	edge[right					] node{$B/B\rightarrow$} (q4)
+
+				(q4)	edge[loop below,align=center] node{$0/0\leftarrow$\\$1/1\leftarrow$} (q4)
+				(q4)	edge[above					] node{$,/,\leftarrow$} (r)
+				
+				(r)		edge[loop above,align=center] node{$0/0\leftarrow$\\$1/1\leftarrow$} (r)
+				(r)		edge[right					] node{$B/B\rightarrow$} (s)
+
+				(s)		edge[below					] node{$0/B\rightarrow$} (s0)
+				(s)		edge[right					] node{$1/B\rightarrow$} (s1)
+				(s)		edge[above					] node{$,/,\rightarrow$} (f)
+
+				(s0)	edge[loop below,align=center] node{$0/0\rightarrow$\\$1/1\rightarrow$} (s0)
+				(s0)	edge[below					] node{$,/,\rightarrow$} (t0)
+
+				(s1)	edge[loop below,align=center] node{$0/0\rightarrow$\\$1/1\rightarrow$} (s1)
+				(s1)	edge[above					] node{$,/,\rightarrow$} (t1)
+
+				(t0)	edge[loop below,align=center] node{$1/1\rightarrow$\\$B/B\rightarrow$} (t0)
+				(t0)	edge[below					] node{$0/B\leftarrow$} (u)
+
+				(t1)	edge[loop below,align=center] node{$0/0\rightarrow$\\$B/B\rightarrow$} (t1)
+				(t1)	edge[left					] node{$1/B\leftarrow$} (u)
+
+				(u)		edge[loop above				] node{$B/B\leftarrow$} (u)
+				(u)		edge[above					] node{$,/,\leftarrow$} (r)
+
+				;
+	\end{tikzpicture}
+\end{center}
+\subsubsection{Item b}
+\begin{alignat*}{12}
+		   & i_0 [10,10] &&\vdash B i_0 10,10] &&\vdash B1 i_0 0,10]  &&\vdash B10 i_0 ,10]  &&\vdash B10, i_0 10]  &&\vdash B10,1 i_0 0] &&\vdash B10,10 i_0 ] &&\\
+		   &             &&\vdash B10,1 i_1 0B &&\vdash B10, i_1 10B  &&\vdash B10 i_1 ,10B  && \\
+		   &             &&\vdash B10B q_1 10B &&\vdash B10B0 q_1 0B  &&\vdash B10B01 q_1 B  &&\vdash B10B0 q_2 1B  &&\vdash B10B q_2 00B &&\vdash B10 q_3 B10B &&\\
+		   &             &&\vdash B10B q_4 10B &&\vdash B10 q_4 B10B  &&\vdash B1 r 0,10B    &&\vdash B r 10,10B    &&\vdash r B10,10B    &&\\
+	\vdash & B s 10,10B  &&\vdash BB s_1 0,10B &&\vdash BB0 s_1 ,10B  &&\vdash BB0, t_1 10B  &&\vdash BB0 u ,B0B    &&\vdash BB r 0,B0B   &&\vdash B r B0,B0B   &&\\
+	\vdash & BB s 0,B0B  &&\vdash BBB s_0 ,B0B &&\vdash BBB, t_0 B0B  &&\vdash BBB,B t_0 0B  &&\vdash BBB, u BBB    &&\vdash BBB u ,BBB   &&\vdash BB r B,BBB   &&\\
+	\vdash & BBB s ,BBB  &&\vdash BBB, f BBB   
+\end{alignat*}
+\begin{center}
+	\begin{tikzpicture}[->,>=stealth',node distance=3cm,initial text=$ $,]
+		\node[state, initial] (q0) {$q_{0}$};
+		\node[state, above right of=q0] (s1) {$s_{1}$};
+		\node[state, below right of=q0] (s0) {$s_{0}$};
+		\node[state, below right of=s1] (l) {$l$};
+		
+		\draw	(q0) edge[left] node{$0/B\rightarrow$} (s1)
+				(s1) edge[loop left,align=center		] node{$0/0\rightarrow$\\$X/X\rightarrow$} (s1)
+				(s1) edge[right] node{$1/X\leftarrow$} (l)
+				
+				(q0) edge[left] node{$1/B\rightarrow$} (s0)
+				(s0) edge[loop left,align=center		] node{$1/1\rightarrow$\\$X/X\rightarrow$} (s0)
+				(s0) edge[right] node{$0/X\leftarrow$} (l)
+				
+				(l) edge[loop right,align=center] node{$0/0\leftarrow$\\$1/1\leftarrow$\\$X/X\leftarrow$} (l)
+				(l) edge[above] node{$B/B\rightarrow$} (q0)
+				;
+			
+	\end{tikzpicture}
+\end{center}
+}
 \end{document}

@@ -52,7 +52,7 @@
 \RequirePackage{amsmath,amssymb}
 \RequirePackage{mathtools}
 \RequirePackage{enumitem}
-\newcommand{\expnumber}[2]{{#1}\mathrm{e}{#2}} % scientific notation
+\DeclareMathOperator{\inter}{inter}
 % Definitions, theorems, remarks,...
 \RequirePackage{amsthm}
 \newtheorem{definition}{Definition}[section]
