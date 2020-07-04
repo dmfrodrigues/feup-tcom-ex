@@ -31,11 +31,173 @@ PDA accepting by empty stack.
 \end{minipage}
 \end{center}
 \subsubsection{Item c}
-\begin{center} \includegraphics[scale=0.45]{TP09_1c} \end{center}
+\begin{center}
+	\begin{tikzpicture}[->,>=stealth',node distance=1.7cm,initial text=$ $,state/.style={circle,inner sep=2pt}]
+		\footnotesize
+		\node[align=center](10) at (+0.00,+0.0) {$q_0$,\\aabbb,\\S};
+		\node[align=center](11) at (+2.0,+0.0) {$q_0$,\\aabbb,\\$\varepsilon$};
+		\node[align=center](20) at (-1.0,-1.5) {$q_0$,\\aabbb,\\aSb};
+		\node[align=center](21) at (+1.0,-1.5) {$q_0$,\\aabbb,\\aSbb};
+		\node[align=center](30) at (-3.0,-3.0) {$q_0$,\\abbb, \\b};
+		\node[align=center](31) at (-1.0,-3.0) {$q_0$,\\abbb, \\Sb};
+		\node[align=center](32) at (+1.0,-3.0) {$q_0$,\\abbb, \\Sbb};
+		\node[align=center](33) at (+3.0,-3.0) {$q_0$,\\abbb, \\bb};
+		\node[align=center](40) at (-2.0,-4.5) {$q_0$,\\abbb, \\aSbb};
+		\node[align=center](41) at (+0.0,-4.5) {$q_0$,\\abbb, \\aSbbb};
+		\node[align=center](42) at (+2.0,-4.5) {$q_0$,\\abbb, \\aSbbbb};
+		\node[align=center](50) at (-6.0,-6.0) {$q_0$,\\bb, \\b};
+		\node[align=center](51) at (-4.0,-6.0) {$q_0$,\\bbb, \\bb};
+		\node[align=center](52) at (-2.0,-6.0) {$q_0$,\\bbb, \\Sbb};
+		\node[align=center](53) at (+0.0,-6.0) {$q_0$,\\bbb, \\Sbbb};
+		\node[align=center](54) at (+2.0,-6.0) {$q_0$,\\bbb, \\Sbbbb};
+		\node[align=center](55) at (+4.0,-6.0) {$q_0$,\\bbb, \\bbbb};
+		\node[align=center](56) at (+6.0,-6.0) {$q_0$,\\bb, \\bbb};
+		\node[align=center](60) at (-6.0,-7.5) {$q_0$,\\b, \\$\varepsilon$};
+		\node[align=center](61) at (-4.0,-7.5) {$q_0$,\\bbb, \\aSbbb};
+		\node[align=center](62) at (-2.0,-7.5) {$q_0$,\\bbb, \\aSbbbb};
+		\node[align=center](63) at (+0.0,-7.5) {$q_0$,\\bbb, \\bbb};
+		\node[align=center](64) at (+2.0,-7.5) {$q_0$,\\bbb, \\aSbbbbb};
+		\node[align=center](65) at (+4.0,-7.5) {$q_0$,\\bbb, \\aSbbbbbb};
+		\node[align=center](66) at (+6.0,-7.5) {$q_0$,\\b, \\bb};
+		\node[align=center](70) at (+0.0,-9.0) {$q_0$,\\bb, \\bb};
+		\node[align=center](71) at (+6.0,-9.0) {$q_0$,\\$\varepsilon$, \\b};
+		\node[align=center](80) at (+0.0,-10.5){$q_0$,\\b, \\b};
+		\node[align=center](90) at (+0.0,-12.0){$q_0$,\\$\varepsilon$, \\$\varepsilon$};
+
+		\draw   (10)	edge (11)
+				(10)	edge (20)
+				(10)	edge (21)
+				(20)	edge (31)
+				(21)	edge (32)
+				(31)	edge (30)
+				(32)	edge (33)
+				(31)	edge (40)
+				(31)	edge (41)
+				(32)	edge (41)
+				(32)	edge (42)
+				(51)	edge (50)
+				(52)	edge (51)
+				(40)	edge (52)
+				(41)	edge (53)
+				(42)	edge (54)
+				(54)	edge (55)
+				(55)	edge (56)
+				(50)	edge (60)
+				(52)	edge (61)
+				(52)	edge (62)
+				(53)	edge (62)
+				(53)	edge (63)
+				(53)	edge (64)
+				(54)	edge (64)
+				(54)	edge (65)
+				(56)	edge (66)
+				(63)	edge (70)
+				(66)	edge (71)
+				(70)	edge (80)
+				(80)	edge (90)
+				;
+	\end{tikzpicture}
+\end{center}
 \pagebreak
 \subsubsection{Item d}
 When the input string is $aaabb$, the stack has always more $b$'s than can be consumed from the remanescent input.
-\begin{center} \includegraphics[scale=0.45]{TP09_1d} \end{center}
+\begin{center}
+	\begin{tikzpicture}[->,>=stealth',node distance=1.7cm,initial text=$ $,state/.style={circle,inner sep=2pt}]
+		\footnotesize
+		\node[align=center](10) at (+0.0,+0.0) {$q_0$,\\aaabb,\\S};
+		\node[align=center](11) at (+3.0,-1.5) {$q_0$,\\aaabb,\\$\varepsilon$};
+		\node[align=center](20) at (-1.0,-1.5) {$q_0$,\\aaabb,\\aSb};
+		\node[align=center](21) at (+1.0,-1.5) {$q_0$,\\aaabb,\\aSbb};
+		\node[align=center](31) at (-1.0,-3.0) {$q_0$,\\aabb, \\Sb};
+		\node[align=center](32) at (+1.0,-3.0) {$q_0$,\\aabb, \\Sbb};
+		\node[align=center](30) at (-4.0,-4.5) {$q_0$,\\aabb, \\b};
+		\node[align=center](33) at (+4.0,-4.5) {$q_0$,\\aabb, \\bb};
+		\node[align=center](40) at (-2.0,-4.5) {$q_0$,\\aabb, \\aSbb};
+		\node[align=center](41) at (+0.0,-4.5) {$q_0$,\\aabb, \\aSbbb};
+		\node[align=center](42) at (+2.0,-4.5) {$q_0$,\\aabb, \\aSbbbb};
+		\node[align=center](52) at (-2.0,-6.0) {$q_0$,\\abb, \\Sbb};
+		\node[align=center](53) at (+0.0,-6.0) {$q_0$,\\abb, \\Sbbb};
+		\node[align=center](54) at (+2.0,-6.0) {$q_0$,\\abb, \\Sbbbb};
+		\node[align=center](51) at (-6.0,-7.5) {$q_0$,\\abb, \\bb};
+		\node[align=center](55) at (+6.0,-7.5) {$q_0$,\\abb, \\bbbb};
+		\node[align=center](61) at (-4.0,-7.5) {$q_0$,\\abb, \\aSbbb};
+		\node[align=center](62) at (-2.0,-7.5) {$q_0$,\\abb, \\aSbbbb};
+		\node[align=center](63) at (+0.0,-7.5) {$q_0$,\\abb, \\bbb};
+		\node[align=center](64) at (+2.0,-7.5) {$q_0$,\\abb, \\aSbbbbb};
+		\node[align=center](65) at (+4.0,-7.5) {$q_0$,\\abb, \\aSbbbbbb};
+		\node[align=center](70) at (-4.0,-9.0) {$q_0$,\\bb, \\Sbbb};
+		\node[align=center](71) at (-2.0,-9.0) {$q_0$,\\bb, \\Sbbbb};
+		\node[align=center](72) at (+2.0,-9.0) {$q_0$,\\bb, \\Sbbbbb};
+		\node[align=center](73) at (+4.0,-9.0) {$q_0$,\\bb, \\Sbbbbbb};
+		\node[align=center](8a) at (-7.5,-10.5) {$q_0$,\\bb, \\bbb};
+		\node[align=center](80) at (-6.0,-10.5) {$q_0$,\\bb, \\aSbbbb};
+		\node[align=center](81) at (-4.0,-10.5) {$q_0$,\\bb, \\aSbbbbb};
+		\node[align=center](82) at (-2.0,-10.5) {$q_0$,\\bb, \\bbbbb};
+		\node[align=center](83) at (+0.0,-10.5) {$q_0$,\\bb, \\aSbbbbbb};
+		\node[align=center](84) at (+2.0,-10.5) {$q_0$,\\bb, \\bbbbb};
+		\node[align=center](85) at (+4.0,-10.5) {$q_0$,\\bb, \\aSbbbbbbb};
+		\node[align=center](86) at (+6.0,-10.5) {$q_0$,\\bb, \\aSbbbbbbbb};
+		\node[align=center](8z) at (+7.5,-10.5) {$q_0$,\\bb, \\bbbbbb};
+		\node[align=center](90) at (-7.5,-12.0) {$q_0$,\\b, \\bb};
+		\node[align=center](91) at (-2.0,-12.0) {$q_0$,\\b, \\bbb};
+		\node[align=center](92) at (+2.0,-12.0) {$q_0$,\\b, \\bbbb};
+		\node[align=center](93) at (+7.5,-12.0) {$q_0$,\\b, \\bbbbb};
+		\node[align=center](00) at (-7.5,-13.5) {$q_0$,\\$\varepsilon$, \\b};
+		\node[align=center](01) at (-2.0,-13.5) {$q_0$,\\$\varepsilon$, \\bb};
+		\node[align=center](02) at (+2.0,-13.5) {$q_0$,\\$\varepsilon$, \\bbb};
+		\node[align=center](03) at (+7.5,-13.5) {$q_0$,\\$\varepsilon$, \\bbbb};
+		
+
+		\draw   (10)	edge (11)
+				(10)	edge (20)
+				(10)	edge (21)
+				(20)	edge (31)
+				(21)	edge (32)
+				(31)	edge (30)
+				(32)	edge (33)
+				(31)	edge (40)
+				(31)	edge (41)
+				(32)	edge (41)
+				(32)	edge (42)
+				(52)	edge (51)
+				(40)	edge (52)
+				(41)	edge (53)
+				(42)	edge (54)
+				(54)	edge (55)
+				(52)	edge (61)
+				(52)	edge (62)
+				(53)	edge (62)
+				(53)	edge (63)
+				(53)	edge (64)
+				(54)	edge (64)
+				(54)	edge (65)
+				(61)	edge (70)
+				(62)	edge (71)
+				(64)	edge (72)
+				(65)	edge (73)
+				(70)	edge (8a)
+				(70)	edge (80)
+				(70)	edge (81)
+				(71)	edge (81)
+				(71)	edge (82)
+				(71)	edge (83)
+				(72)	edge (83)
+				(72)	edge (84)
+				(72)	edge (85)
+				(73)	edge (85)
+				(73)	edge (86)
+				(73)	edge (8z)
+				(8a)	edge (90)
+				(82)	edge (91)
+				(84)	edge (92)
+				(8z)	edge (93)
+				(90)	edge (00)
+				(91)	edge (01)
+				(92)	edge (02)
+				(93)	edge (03)
+				;
+	\end{tikzpicture}
+\end{center}
 \subsection{Exercise 2} \label{TP09_2}
 \begin{center}
 \begin{minipage}[c]{0.30\textwidth}
