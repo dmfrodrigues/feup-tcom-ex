@@ -97,8 +97,26 @@
 	\item \textbf{False}. $\{0^n1^n\mid n \geq 0\} \in L(0^*1^*)$ and the first is not regular.
 	\item \textbf{True}. Convert them to DFAs, minimize them and compare.
 	\item \textbf{True}. $\{0^n0^n\mid n \geq 0\}=L((00)^*)$.
-	\item \textbf{True}. Incoming to $L1$, $L2$ are connected to start nodes, outgoing are from all final nodes.
-	\begin{center} \includegraphics[scale=0.5,trim={0 20mm 0 0},clip]{2012T1_8_1d} \end{center}
+	\item \textbf{True}. Incoming to $L_1$, $L_2$ are connected to start nodes, outgoing are from all final nodes.
+	\begin{center}
+		\begin{tikzpicture}[->,>=stealth',node distance=1.3cm,initial text=$ $,]
+			\footnotesize
+			\node[state, initial](qi) {$q_i$};
+			\node[state, above right of=qi](1L1) {$L_1$};
+			\node[state, below right of=qi](1L2) {$L_2$};
+			\node[state, right of=1L1](2L2) {$L_2$};
+			\node[state, right of=1L2](2L1) {$L_1$};
+			\node[state, accepting, below right of=2L2](qf) {$q_f$};
+			
+			\draw   (qi)	edge[above] node{$\varepsilon$} (1L1)
+					(qi)	edge[below] node{$\varepsilon$} (1L2)
+					(1L1)	edge[above] node{$\varepsilon$} (2L2)
+					(1L2)	edge[above] node{$\varepsilon$} (2L1)
+					(2L2)	edge[above] node{$\varepsilon$} (qf)
+					(2L1)	edge[below] node{$\varepsilon$} (qf)
+					;
+		\end{tikzpicture}
+	\end{center}
 	\item \textbf{False}. $\{0^n1^n\mid n \geq 0\} \cap \{01\} = \{01\}$.
 	\item \textbf{False}. $(L(0^*))^*=L(0^*)$.
 	\item \textbf{True}. Each state of the DFA retains the parity of $\#a$, $\#b$ and $\#c$, which requires $2^3=8$ states.
