@@ -271,8 +271,20 @@ Second step: repeat while there are changes; if $\delta(p,a)$ and $\delta(q,a)$ 
 	$\{C,F,I\}$ & $\{A,D,G\}$ & $\{B,E,H\}$
 \end{tabular} \end{center}
 \end{minipage}%
-\begin{minipage}[c]{0.25\textwidth}
-\begin{center} \includegraphics[scale=0.5]{TP07_5b} \end{center}
+\begin{minipage}[c]{0.40\textwidth}
+\begin{center}
+	\begin{tikzpicture}[->,>=stealth',node distance=2.5cm,initial text=$ $,]
+		\node[state, initial](ADG) {$\{A,D,G\}$};
+		\node[state, accepting, below right of=ADG](CFI) {$\{C,F,I\}$};
+		\node[state, above right of=CFI](BEH) {$\{B,E,H\}$};
+
+		\draw   (ADG)	edge[above] node{$0,1$} (BEH)
+				(CFI)	edge[left] node{$0$} (ADG)
+				(CFI)	edge[bend left=10, left] node{$1$} (BEH)
+				(BEH)	edge[bend left=10, right] node{$0,1$} (CFI)
+				;
+	\end{tikzpicture}
+\end{center}
 \end{minipage}
 \end{center}
 \subsection{Exercise 6}
@@ -311,7 +323,20 @@ Second step: repeat while there are changes; if $\delta(p,a)$ and $\delta(q,a)$ 
 \end{tabular} \end{center}
 \end{minipage}%
 \begin{minipage}[c]{0.35\textwidth}
-\begin{center} \includegraphics[scale=0.5]{TP07_6a} \end{center}
+\begin{center}
+	\begin{tikzpicture}[->,>=stealth',node distance=2.5cm,initial text=$ $,]
+		\node[state, accepting, initial](AB) {$\{A,B\}$};
+		\node[state, accepting, right of=AB](CE) {$\{C,E\}$};
+		\node[state, right of=CE](D) {$\{D\}$};
+
+		\draw   (AB)	edge[loop above] node{$a$} (AB)
+				(AB)	edge[above] node{$b$} (CE)
+				(CE)	edge[above] node{$a$} (D)
+				(CE)	edge[loop above] node{$b$} (CE)
+				(D)	edge[loop above] node{$a,b$} (D)
+				;
+	\end{tikzpicture}
+\end{center}
 \end{minipage}
 \end{center}
 \subsubsection{Item b}
