@@ -6,13 +6,93 @@
 \renewcommand{\thesubsubsection}{\thesubsection\alph{subsubsection}}
 \subsection{Exercise 1}
 \subsubsection{Item a}
-\begin{center} \includegraphics[scale=0.5]{TP06_1_a} \end{center}
+\begin{center}
+	\begin{tikzpicture}[->,>=stealth',node distance=2cm,initial text=$ $,]
+		\node[state, initial](q0) {$q_0$};
+		\node[state, right of=q0](q1) {$q_1$};
+		\node[state, accepting, right of=q1](q2) {$q_2$};
+
+		\draw   (q0)	edge[loop above] node{$0$} (q0)
+				(q0)	edge[above] node{$\varepsilon$} (q1)
+				(q1)	edge[loop above] node{$1$} (q1)
+				(q1)	edge[above] node{$0$} (q2)
+				(q2)	edge[loop above] node{$0$} (q2)
+				;
+	\end{tikzpicture}
+\end{center}
 \subsubsection{Item b}
-\begin{center} \includegraphics[scale=0.5]{TP06_1_b} \end{center}
+\begin{center}
+	\begin{tikzpicture}[->,>=stealth',node distance=2cm,initial text=$ $,]
+		\node[state, initial](q0) {$q_0$};
+		\node[state, right of=q0](q1) {$q_1$};
+		\node[state, accepting, right of=q1](q2) {$q_2$};
+
+		\draw   (q0)	edge[loop above] node{$0$} (q0)
+				(q0)	edge[above] node{$1$} (q1)
+				(q0)	edge[bend right, below] node{$0$} (q2)
+				(q1)	edge[loop above] node{$1$} (q1)
+				(q1)	edge[above] node{$0$} (q2)
+				(q2)	edge[loop above] node{$0$} (q2)
+				;
+	\end{tikzpicture}
+\end{center}
 \subsubsection{Item c}
-\begin{center} \includegraphics[scale=0.5]{TP06_1_b} \end{center}
+\begin{center}
+	\begin{minipage}{45mm}
+		\begin{center} \begin{tabular}{r | c c}
+			$\delta_N           $ & $0           $ & $1        $ \\ \hline
+			$          \emptyset$ & $\emptyset   $ & $\emptyset$ \\
+			$\rightarrow \{q_0\}$ & $\{q_0, q_2\}$ & $\{q_1  \}$ \\
+			$            \{q_1\}$ & $\{q_2\}     $ & $\{q_1  \}$ \\
+			$            \{q_2\}$ & $\{q_2\}     $ & $\emptyset$ \\
+			$        \{q_0,q_2\}$ & $\{q_0, q_2\}$ & $\{q_1  \}$
+		\end{tabular} \end{center}
+	\end{minipage}
+	\begin{minipage}{60mm}
+		\begin{center}
+			\begin{tikzpicture}[->,>=stealth',node distance=2cm,initial text=$ $,]
+				\node[state, initial](q0) {$\{q_0\}$};
+				\node[state, above right of=q0](q1) {$\{q_1\}$};
+				\node[state, accepting, below right of=q0](q02) {$\{q_0, q_2\}$};
+				\node[state, accepting, right of=q1](q2) {$\{q_2\}$};
+				\node[state, right of=q02](e) {$\emptyset$};
+
+				\draw   (e)		edge[loop right] node{$0, 1$} (e)
+						(q0)	edge[above] node{$0$} (q02)
+						(q0)	edge[above] node{$1$} (q1)
+						(q1)	edge[above] node{$0$} (q2)
+						(q1)	edge[loop left] node{$1$} (q1)
+						(q2)	edge[loop right] node{$0$} (q2)
+						(q2)	edge[right] node{$1$} (e)
+						(q02)	edge[loop left] node{$0$} (q02)
+						(q02)	edge[right] node{$1$} (q1)
+						;
+			\end{tikzpicture}
+		\end{center}
+	\end{minipage}
+\end{center}
+
 \subsubsection{Item d}
-\begin{center} \includegraphics[scale=0.5]{TP06_1_d} \end{center}
+\begin{center}
+	\begin{tikzpicture}[->,>=stealth',node distance=2cm,initial text=$ $,]
+		\node[state, accepting, initial](q0) {$\{q_0\}$};
+		\node[state, accepting, above right of=q0](q1) {$\{q_1\}$};
+		\node[state, below right of=q0](q02) {$\{q_0, q_2\}$};
+		\node[state, right of=q1](q2) {$\{q_2\}$};
+		\node[state, accepting, right of=q02](e) {$\emptyset$};
+
+		\draw   (e)		edge[loop right] node{$0, 1$} (e)
+				(q0)	edge[above] node{$0$} (q02)
+				(q0)	edge[above] node{$1$} (q1)
+				(q1)	edge[above] node{$0$} (q2)
+				(q1)	edge[loop left] node{$1$} (q1)
+				(q2)	edge[loop right] node{$0$} (q2)
+				(q2)	edge[right] node{$1$} (e)
+				(q02)	edge[loop left] node{$0$} (q02)
+				(q02)	edge[right] node{$1$} (q1)
+				;
+	\end{tikzpicture}
+\end{center}
 \subsection{Exercise 2}
 \subsubsection{Item a}
 \begin{alignat*}{2}
@@ -33,21 +113,64 @@
 \end{tabular} \end{center}
 \subsubsection{Item c}
 \begin{center} \begin{tabular}{r | c c}
-	$\delta_N     $ & $a      $ & $b    $ \\ \hline
-	$\rightarrow \{1    \}$ & $\{1,2  \}$ & $\{3    \}$\\
-	$      ^* \{2    \}$ & $\emptyset$ & $\{1    \}$\\
-	$            \{3    \}$ & $\{4    \}$ & $\{2    \}$\\
-	$            \{4    \}$ & $\{2,3  \}$ & $\{4    \}$\\
-	$      ^* \{1,2  \}$ & $\{1,2  \}$ & $\{1,3  \}$\\
-	$            \{1,3  \}$ & $\{1,2,4\}$ & $\{2,3  \}$\\
-	$      ^* \{2,3  \}$ & $\{4    \}$ & $\{1,2  \}$\\
-	$      ^* \{1,2,3\}$ & $\{1,2,4\}$ & $\{1,2,3\}$\\
-	$      ^* \{1,2,4\}$ & $\{1,2,3\}$ & $\{1,3,4\}$\\
-	$            \{1,3,4\}$ & $\{1,2,3,4\}$ & $\{2,3,4\}$\\
-	$      ^* \{2,3,4\}$ & $\{2,3,4\}$ & $\{1,2,4\}$\\
-	$      ^* \{1,2,3,4\}$ & $\{1,2,3,4\}$ & $\{1,2,3,4\}$
+	$\delta_N             $ & $a        $   & $b        $ \\ \hline
+	$            \emptyset$ & $\emptyset$   & $\emptyset$ \\
+	$\rightarrow \{1    \}$ & $\{1,2  \}$   & $\{3    \}$ \\
+	$         ^* \{2    \}$ & $\emptyset$   & $\{1    \}$ \\
+	$            \{3    \}$ & $\{4    \}$   & $\{2    \}$ \\
+	$            \{4    \}$ & $\{2,3  \}$   & $\{4    \}$ \\
+	$         ^* \{1,2  \}$ & $\{1,2  \}$   & $\{1,3  \}$ \\
+	$            \{1,3  \}$ & $\{1,2,4\}$   & $\{2,3  \}$ \\
+	$         ^* \{2,3  \}$ & $\{4    \}$   & $\{1,2  \}$ \\
+	$         ^* \{1,2,3\}$ & $\{1,2,4\}$   & $\{1,2,3\}$ \\
+	$         ^* \{1,2,4\}$ & $\{1,2,3\}$   & $\{1,3,4\}$ \\
+	$            \{1,3,4\}$ & $\{1,2,3,4\}$ & $\{2,3,4\}$ \\
+	$         ^* \{2,3,4\}$ & $\{2,3,4\}$   & $\{1,2,4\}$ \\
+	$       ^* \{1,2,3,4\}$ & $\{1,2,3,4\}$ & $\{1,2,3,4\}$
 \end{tabular} \end{center}
-\begin{center} \includegraphics[scale=0.5]{TP06_2_d} \end{center}
+\begin{center}
+	\begin{tikzpicture}[->,>=stealth',node distance=2.2cm,initial text=$ $,]
+		\node[state, initial](1) {$\{1\}$};
+		\node[state, accepting, below of=1](2) {$\{2\}$};
+		\node[state, right of=2](3) {$\{3\}$};
+		\node[state, right of=3](4) {$\{4\}$};
+		\node[state, accepting, right of=4](23) {$\{2,3\}$};
+		\node[state, below of=2](e) {$\emptyset$};
+		\node[state, accepting, above of=4](12) {$\{1,2\}$};
+		\node[state, above of=23](13) {$\{1,3\}$};
+		\node[state, accepting, right of=13](124) {$\{1,2,4\}$};
+		\node[state, below of=124](134) {$\{1,3,4\}$};
+		\node[state, accepting, right of=124](123) {$\{1,2,3\}$};
+		\node[state, accepting, right of=134](234) {$\{2,3,4\}$};
+		\node[state, accepting, below of=234](1234) {$\{1,2,3,4\}$};
+
+		\draw   (e)		edge[loop left] node{$a,b$} (e)
+				(1)		edge[above] node{$a$} (12)
+				(1)		edge[right] node{$b$} (3)
+				(2)		edge[left ] node{$a$} (e)
+				(2)		edge[left ] node{$b$} (1)
+				(3)		edge[above] node{$a$} (4)
+				(3)		edge[below] node{$b$} (2)
+				(4)		edge[bend left=10, above] node{$a$} (23)
+				(4)		edge[loop below] node{$b$} (4)
+				(12)	edge[loop above] node{$a$} (12)
+				(12)	edge[above] node{$b$} (13)
+				(13)	edge[above] node{$a$} (124)
+				(13)	edge[right] node{$b$} (23)
+				(23)	edge[bend left=10, below] node{$a$} (4)
+				(23)	edge[above] node{$b$} (12)
+				(124)	edge[bend left=10, above] node{$a$} (123)
+				(124)	edge[left] node{$b$} (134)
+				(134)	edge[below] node{$a$} (1234)
+				(134)	edge[below] node{$b$} (234)
+				(123)	edge[bend left=10, below] node{$a$} (124)
+				(123)	edge[loop right] node{$b$} (123)
+				(234)	edge[loop right] node{$a$} (123)
+				(234)	edge[below] node{$b$} (124)
+				(1234)	edge[loop right] node{$a,b$} (1234)
+				;
+	\end{tikzpicture}
+\end{center}
 \subsection{Exercise 3}
 \begin{equation*}
 	b^* a b^* a (a+b)^*
