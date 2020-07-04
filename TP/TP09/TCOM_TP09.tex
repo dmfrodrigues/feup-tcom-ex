@@ -79,11 +79,45 @@ When the input string is $aaabb$, the stack has always more $b$'s than can be co
 \end{center}
 \subsection{Exercise 4}
 \subsubsection{Item a}
-\begin{center} \includegraphics[scale=0.5]{TP09_4a} \end{center}
+\begin{center}
+	\begin{tikzpicture}[->,>=stealth',node distance=1.7cm,initial text=$ $,state/.style={circle,inner sep=2pt}]
+		\node[				](1) {$(p, 1100, Z)$};
+		\node[below of=1	](21) {$(p, 100, 1Z)$};
+		\node[right of=21	](22) {$(s, 1100, \varepsilon)$};
+		\node[below of=21	](3) {$(p, 00, 11Z)$};
+		\node[below of=3	](4) {$(p, 0, 1Z)$};
+		\node[below of=4	](5) {$(p, \varepsilon, Z)$};
+		\node[below of=5	](6) {$(s, \varepsilon, \varepsilon)$};
+		
+		\draw   (1)		edge (21)
+				(1)		edge (22)
+				(21)	edge (3)
+				(3)		edge (4)
+				(4)		edge (5)
+				(5)		edge (6)
+				;
+	\end{tikzpicture}
+\end{center}
 \subsubsection{Item b}
 The string $1100$ is accepted, given this PDA accepts by empty stack, and using it as input the PDA reaches an instantaneous description with empty remanescent input and empty stack.
 \subsubsection{Item c}
-\begin{center} \includegraphics[scale=0.5]{TP09_4c} \end{center}
+\begin{center}
+	\begin{tikzpicture}[->,>=stealth',node distance=1.7cm,initial text=$ $,state/.style={circle,inner sep=2pt}]
+		\node[				](1) {$(p, 101, Z)$};
+		\node[below of=1	](21) {$(p, 01, 1Z)$};
+		\node[right of=21	](22) {$(p, 101, \varepsilon)$};
+		\node[below of=21	](3) {$(p, 1, Z)$};
+		\node[below of=3	](41) {$(p, \varepsilon, 1Z)$};
+		\node[right of=41	](42) {$(p, 1, \varepsilon)$};
+		
+		\draw   (1)		edge (21)
+				(1)		edge (22)
+				(21)	edge (3)
+				(3)		edge (41)
+				(3)		edge (42)
+				;
+	\end{tikzpicture}
+\end{center}
 \subsection{Exercise 5}
 This statement is false, given a CFG is ambiguous iff there exists a string with at least two different syntax trees. Having two different syntax trees can be guaranteed by having two different rightmost derivations, or two different leftmost derivations. Having different leftmost and rightmost derivations is not enough to be ambiguous.
 }
