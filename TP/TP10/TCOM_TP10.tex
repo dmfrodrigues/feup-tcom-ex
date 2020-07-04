@@ -18,12 +18,51 @@ Given a context-free language $L \in \Sigma^*$,
 \end{lemma}
 \subsection{Exercise 1} \label{TP10_1}
 This DPDA accepts by empty stack, and only works for $m \geq 1$.
-\begin{center} \includegraphics[scale=0.5]{TP10_1} \end{center}
+\begin{center}
+	\begin{tikzpicture}[->,>=stealth',node distance=2.5cm,initial text=$ $,]
+		\node[state, initial](q0) {$q_0$};
+		\node[state, right of=q0](q2) {$q_2$};
+		
+		\draw   (q0)	edge[loop above, align=left] node{$0,0/00$\\$0,S/0$} (q0)
+				(q0)	edge[above, align=left] node{$1,0/0$\\$1,S/\varepsilon$} (q2)
+				(q2)	edge[loop above, align=left] node{$1,0/0$\\$0,0/\varepsilon$} (q2)
+				;
+	\end{tikzpicture}
+\end{center}
 It is hardly possible to make a DPDA that works for $m \geq 0$, since for $m \geq 1$ there is an absolute need to fill the stack with $0$s, but for $m=0$ it would be needed to have a spontaneous transition to a state that empties the stack.\\
 One option is to consider a DPDA that accepts by empty stack in general, but also accepting by final state just for one state $q_0$.
-\begin{center} \includegraphics[scale=0.5]{TP10_2} \end{center}
+\begin{center}
+	\begin{tikzpicture}[->,>=stealth',node distance=2.7cm,initial text=$ $,]
+		\node[state, initial](q0) {$q_0$};
+		\node[state, below right of=q0](q1) {$q_1$};
+		\node[state, above right of=q1](q2) {$q_2$};
+		
+		\draw   (q0)	edge[bend left=10, right, align=left] node{$0,0/00$\\$0,S/0$} (q1)
+				(q0)	edge[above, align=left] node{$1,0/0$\\$1,S/\varepsilon$} (q2)
+				(q1)	edge[bend left=10, left , align=left] node{$0,0/00$} (q0)
+				(q1)	edge[right, align=left] node{$1,0/0$\\$1,S/\varepsilon$} (q2)
+				(q2)	edge[loop right, align=left] node{$1,0/0$\\$0,0/\varepsilon$} (q2)
+				;
+	\end{tikzpicture}
+\end{center}
 Another option takes advantage of the fact programming languages generally represent strings with a null terminator at the end, which we will denote by $E$.
-\begin{center} \includegraphics[scale=0.5]{TP10_3} \end{center}
+\begin{center}
+	\begin{tikzpicture}[->,>=stealth',node distance=2.7cm,initial text=$ $,]
+		\node[state, initial](q0) {$q_0$};
+		\node[state, below right of=q0](q1) {$q_1$};
+		\node[state, above right of=q1](q2) {$q_2$};
+		\node[state, above right of=q0](q3) {$q_3$};
+		
+		\draw   (q0)	edge[bend left=10, right, align=left] node{$0,0/00$\\$0,S/0$} (q1)
+				(q0)	edge[above, align=left] node{$1,0/0$\\$1,S/\varepsilon$} (q2)
+				(q0)	edge[left, align=left] node{$E,0/0$\\$E,S/\varepsilon$} (q3)
+				(q1)	edge[bend left=10, left , align=left] node{$0,0/00$} (q0)
+				(q1)	edge[right, align=left] node{$1,0/0$\\$1,S/\varepsilon$} (q2)
+				(q2)	edge[loop right, align=left] node{$1,0/0$\\$0,0/\varepsilon$} (q2)
+				(q3)	edge[loop right, align=left] node{$\varepsilon,0/\varepsilon$} (q3)
+				;
+	\end{tikzpicture}
+\end{center}
 \subsection{Exercise 2}
 The PDA of \hyperref[TP09_1b]{9.1b} is non-deterministic because $\#\delta(q_0,\varepsilon,S)=3$.\\
 The PDA of \hyperref[TP09_2]{9.2} is non-deterministic because $\#\delta(q_0,\varepsilon,A)=3$.\\
