@@ -1,6 +1,6 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{tcom}
-\LoadClass[a4paper]{article}
+\LoadClass[a4paper]{book}
 % Margins
 \RequirePackage[top=35mm,bottom=35mm,left=25mm,right=25mm]{geometry}
 % Tables with colored cells
