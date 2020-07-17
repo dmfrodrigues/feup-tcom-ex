@@ -1,4 +1,4 @@
-LATEX=latexmk -synctex=1 -interaction=nonstopmode -pdf #-quiet -silent
+LATEXMK=latexmk -synctex=1 -interaction=nonstopmode --shell-escape -pdf #-quiet -silent
 
 OUTFILES=./CA/TCOM_resol_CA.pdf \
 		 ./exam/TCOM_resol_exam.pdf \
@@ -12,8 +12,12 @@ OUTFILES_EXTRA = $(shell find . -name "TCOM_*.tex" | sed 's/.tex/.pdf/g')
 
 extra: $(OUTFILES_EXTRA)
 
-%.pdf: %.tex tcom.cls
-	cd $(<D) && $(LATEX) $(<F)
+%.pdf: %.tex
+ifeq ($(VERSION),)
+	cd $(<D) && $(LATEXMK) $(<F)
+else
+	cd $(<D) && (echo "$(VERSION)" > VERSION) && $(LATEXMK) $(<F) && $(RM) VERSION
+endif
 
 clean:
 	git clean -dfX

@@ -8,3 +8,4 @@ TCOM_*.pdf
 *.fls
 *.fdb_latexmk
 *.sta
+COMMIT.tex
