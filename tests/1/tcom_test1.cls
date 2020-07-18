@@ -19,10 +19,9 @@
 \title{TCOM - Test 1 \docid}
 
 % Macros
-\renewcommand\thechapter{CA\padzeroes[2]{\decimal{chapter}}}
+\renewcommand\thechapter{\decimal{chapter}T1}
 \usepackage{titlesec}
-\titleformat{\chapter}[display]
-{\normalfont\huge\bfseries}{Challenge activity \decimal{chapter}}{20pt}{\Huge}
+\titleformat{\chapter}[display]{\normalfont\bfseries}{}{0pt}{\Huge}
 \makeatletter
 \let\newtitle\@title
 \renewcommand{\chaptermark}[1]{\markboth{\newtitle}{\thechapter. #1}}
