@@ -1,11 +1,11 @@
 \documentclass[docid=PA08]{tcom_PA}
 \begin{document}
-\setcounter{section}{7}
-\section{Preparation Activity 8 - CFGs and Pushdown Automata}
+\setcounter{chapter}{7}
+\exam{Preparation Activity 8 - CFGs and Pushdown Automata}
 {
 \renewcommand{\thesubsubsection}{\thesubsection\alph{subsubsection}}
-\subsection{Exercise 1}
-\subsubsection{Item a}
+\question{Exercise 1}
+\questionitem{Item a}
 \begin{center}
 	\begin{tikzpicture}[->,>=stealth',node distance=2cm,initial text=$ $,]
 		\node[state, initial, accepting] (q0) {$q_0$};
@@ -28,7 +28,7 @@
 				;
 	\end{tikzpicture}
 \end{center}
-\subsubsection{Item b}
+\questionitem{Item b}
 \begin{center}
 \begin{minipage}[c]{0.5\textwidth}
 	\begin{alignat*}{2}
@@ -49,7 +49,7 @@
 	\end{alignat*}
 \end{minipage}%
 \end{center}
-\subsubsection{Item c}
+\questionitem{Item c}
 To trace the computations of the PDA, we will assume the top of the stack is on the left.
 \begin{alignat*}{9}
 	(q_0, \text{10}, \text{S})
@@ -60,7 +60,7 @@ To trace the computations of the PDA, we will assume the top of the stack is on 
 	&\vdash (q_0, &\varepsilon &, &\text{B}    &)\\
 	&\vdash (q_0, &\varepsilon &, &\varepsilon &)
 \end{alignat*}
-\subsubsection{Item d}
+\questionitem{Item d}
 This PDA is non-deterministic, given there is at least one triple $(q,a,t) \in Q \times (\Sigma \cup \{\varepsilon\} ) \times \Gamma $ such that $\#\delta(q,a,t) > 1$. This is true given we can present the case $(q_0,\varepsilon,\text{A})$, that maps to either $(q_0,\text{0A})$ or $(q_0,\varepsilon)$.
 }
 \end{document}

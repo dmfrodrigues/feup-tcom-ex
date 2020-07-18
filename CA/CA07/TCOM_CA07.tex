@@ -1,11 +1,11 @@
 \documentclass[docid=CA07]{tcom_CA}
 \begin{document}
-\setcounter{section}{6}
-\section{Challenge Activity 7 - Context Free Grammars}
-\subsection{Exercise 1}%
+\setcounter{chapter}{6}
+\exam{Context-free grammars}
+\question{Exercise 1}
 {
 \renewcommand{\thesubsubsection}{\thesubsection\alph{subsubsection}}
-\subsubsection{Item a}
+\questionitem{Item a}
 This CFG is ambiguous, because one can arrive at $\mathtt{if}\,(E)\,\mathtt{if}\,(E)\,S\,\mathtt{else}\,S$ using two different syntax trees.
 \begin{center}
 \begin{minipage}{0.45\textwidth}
@@ -47,7 +47,7 @@ This CFG is ambiguous, because one can arrive at $\mathtt{if}\,(E)\,\mathtt{if}\
 	\end{center}
 \end{minipage}
 \end{center}
-\subsubsection{Item b}
+\questionitem{Item b}
 It does not, given that for the example above the \texttt{else} can be associated to two different \texttt{if}'s through two different syntax trees.\\
 Actually, the semantic of C-type if-else statements associates the \texttt{else} branch to the previous nearest \texttt{if} \textbf{that has not yet been matched}, given that processing starts on the left of the string.\\
 To ensure that association, one can either adopt the C-style solution of adding curly brackets, which would result in the production rule

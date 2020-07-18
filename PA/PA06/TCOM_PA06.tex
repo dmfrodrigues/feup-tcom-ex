@@ -1,10 +1,10 @@
 \documentclass[docid=PA06]{tcom_PA}
 \begin{document}
-\setcounter{section}{5}
-\section{Preparation Activity 6 - Regular Languages}
+\setcounter{chapter}{5}
+\exam{Preparation Activity 6 - Regular Languages}
 {
 \renewcommand{\thesubsubsection}{\thesubsection\alph{subsubsection}}
-\subsection{Exercise 1}
+\question{Exercise 1}
 \begin{lemma}[Pumping lemma] \label{lem:pump}
 Given a regular language $L \in \Sigma^*$,
 \begin{equation*}
@@ -80,7 +80,7 @@ We will therefore choose the following values for $n$ and $k$:
 That means \eqref{eq:5} becomes $b+q^2$. The minimum and maximum values this expression can assume are $q^2+1$ and $q^2+q$. It is trivial that $q^2$ and $(q+1)^2=q^2+2q+1$ are consecutive perfect squares. It is also obvious that the range of values our expression might assume $[q^2+1,q^2+q]$ is completely contained in the space between the two consecutive perfect squares $(q^2, q^2+2q+1)$, meaning it is impossible to find a perfect square in $[q^2+1,q^2+q]$.\\
 This mean that, regardless of the tuple $(x,y,z)$ we choose that obeys the first three equations of \eqref{eq:3}, the fourth equation will always be false. We have however stated \eqref{eq:3} was true, thus reaching a contradiction. We have this proven by absurd that the theorem is correct.
 \end{proof}
-\subsection{Exercise 2}
+\question{Exercise 2}
 The statement is false, given the pumping lemma only guarantees that, if $L$ is a regular language, then it verifies a given property (it is thus a one-way implication, not a bidirectional implication), even more because it is possible to define languages that are not regular but verify the property described in the pumping lemma.\\
 The contrapositive version of the pumping lemma can however be used to prove that a language is not regular, if one manages to prove that the language does not abide to the property the pumping lemma states.
 }

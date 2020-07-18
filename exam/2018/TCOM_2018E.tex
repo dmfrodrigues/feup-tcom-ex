@@ -1,11 +1,11 @@
 \documentclass[docid=2018/19]{tcom_exam}
 \begin{document}
-\setcounter{section}{17}
-\section{Exam 2018/19}
+\setcounter{chapter}{17}
+\exam{Exam 2018/19}
 {
 \renewcommand{\thesubsubsection}{\thesubsection\alph{subsubsection}}
 \subsection{Group I}
-\subsubsection{Item a}
+\questionitem{Item a}
 \begin{minipage}[c]{0.50\textwidth}
 	The methodology should follow these lines:
 	\begin{enumerate}
@@ -53,7 +53,7 @@
 		\end{tikzpicture}
 	\end{center}
 \end{minipage}
-\subsubsection{Item b}
+\questionitem{Item b}
 \begin{minipage}[c]{0.49\textwidth}
 	\begin{alignat*}{2}
 		&\varepsilon close(q_0    && )=\{q_0,q_{00},q_{10}\}\\
@@ -112,7 +112,7 @@
 	\end{tikzpicture}
 \end{center}
 \pagebreak
-\subsubsection{Item c}
+\questionitem{Item c}
 From the DFA for $L_1$, $D_1$, we will find an NFA for $L_2$, $N_2$, by considering the same states and following these rules:
 \begin{itemize}
 	\item The initial state of $N_2$ is a state with a name different from that of any state of $D_1$; say it's $i$.
@@ -122,7 +122,7 @@ From the DFA for $L_1$, $D_1$, we will find an NFA for $L_2$, $N_2$, by consider
 \end{itemize}
 Finally, convert $N_2$ to a DFA.\par
 This technique allows to easily create a DFA that accepts the reverse of all strings for which we already have a DFA.
-\subsubsection{Item d}
+\questionitem{Item d}
 \begin{center}
 	\begin{tabular}{c c c}
 		\begin{tikzpicture}[->,>=stealth',node distance=2.5cm,initial text=$ $,]
@@ -183,7 +183,7 @@ This technique allows to easily create a DFA that accepts the reverse of all str
 	&= ((a+b)a^*b(ba^*b)^*a)^*(\varepsilon+(a+b)a^*b)
 \end{alignat*}
 \pagebreak
-\subsubsection{Item e}
+\questionitem{Item e}
 \begin{center}
 	\begin{tabular}{c c}
 		\begin{tabular}{r | c c}
@@ -199,7 +199,7 @@ This technique allows to easily create a DFA that accepts the reverse of all str
 		\end{tabular}
 	\end{tabular}
 \end{center}
-\subsubsection{Item f}
+\questionitem{Item f}
 \begin{minipage}[c]{0.58\textwidth}
 	$\{q_0,q_1\}$ is distinguishable from $\emptyset$ and $\{q_0\}$, given the first state is final, and the last two states are not final.\par
 	Also, $\{q_0\}$ and $\emptyset$ are distinguishable, because for them to be indistinguishable it was required that $\emptyset$ and $\{q_0,q_1\}$ were undistinguishable (which is not true).
@@ -229,7 +229,7 @@ This technique allows to easily create a DFA that accepts the reverse of all str
 	\end{center}
 \end{minipage}
 \subsection{Group II}
-\subsubsection{Item a}
+\questionitem{Item a}
 \begin{theorem}
 	Given $L_1=\{a^n b^n \mid n \geq 0\}$ is a non-regular language, $L_2=\{0^n 1^m 2^{n-m} \mid  n \geq m \geq 0\}$ is also a non-regular language.
 \end{theorem}
@@ -243,7 +243,7 @@ This technique allows to easily create a DFA that accepts the reverse of all str
 	\end{alignat*}
 	we are implying that $L_1$ is also a regular language. We thus arrive at a contradiction with the statement of the theorem, thus proving the theorem correct.
 \end{proof}
-\subsubsection{Item b}
+\questionitem{Item b}
 Regular languages are closed under the symmetric difference operator, given there is an algorithm to find the regular expression of the symmetric difference of two languages given by regular expressions.\par
 Let $L_1$, $L_2$ be the regular languages for which we have regular expressions.
 \begin{enumerate}
@@ -257,12 +257,12 @@ We thus arrive at a regular expression of the symmetric difference of two langua
 \begin{alignat*}{2}
 	L=\{a^n w w^R a^j \mid n \geq 0, n \leq j \leq 2n, w \in \{a,b\}^*\}
 \end{alignat*}
-\subsubsection{Item a}
+\questionitem{Item a}
 \begin{alignat*}{2}
 	S &\rightarrow aSa\mid aSaa\mid W\\
 	W &\rightarrow aWa\mid bWb\mid \varepsilon
 \end{alignat*}
-\subsubsection{Item b}
+\questionitem{Item b}
 \begin{minipage}[c]{0.68\textwidth}
 	\begin{alignat*}{12}
 		S \implies aSa \implies aaSaa \implies aaWaa \implies aabWbaa \implies aabbaa
@@ -289,7 +289,7 @@ We thus arrive at a regular expression of the symmetric difference of two langua
 		\end{tikzpicture}
 	\end{center}
 \end{minipage}
-\subsubsection{Item c}
+\questionitem{Item c}
 Yes it is ambiguous, given string $aabbaa$ has at least two different syntax trees: the one presented in the previous item, and the following syntax tree.
 \begin{center}
 	\begin{tikzpicture}
@@ -315,7 +315,7 @@ An equivalent, non-ambiguous grammar is:
 	S &\rightarrow aSaa\mid W\\
 	W &\rightarrow aWa\mid bWb\mid \varepsilon
 \end{alignat*}
-\subsubsection{Item d}
+\questionitem{Item d}
 \begin{minipage}[c]{0.49\textwidth}
 	\begin{equation*}
 		PDA~P=(\{q\},\{a,b\},\{a,b,S,T,W,V\},\delta,q,S)
@@ -343,20 +343,20 @@ An equivalent, non-ambiguous grammar is:
 		\end{tikzpicture}
 	\end{center}
 \end{minipage}
-\subsubsection{Item e}
+\questionitem{Item e}
 \begin{alignat*}{5}
 	(q,aabbaa,S) &\vdash (q,aabbaa,W) &&\vdash (q,aabbaa,aWa) &&\vdash (q,abbaa,Wa) &&\vdash (q,abbaa,aWaa) \\
 				 & \vdash (q,bbaa,Waa) &&\vdash (q,bbaa,bWbaa) &&\vdash (q,baa,Wbaa)&&\vdash (q,baa,baa) \\
 				 & \vdash (q,aa,aa)     &&\vdash (q,a,a) &&\vdash (q,\varepsilon,\varepsilon)
 \end{alignat*}
 \subsection{Group IV}
-\subsubsection{Item a}
+\questionitem{Item a}
 A strategy to implement a TM to answer this question would be:
 \begin{enumerate}
 	\item Find first 0/1, mark it with $X$ and go to corresponding state if found a 0 or a 1.
 	\item Find first 1/0. If the corresponding pair was found, mark the new symbol with $X$, go to beginning of string and go to step (1). If the head of the TM reaches the end of the string after having found a 1 but not a zero, the TM accepts the input.
 \end{enumerate}
-\subsubsection{Item b}
+\questionitem{Item b}
 \begin{minipage}[c]{0.56\textwidth}
 	\begin{center}
 		\begin{tabular}{r | c c c c}
@@ -395,7 +395,7 @@ A strategy to implement a TM to answer this question would be:
 		\end{tikzpicture}
 	\end{center}
 \end{minipage}
-\subsubsection{Item c}
+\questionitem{Item c}
 \begin{alignat*}{12}
 			& B s 101B &&\vdash BX g_1 01B &&\vdash B l XX1B &&\vdash l BXX1B &&\\
 	\vdash 	& B s XX1B &&\vdash BX s X1B &&\vdash BXX s 1B &&\vdash BXXX g_1 B &&\vdash BXXXB f 

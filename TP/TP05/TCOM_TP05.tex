@@ -1,17 +1,17 @@
 \documentclass[docid=TP05]{tcom_TP}
 \begin{document}
-\setcounter{section}{4}
-\section{TP05 - Regular expressions}
+\setcounter{chapter}{4}
+\exam{TP05 - Regular expressions}
 {
 \renewcommand{\thesubsubsection}{\thesubsection\alph{subsubsection}}
-\subsection{Exercise 1}
-\subsubsection{Item a}
+\question{Exercise 1}
+\questionitem{Item a}
 \begin{alignat*}{3}
 	(\varepsilon + a + aa + aaa)(baaa)^*(\varepsilon + b + ba + baa)
 \end{alignat*}
-\subsubsection{Item b}
+\questionitem{Item b}
 I prefer an $\varepsilon$-NFA because it simplifies the task of recognizing the $\varepsilon$'s of the regular expression when converting from RE to a FA.
-\subsubsection{Item c}
+\questionitem{Item c}
 \begin{center}
 	\begin{tikzpicture}[->,>=stealth',node distance=1.5cm,initial text=$ $,]
 		\footnotesize
@@ -108,26 +108,26 @@ This $\varepsilon$-NFA can be trivially simplified into the following $\varepsil
 				;
 	\end{tikzpicture}
 \end{center}
-\subsection{Exercise 2}
-\subsubsection{Item a}
+\question{Exercise 2}
+\questionitem{Item a}
 \begin{alignat*}{3}
 	 (aa)^* (b  (aa)^* ( b + aba ) + ab (aa)^* ( ab + ba ))(aa)^*
 \end{alignat*}
-\subsubsection{Item b}
+\questionitem{Item b}
 Yes it can. Convert the RE to an $\varepsilon$-NFA and then to a DFA $D$. Then, create the DFA $\overline{D}$ describing the complement of $D$ by converting accept states to normal states, and normal states to accept states. Then, convert $\overline{D}$ to a RE.
 \pagebreak
-\subsection{Exercise 3}
+\question{Exercise 3}
 \begin{equation*}
 	(0 + 10)^* 11 (0 + 01)^*
 \end{equation*}
-\subsection{Exercise 4}
-\subsubsection{Item a}
+\question{Exercise 4}
+\questionitem{Item a}
 Strings with a maximum of one subsequence of consecutive $1$'s, which can only happen at the end.
-\subsubsection{Item b}
+\questionitem{Item b}
 Strings with at least one subsequence of three consecutive $0$'s.
-\subsubsection{Item c}
+\questionitem{Item c}
 Strings with no consecutive $1$'s.
-\subsection{Exercise 5}
+\question{Exercise 5}
 \begin{center} \begin{tabular}{r | l}
 	\textbf{Item} & \textbf{Answer} \\ \hline
 	a & False \\
@@ -135,16 +135,16 @@ Strings with no consecutive $1$'s.
 	c & True \\
 	d & True
 \end{tabular} \end{center}
-\subsubsection{Item a}
+\questionitem{Item a}
 False, given the string $a$ is accepted by $(a+b)^*$ but not by $(a^* b)^*$.
-\subsubsection{Item b}
+\questionitem{Item b}
 True, given it can be converted into a DFA, and then into a RE.
-\subsubsection{Item c}
+\questionitem{Item c}
 True, given $S^*$ is defined by $S \subseteq S^*$ and $v,w \in S^* \implies v+w \in S^*$ means the concatenation of any two strings of $S^*$ was already in $S^*$.
-\subsubsection{Item d}
+\questionitem{Item d}
 True. The proof is the fact there is an algorithm that transforms a regular expression describing a language with concatenation, union and closure into an $\varepsilon$-DFA, and another algorithm to transform the $\varepsilon$-DFA into a DFA.
-\subsection{Exercise 6}
-\subsubsection{Item a}
+\question{Exercise 6}
+\questionitem{Item a}
 \begin{center}
 \begin{tabular}{c c c c}
 \begin{tikzpicture}[->,>=stealth',node distance=1.4cm,initial text=$ $,]
@@ -204,15 +204,15 @@ True. The proof is the fact there is an algorithm that transforms a regular expr
 \begin{equation*}
 	a(\oplus (c \otimes )^* b)^* .
 \end{equation*}
-\subsubsection{Item b}
+\questionitem{Item b}
 \begin{equation*}
 	a.
 \end{equation*}
-\subsubsection{Item c}
+\questionitem{Item c}
 An infinite number of strings, given the use of the closure operator $^*$.
 \pagebreak
-\subsection{Exercise 7}
-\subsubsection{Item a}
+\question{Exercise 7}
+\questionitem{Item a}
 \begin{center}
 \begin{minipage}{0.35\textwidth}
 \begin{center} \begin{tabular}{r | c c c}
@@ -275,7 +275,7 @@ An infinite number of strings, given the use of the closure operator $^*$.
 	\end{tikzpicture}
 \end{minipage}
 \end{center}
-\subsubsection{Item b}
+\questionitem{Item b}
 \begin{center}
 	\begin{tabular}{c c c c}
 		\begin{tikzpicture}[->,>=stealth',node distance=1.4cm,initial text=$ $,]
@@ -329,8 +329,8 @@ An infinite number of strings, given the use of the closure operator $^*$.
 	01+(0+1)^* 1 = (0+(0+1)^*) 1 = (0+1)^* 1
 \end{equation*}
 \pagebreak
-\subsection{Exercise 8}
-\subsubsection{Item a}
+\question{Exercise 8}
+\questionitem{Item a}
 \begin{center}
 	\begin{tikzpicture}[->,>=stealth',node distance=2cm,initial text=$ $,]
 		\node[state, initial] (0) {$0$};
@@ -347,9 +347,9 @@ An infinite number of strings, given the use of the closure operator $^*$.
 	\end{tikzpicture}
 \end{center}
 $ab$, $abab$, $aba$ are accepted.
-\subsubsection{Item b}
+\questionitem{Item b}
 Language of strings started in $a$ with no consecutive $b$'s and at most two consecutive $a$'s.
-\subsubsection{Item c}
+\questionitem{Item c}
 \begin{center} \begin{tabular}{c c c}
 \begin{tikzpicture}[->,>=stealth',node distance=2cm,initial text=$ $,]
 	\node[state, initial] (0) {$0$};
@@ -388,7 +388,7 @@ Language of strings started in $a$ with no consecutive $b$'s and at most two con
 \begin{equation*}
 	ab(\varepsilon+a)(ab(\varepsilon+a))^*=(ab(\varepsilon+a))^+
 \end{equation*}
-\subsubsection{Item d}
+\questionitem{Item d}
 \begin{center}
 \begin{minipage}{0.30\textwidth}
 	\begin{center} \begin{tabular}{r | c c}
@@ -422,7 +422,7 @@ Language of strings started in $a$ with no consecutive $b$'s and at most two con
 	\end{center}
 \end{minipage}
 \end{center}
-\subsection{Exercise 9}
+\question{Exercise 9}
 \begin{enumerate}
 \item Accepts $a$, which is not a valid string per the exercise statement.
 \item \label{itm:5_9_2} Enumerates all possible configurations for the blocks of size 3, thus complying with the statement.
@@ -431,14 +431,14 @@ Language of strings started in $a$ with no consecutive $b$'s and at most two con
 \end{enumerate}
 The correct answer is \ref{itm:5_9_2}.
 \pagebreak
-\subsection{Exercise 10}
+\question{Exercise 10}
 \begin{center} \begin{tabular}{r | c c}
 	$\delta_D       $ & $0  $ & $1  $ \\ \hline
 	$\rightarrow ^* q_1$ & $q_2$ & $q_3$\\
 	$               q_2$ & $q_1$ & $q_3$\\
 	$            ^* q_3$ & $q_2$ & $q_1$
 \end{tabular} \end{center}
-\subsubsection{Item a}
+\questionitem{Item a}
 \begin{center} \begin{tabular}{r || c c | c c | c c}
 	$k           $ & \multicolumn{2}{c |}{$0$} & \multicolumn{2}{c |}{$1$} & \multicolumn{2}{c}{$2$} \\ \hline
 	$R_{11}^{(k)}$ & $\varepsilon$ & $\varepsilon$ & $\varepsilon+\varepsilon\varepsilon^*\varepsilon$& $\varepsilon$ & $\varepsilon+0(\varepsilon+00)^*0$ & $(00)^*$\\
@@ -473,7 +473,7 @@ The correct answer is \ref{itm:5_9_2}.
 	&= 0^*1((0+1)0^*1)^*(\varepsilon + 1)(00)^* + (00)^* \\
 	&= (00)^*  + 0^*1((0+1)0^*1)^*(\varepsilon + 1)(00)^*
 \end{alignat*}
-\subsubsection{Item b}
+\questionitem{Item b}
 \begin{center}
 \begin{minipage}{0.30\textwidth}
 	\begin{center}
@@ -573,7 +573,7 @@ The correct answer is \ref{itm:5_9_2}.
 \begin{alignat*}{2}
 	0^*1((0+1)0^*1)^* + (00+(\varepsilon+0)101^*(0+1))^*
 \end{alignat*}
-\subsection{Exercise 11}
+\question{Exercise 11}
 The correct answer is NE.
 \begin{center}
 	\begin{tikzpicture}[->,>=stealth',node distance=2.2cm,initial text=$ $,]

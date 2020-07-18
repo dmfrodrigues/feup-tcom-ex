@@ -1,11 +1,11 @@
 \documentclass[docid=TP03]{tcom_TP}
 \begin{document}
-\setcounter{section}{2}
-\section{TP03 - NFAs}
+\setcounter{chapter}{2}
+\exam{TP03 - NFAs}
 {
 \renewcommand{\thesubsubsection}{\thesubsection\alph{subsubsection}}
-\subsection{Exercise 1}
-\subsubsection{Item a}
+\question{Exercise 1}
+\questionitem{Item a}
 \begin{center}
 	\begin{tikzpicture}[->,>=stealth',node distance=1.5cm,initial text=$ $,]
 		\tiny
@@ -79,7 +79,7 @@
 		\end{alignat*}
 	\end{minipage}
 \end{center}
-\subsubsection{Item b}
+\questionitem{Item b}
 \begin{center}
 	\begin{tikzpicture}[->,>=stealth',node distance=1.5cm,initial text=$ $,]
 		\footnotesize
@@ -126,7 +126,7 @@
 	\end{minipage}
 \end{center}
 \pagebreak
-\subsection{Exercise 2}
+\question{Exercise 2}
 \label{subsec:03_02}
 \begin{alignat*}{2}
 	DFA       &= (\Sigma, Q_D, \delta_D, \{p\}, F_D)\\
@@ -151,10 +151,10 @@
  $^*       \{  q,r,s\}$ & $\{    r,s\}$ & $\{p,q,r  \}$
 \end{tabular}
 \end{center}
-\subsection{Exercise 3} \label{subsec:03_03}
-\subsubsection{Item a}
+\question{Exercise 3} \label{subsec:03_03}
+\questionitem{Item a}
 Incomplete DFA, given all transitions are to one or zero states, meaning the transitions to zero states are to a hidden dead state that, if included in the automata, would make it a DFA.
-\subsubsection{Item b}
+\questionitem{Item b}
 \begin{center}
 	\begin{tikzpicture}[->,>=stealth',node distance=1.5cm,initial text=$ $,]
 		\footnotesize
@@ -199,13 +199,13 @@ Incomplete DFA, given all transitions are to one or zero states, meaning the tra
 	\end{center}
 \end{minipage}
 \end{center}
-\subsubsection{Item c}
+\questionitem{Item c}
 \label{subsubsec:03_03_c} Given a DFA that recognizes a language $L$, a DFA that recognizes the complement of $L$ is obtained by swapping accept states for reject states, and reject states for accept states.
 \pagebreak
-\subsection{Exercise 4}
-\subsubsection{Item a}
+\question{Exercise 4}
+\questionitem{Item a}
 True, because there is a general algorithm that transforms any NFA into an equivalent DFA.
-\subsubsection{Item b}
+\questionitem{Item b}
 False, because for instance the DFA
 \begin{center}
 	\begin{tikzpicture}[->,>=stealth',node distance=1.5cm,initial text=$ $,]
@@ -237,7 +237,7 @@ False, because for instance the DFA
 \end{center}
 recognizes arbitrarily large strings.
 
-\subsection{Exercise 5}
+\question{Exercise 5}
 \begin{remark}
 	Item \ref{subsubsec:03_03_c} mentions how we can get a DFA that recognizes the complement of $L$, given we have a DFA that recognizes $L$.
 \end{remark}
@@ -268,7 +268,7 @@ recognizes arbitrarily large strings.
 \end{tabular}
 \end{center}
 \pagebreak
-\subsection{Exercise 6}
+\question{Exercise 6}
 The DFA equivalent to any NFA$=(\Sigma,Q_N,\delta_N,q_0,F_N)$ is
 \begin{alignat}{1}
 	DFA &= (\Sigma, Q_D, \delta_D, {q_0}, F_D)\\

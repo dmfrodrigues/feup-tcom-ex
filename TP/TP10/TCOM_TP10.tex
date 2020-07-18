@@ -1,7 +1,7 @@
 \documentclass[docid=TP10]{tcom_TP}
 \begin{document}
-\setcounter{section}{9}
-\section{TP10 - Context-Free Languages (CFLs)}
+\setcounter{chapter}{9}
+\exam{TP10 - Context-Free Languages (CFLs)}
 {
 \renewcommand{\thesubsubsection}{\thesubsection\alph{subsubsection}}
 \begin{lemma}[Pumping lemma for CFLs] \label{lem:pumpCFL}
@@ -16,7 +16,7 @@ Given a context-free language $L \in \Sigma^*$,
 	\end{cases}
 \end{equation*} 
 \end{lemma}
-\subsection{Exercise 1} \label{TP10_1}
+\question{Exercise 1} \label{TP10_1}
 This DPDA accepts by empty stack, and only works for $m \geq 1$.
 \begin{center}
 	\begin{tikzpicture}[->,>=stealth',node distance=2.5cm,initial text=$ $,]
@@ -63,14 +63,14 @@ Another option takes advantage of the fact programming languages generally repre
 				;
 	\end{tikzpicture}
 \end{center}
-\subsection{Exercise 2}
+\question{Exercise 2}
 The PDA of \hyperref[TP09_1b]{9.1b} is non-deterministic because $\#\delta(q_0,\varepsilon,S)=3$.\\
 The PDA of \hyperref[TP09_2]{9.2} is non-deterministic because $\#\delta(q_0,\varepsilon,A)=3$.\\
 The PDA of \hyperref[TP09_3]{9.3} is non-deterministic because $\#\delta (q_0,\varepsilon, S)=4$.\\
 All PDAs of \ref{TP10_1} are deterministic.
-\subsection{Exercise 3}
+\question{Exercise 3}
 All CFLs can be represented by a NPDA, but not by a DPDA.
-\subsection{Exercise 4}
+\question{Exercise 4}
 \begin{minipage}[c]{0.25\textwidth} \begin{alignat*}{2}
 	S &\rightarrow A1B \\
 	A &\rightarrow 0A\mid \varepsilon\\
@@ -100,7 +100,7 @@ All CFLs can be represented by a NPDA, but not by a DPDA.
 	G_0 &\rightarrow 0\\
 	G_1 &\rightarrow 1
 \end{alignat*}
-\subsection{Exercise 5}
+\question{Exercise 5}
 \begin{center}
 \begin{minipage}[c]{0.3\textwidth} \begin{alignat*}{2}
 	S &\rightarrow 0S00\mid 0B0\mid B\\
@@ -149,7 +149,7 @@ All CFLs can be represented by a NPDA, but not by a DPDA.
 	G_2 &\rightarrow G_2
 \end{alignat*} \end{minipage}
 \end{center}
-\subsection{Exercise 6}
+\question{Exercise 6}
 \begin{theorem}
 The language $L=\{a^nb^nc^i\mid n \leq i \leq 2n\}$ is not a CFL.
 \end{theorem}
@@ -172,7 +172,7 @@ Given that $|vwx|\leq n$, $vwx$ cannot simultaneously contain $a$'s and $c$'s:
 \end{itemize}
 We have thus arrived at a contradiction in all cases, meaning we have proven the theorem correct.
 \end{proof}
-\subsection{Exercise 7}
+\question{Exercise 7}
 \begin{theorem}
 	$L=\{0^p\mid p \text{ is prime}\}$ is not a CFL.
 \end{theorem}
@@ -217,7 +217,7 @@ By the prime number theorem,
 Equations \eqref{eq:TP10_7_1} and \eqref{eq:TP10_7_2} give rise to a contradiction. We have thus proven the theorem.
 \end{proof}
 \pagebreak
-\subsection{Exercise 8}
+\question{Exercise 8}
 \begin{theorem}
 The language $L=\{0^i1^{i^2}\}$ is not a CFL.
 \end{theorem}
@@ -254,11 +254,11 @@ Given that $|vwx|\leq n$, $vwx$ either contains: only $0$'s; only $1$'s; $v$ or 
 \end{itemize}
 We have thus arrived at a contradiction in all cases, meaning we have proven the theorem correct.
 \end{proof}
-\subsection{Exercise 9}
+\question{Exercise 9}
 \textcolor{red}{Incomplete}\\
 This question demands a lot of effort for the relatively low return, given it asks one to try to make a proof we know at start will not be successful.
-\subsection{Exercise 10}
-\subsubsection{Item a}
+\question{Exercise 10}
+\questionitem{Item a}
 \begin{alignat*}{2}
 	\inter(00,111)=\{&00111,\\
 	&01011,\\
@@ -271,12 +271,12 @@ This question demands a lot of effort for the relatively low return, given it as
 	&11010,\\
 	&11100\}
 \end{alignat*}
-\subsubsection{Item b}
+\questionitem{Item b}
 $L_1=L(0^*)$ and $L_2=\{0^n1^n\mid n\geq 0\}$.
 \begin{equation*}
 	\inter(L_1,L_2)=\{w=0^a1z\mid z \in \{0,1\}^* \wedge \#1\geq a\}
 \end{equation*}
-\subsubsection{Item c}
+\questionitem{Item c}
 \begin{theorem}
 	If $L_1$ and $L_2$ are regular languages, then $\inter(L_1,L_2)$ is a regular language.
 \end{theorem}
@@ -290,7 +290,7 @@ Consider $D_1$, $D_2$ and $D$ as the DFAs of $L_1$, $L_2$ and $\inter(L_1,L_2)$ 
 \end{enumerate}
 This algorithm works, thus proving the theorem.
 \end{proof}
-\subsubsection{Item d}
+\questionitem{Item d}
 \begin{theorem}
 	If $L$ is a CFL and $R$ a RE, then $\inter(L,R)$ is a CFL.
 \end{theorem}
@@ -304,7 +304,7 @@ Consider $D$ as the DFA of $R$, and $P_L$ and $P$ as the PDAs of $L$ and $\inter
 \end{enumerate}
 This algorithm works, thus proving the theorem.
 \end{proof}
-\subsection{Exercise 11}
+\question{Exercise 11}
 \begin{theorem}
 In a grammar in the Chomsky Normal Form, all analysis trees of length n have 2n-1 inner nodes.
 \end{theorem}

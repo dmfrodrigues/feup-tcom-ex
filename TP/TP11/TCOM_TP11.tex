@@ -1,11 +1,11 @@
 \documentclass[docid=TP11]{tcom_TP}
 \begin{document}
-\setcounter{section}{10}
-\section{TP11 - Turing Machines}
+\setcounter{chapter}{10}
+\exam{TP11 - Turing Machines}
 {
 \renewcommand{\thesubsubsection}{\thesubsection\alph{subsubsection}}
-\subsection{Exercise 1}
-\subsubsection{Item a}
+\question{Exercise 1}
+\questionitem{Item a}
 \begin{minipage}[c]{0.47\textwidth}
 	\begin{itemize}
 		\itemsep0em
@@ -69,7 +69,7 @@
 				(l ) edge[above                  ] node{$B/B \rightarrow$} (q0);
 	\end{tikzpicture}
 \end{center}
-\subsubsection{Item b}
+\questionitem{Item b}
 \begin{alignat*}{8}
 	& q_0 01110B  &&\vdash B f_0 1110B &&\vdash B1 r_0 110B &&\vdash B11 r_0 10B &&\vdash B111 r_0 0B &&\vdash B1110 r_0 B &&\\
 	&             &&\vdash B111 s_0 0B &&\vdash B11 l 1BB   &&\vdash B1 l 11BB   &&\vdash B l 111BB   &&\vdash l B111BB    &&\vdash \\
@@ -77,11 +77,11 @@
 	&			  &&\vdash BB1 s_1 1BB &&\vdash BB l 1BBB   &&\vdash B l B1BBB   &&\vdash\\
 	& BB q_0 1BBB &&\vdash BBB f_1 BBB &&\vdash BBBB q_f BB 
 \end{alignat*}
-\subsubsection{Item c}
+\questionitem{Item c}
 \textcolor{red}{Incomplete}\\
 This TM is deterministic, given that all transitions return a single tuple rather than a set of more than one tuples.
-\subsection{Exercise 2}
-\subsubsection{Item a}
+\question{Exercise 2}
+\questionitem{Item a}
 \begin{minipage}[c]{0.5\textwidth}
 	\begin{alignat*}{2}
 		TM &= (Q,\Sigma, \Gamma, \delta, q_{00}, B, F)\\
@@ -125,16 +125,16 @@ This TM is deterministic, given that all transitions return a single tuple rathe
 		\end{tikzpicture}
 	\end{center}
 \end{minipage}
-\subsubsection{Item b}
+\questionitem{Item b}
 \begin{alignat*}{8}
 	& q_{00} 011110B &&\vdash 0 q_{10} 11110B &&\vdash 01 q_{11} 1110B &&\vdash 011 q_{10} 110B &&\vdash 0111 q_{11} 10B \\
 	&                &&\vdash 01111 q_{10} 0B &&\vdash 011110 q_{00} B &&\vdash 011110B q_f     &&
 \end{alignat*}
-\subsubsection{Item c}
+\questionitem{Item c}
 They are similar if we consider we only analyse a given symbol of the input once to deduce the state we are supposed to be at. Also, states are similar, with the minor exception that the TM has a final transition if it is at $q_{00}$ and finds a $B$ at the end of the input, while in a DFA the computation only stops if the whole input string is consumed.
 \pagebreak
-\subsection{Exercise 3}
-\subsubsection{Item a}
+\question{Exercise 3}
+\questionitem{Item a}
 \begin{center}
 	\begin{tabular}{r | c c c c c c}
 		$\delta$          & $a$                        & $b$                       & $\alpha $                  & $\beta $                  & $B$                   \\ \hline
@@ -171,7 +171,7 @@ They are similar if we consider we only analyse a given symbol of the input once
 				(F1) edge[above						] node{$B/B\rightarrow$} (F2);
 	\end{tikzpicture}
 \end{center}
-\subsubsection{Item b}
+\questionitem{Item b}
 \begin{alignat*}{12}
 	& Q_0 aabbaaB &&\vdash \alpha  Q_1 abbaa B &&\vdash \alpha a Q_1 bbaa B &&\vdash \alpha a\beta  Q_2 baaB &&\vdash \alpha a\beta b Q_2 aaB \\
 	&             &&\vdash \alpha a\beta  Q_l b\beta aB &&\vdash \alpha a Q_l \beta b\beta aB &&\vdash \alpha Q_l a \beta b\beta a B &&\vdash Q_l \alpha a \beta b\beta aB &&\vdash \\
@@ -179,11 +179,11 @@ They are similar if we consider we only analyse a given symbol of the input once
 	&            &&\vdash \alpha \alpha \beta \beta Q_l \beta \beta B &&\vdash \alpha \alpha \beta Q_l \beta \beta \beta B &&\vdash \alpha \alpha Q_l \beta \beta \beta \beta B &&\vdash \alpha Q_l \alpha \beta \beta \beta \beta B && \vdash \\
 	& \alpha \alpha Q_0 \beta \beta \beta \beta B &&\vdash \alpha \alpha \beta F_1 \beta \beta \beta B &&\vdash \alpha \alpha \beta \beta F_1 \beta \beta B &&\vdash \alpha \alpha \beta \beta \beta F_1 \beta B &&\vdash \alpha \alpha \beta \beta \beta \beta F_1 B &&\vdash \alpha \alpha \beta \beta \beta \beta B F_2
 \end{alignat*}
-\subsubsection{Item c}
+\questionitem{Item c}
 This language belongs to the family of recursively enumerated languages.
 \pagebreak
-\subsection{Exercise 4}
-\subsubsection{Item a}
+\question{Exercise 4}
+\questionitem{Item a}
 \begin{itemize}
 	\itemsep0em
 	\item $q_0$: initial state, sets first symbol to $A$.
@@ -236,7 +236,7 @@ This language belongs to the family of recursively enumerated languages.
 				(qle)	edge[right					] node{$B/B\rightarrow$} (qe);
 	\end{tikzpicture}
 \end{center}
-\subsubsection{Item b}
+\questionitem{Item b}
 \begin{alignat*}{12}
 	       & B q_0 0000B &&\vdash BA q_e 000B &&\vdash B q_{lb} A000B &&\vdash q_{lb} BA000B  && \\
 	\vdash & B q_b A000B &&\vdash BC q_r 000B &&                      &&                      &&\vdash B q_{lb} CD00B &&\vdash q_{lb} BCD00B   && \\
@@ -252,8 +252,8 @@ This language belongs to the family of recursively enumerated languages.
 		   &             &&                   &&\vdash B q_e CCDDB    &&\vdash BA q_e CDDB    &&\vdash BAA q_e DDB    &&\vdash BAAA q_e DB    &&\\
 	\vdash & BAAAA q_e B &&\vdash BAAAAB q_f 
 \end{alignat*}
-\subsection{Exercise 5}
-\subsubsection{Item a}
+\question{Exercise 5}
+\questionitem{Item a}
 \begin{center}
 	\begin{tabular}{r | c c c c c}
 		$\delta$             & 0                        & 1                        & $=$                      & $+$                      & $B$                      \\ \hline
@@ -375,7 +375,7 @@ The machine generally works as follows:
 	\item Go to step \ref{itm:2}, until that step finds an equal sign ($=$) before it finds a bit. In that case, all digits are processed.
 \end{enumerate}
 This TM only processes correctly numbers with the same number of binary digits. Proper checks can be made \textit{a priori}.
-\subsubsection{Item b}
+\questionitem{Item b}
 \begin{alignat*}{12}
 	       & BBB i_0 =01+10B    &&\vdash BB i_1 B=01+10B    && \\
 	\vdash & BB0 q_{??} =01+10B &&\vdash BB0= q_{??} 01+10B &&\vdash BB0=0 q_{??} 1+10B &&\vdash BB0=01 q_{??} +10B &&\\
@@ -402,8 +402,8 @@ This TM only processes correctly numbers with the same number of binary digits. 
 		   &                    &&\vdash 011=B l_{??} B+BBB &&\vdash 011= l_{??} BB+BBB &&\vdash 011 l_{??} =BB+BBB &&\\
 	\vdash & 011= f BB+BBB      && 
 \end{alignat*}
-\subsection{Exercise 6}
-\subsubsection{Item a}
+\question{Exercise 6}
+\questionitem{Item a}
 \begin{center}
 	\begin{tabular}{r | c c c c c c}
 		$\delta$          & 0                     & 1                     & $[$                   & $,$                   & $]$                  & $B$ \\ \hline
@@ -481,7 +481,7 @@ This TM only processes correctly numbers with the same number of binary digits. 
 				;
 	\end{tikzpicture}
 \end{center}
-\subsubsection{Item b}
+\questionitem{Item b}
 \begin{alignat*}{12}
 		   & i_0 [10,10] &&\vdash B i_0 10,10] &&\vdash B1 i_0 0,10]  &&\vdash B10 i_0 ,10]  &&\vdash B10, i_0 10]  &&\vdash B10,1 i_0 0] &&\vdash B10,10 i_0 ] &&\\
 		   &             &&\vdash B10,1 i_1 0B &&\vdash B10, i_1 10B  &&\vdash B10 i_1 ,10B  && \\

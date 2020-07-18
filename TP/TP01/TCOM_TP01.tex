@@ -1,8 +1,8 @@
 \documentclass[docid=TP01]{tcom_TP}
 \begin{document}
-\setcounter{section}{0}
-\section{TP01 - Proof by induction}
-\subsection{Exercise 1}
+\setcounter{chapter}{0}
+\exam{TP01 - Proof by induction}
+\question{Exercise 1}
 \begin{theorem}
 	\begin{equation*}
 		\forall n\in\mathbb{N},\sum_{i=0}^{n}{(2i+1)}=(n+1)^2
@@ -31,7 +31,7 @@ Inductive step:
 Having proven the theorem holds for the base case, and the inductive step, we have proven the theorem.
 \end{proof}
 \pagebreak
-\subsection{Exercise 2}
+\question{Exercise 2}
 \begin{definition}[Set of all trees]
 	$\mathbb{T}$ is the set of all trees as constructed by (1), (2) and (3) of the definition of tree.
 \end{definition}
@@ -89,7 +89,7 @@ N(T)=E(T)+1 &\iff N(+S)                          =E(+S)+1 \\
 Having proven the theorem holds for the base case, and the inductive step, we have proven the theorem.
 \end{proof}
 \pagebreak
-\subsection{Exercise 3}
+\question{Exercise 3}
 \begin{definition}[Palindrome]
 \label{def:palindrome}
 $\alpha\in\Sigma^*$ is a palindrome iff:
@@ -147,7 +147,7 @@ Having proven the lemma holds for the base case, and the inductive step, we have
 	Consider any symbol $a\in\Sigma$. A string $\alpha=a+a$ is a palindrome by \eqref{itm:pal:2} of definition \ref{def:palindrome}. However, $L(\alpha)=2$ and as such does not verify $\alpha$, $L(\alpha) \equiv 1 \pmod{2}$. By lemma \eqref{lem:palodd}, $\alpha$ can not be a pal.
 \end{proof}
 \pagebreak
-\subsection{Exercise 4}
+\question{Exercise 4}
 \begin{theorem}
 	\begin{equation*}
 		\forall n \in \mathbb{N}\cap[4,+\infty),\exists a,b\in\mathbb{N}\colon 10n=20a+50b
@@ -172,7 +172,7 @@ Having proven the lemma holds for the base case, and the inductive step, we have
 	The inductive step means that, if we can decompose a number $n$, all numbers greater than $n$ with the same parity can also be decomposed.\\
 	Since we can decompose $n=4$ and $n=5$, we can decompose all numbers greater or equal to $4$ with both parities, thus the theorem is proven correct.
 \end{proof}
-\subsection{Exercise 5}
+\question{Exercise 5}
 \begin{theorem}
 	\begin{equation*}
 		\forall n \in \mathbb{N}\cap[2,+\infty),\prod_{i=2}^{n}{\left(1-\frac{1}{i}\right)}=\frac{1}{n}
@@ -200,7 +200,7 @@ Having proven the lemma holds for the base case, and the inductive step, we have
 	Having proven the theorem holds for the base case, and the inductive step, we have proven the theorem.
 \end{proof}
 \pagebreak
-\subsection{Exercise 6}
+\question{Exercise 6}
 \begin{theorem}
 	\begin{equation*}
 		\forall n \in \mathbb{N}\cap[1,+\infty),n^2+n \equiv 0 \pmod{2}
@@ -226,7 +226,7 @@ Having proven the lemma holds for the base case, and the inductive step, we have
 	\end{alignat*}
 	Having proven the theorem holds for the base case, and the inductive step, we have proven the theorem.
 \end{proof}
-\subsection{Exercise 7}
+\question{Exercise 7}
 \begin{lemma}
 	\begin{equation*}
 		\forall n \in \mathbb{N},\sum_{i=0}^{n}{i^3}={\left[\frac{n(n+1)}{2}\right]}^2
@@ -256,7 +256,7 @@ Having proven the lemma holds for the base case, and the inductive step, we have
 	Having proven the theorem holds for the base case, and the inductive step, we have proven the theorem.
 \end{proof}
 \pagebreak
-\subsection{Exercise 8}
+\question{Exercise 8}
 \begin{definition}[Binary tree]
 \label{def:bt}
 	$B$ is a binary tree iff:

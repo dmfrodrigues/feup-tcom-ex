@@ -1,12 +1,12 @@
 \documentclass[docid=PA07]{tcom_PA}
 \begin{document}
-\setcounter{section}{6}
-\section{Preparation Activity 7 - Context-Free Grammars (CFGs)}
+\setcounter{chapter}{6}
+\exam{Preparation Activity 7 - Context-Free Grammars (CFGs)}
 {
 \renewcommand{\thesubsubsection}{\thesubsection\alph{subsubsection}}
 \newcommand{\lmd}{\xRightarrow[lm]{}}
-\subsection{Exercise 1}
-\subsubsection{Item a}
+\question{Exercise 1}
+\questionitem{Item a}
 \begin{definition}[CFG ambiguity]
 A CFG is \textit{ambiguous} iff there exists a string $w$ that has at least two different syntax trees.
 \end{definition}
@@ -67,7 +67,7 @@ This CFG is ambiguous, because the string $a+a \times a$ has two different synta
 	\end{center}
 \end{minipage}
 \end{center}
-\subsubsection{Item b}
+\questionitem{Item b}
 \begin{alignat*}{6}
 	E
 	& \lmd (E)
@@ -119,8 +119,8 @@ This CFG is ambiguous, because the string $a+a \times a$ has two different synta
 				]
 	  \end{tikzpicture}
 \end{center}
-\subsection{Exercise 2}
-\subsubsection{Item a}
+\question{Exercise 2}
+\questionitem{Item a}
 G2 is not ambiguous. It however does not represent the same language of G1, something we can prove by considering the string $a \times (a+a)$, which by G1 has a derivation
 \begin{alignat*}{6}
 	E
@@ -135,7 +135,7 @@ G2 is not ambiguous. It however does not represent the same language of G1, some
 	&&\lmd a \times (a+a)
 \end{alignat*}
 but does not have a derivation by G2, since an expression $E$ can only be extended to the left as an expression, and not to the right.
-\subsubsection{Item b}
+\questionitem{Item b}
 G3 is not ambiguous. It however does not represent the same language of G1, something we can prove by considering the string $a \times a+a$, which by G1 has a derivation
 \begin{alignat*}{6}
 	E
@@ -148,7 +148,7 @@ G3 is not ambiguous. It however does not represent the same language of G1, some
 	&&\lmd a \times a+I
 	&&\lmd a \times a+a
 \end{alignat*}
-\subsubsection{Item c}
+\questionitem{Item c}
 The problem is that G4 describes the string $(a)a$ through the derivation
 \begin{alignat*}{7}
 	E
@@ -161,7 +161,7 @@ The problem is that G4 describes the string $(a)a$ through the derivation
 	&&\lmd (a)a
 \end{alignat*}
 and G1 can not describe this string.
-\subsubsection{Item d}
+\questionitem{Item d}
 G5 achieves non-ambiguity because it uses new variables to distinguish levels of priority and association rules. Thus, an expression $E$ can only be decomposed into one or a sum of several terms $T$, where each term $T$ can only be decomposed into an identifier $I$, or be promoted again to expression but only if inside parenthesis $(E)$.
 }
 \end{document}

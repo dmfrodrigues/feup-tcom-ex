@@ -1,11 +1,11 @@
 \documentclass[docid=CA08]{tcom_CA}
 \begin{document}
-\setcounter{section}{7}
-\section{Challenge Activity 8 - CFGs and Pushdown Automata}
-\subsection{Exercise 1}%
+\setcounter{chapter}{7}
+\exam{CFGs and Pushdown Automata}
+\question{Exercise 1}
 {
 \renewcommand{\thesubsubsection}{\thesubsection\alph{subsubsection}}
-\subsubsection{Item a}
+\questionitem{Item a}
 \begin{theorem}
 If $C$ is an ambiguous CFG, the equivalent PDA accepting by empty stack is non-deterministic.
 \end{theorem}
@@ -14,7 +14,7 @@ A CFG is ambiguous iff there exists a string $w$ with at least two different lef
 A PDA is non-deterministic iff there exists at least one triple $(q,a,X)$ such that $\#\delta(q, a, X) > 1$.\\
 The conversion method to a PDA accepting by empty stack will give rise to the following transition: $\delta(q_0, \varepsilon, A)=\{(q_0,B),(q_0,C)\}$, which originates two different contents for the stack. The theorem is thus proven.
 \end{proof}
-\subsubsection{Item b}
+\questionitem{Item b}
 Consider the CFG defined by the production rule $A \rightarrow a$. The conversion to a PDA accepting by empty stack will yield the transition function
 \begin{alignat*}{2}
 	&\delta(q_0,\varepsilon,A) &&= \{(q_0, a)\}\\

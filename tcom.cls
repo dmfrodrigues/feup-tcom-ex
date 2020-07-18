@@ -15,7 +15,6 @@
 \DeclareUnicodeCharacter{2205}{$\emptyset$}
 % Language
 \RequirePackage[english]{babel}
-%
 % Hyperreferences
 \RequirePackage{hyperref}
 % Section pagebreaks
@@ -44,7 +43,6 @@
 \newcommand\clearrow{\global\let\rowmac\relax}
 \clearrow
 % Tables with diagonal slashes
-%\RequirePackage{slashbox}
 \RequirePackage{diagbox}
 \newcommand\hlinetext{\noindent\makebox[\linewidth]{\rule{\linewidth}{0.4pt}}}
 % Math stuff
@@ -62,6 +60,8 @@
 \renewcommand\qedsymbol{$\blacksquare$}
 \theoremstyle{remark}
 \newtheorem*{remark}{Remark}
+% Zero-padding
+\RequirePackage{fmtcount}
 % Copyright page
 \newenvironment{secondpage}{
     \clearpage\null\vfill
@@ -82,6 +82,21 @@
 \RequirePackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[L]{\ifx\@@title\@empty\else\@@title\fi}
-\fancyfoot[L]{\ifx\@@author\@empty\else\@@author\fi}
-\fancyfoot[R]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\fancyhead[RE]{\MakeUppercase{\leftmark}}
+\fancyhead[LO]{\textit{\rightmark}}
+\fancyhead[LE, RO]{\thepage}
+\fancyfoot[LE, RO]{\ifx\@@author\@empty\else\@@author\fi}
+% Sections
+\makeatletter
+\renewcommand\thesection{\thechapter\ifnum\c@section>\z@ -P\arabic{section}\fi}
+\renewcommand\thesubsection{\thesection-\arabic{subsection}}
+\renewcommand\thesubsubsection{\thesubsection\alph{subsubsection}}
+\makeatother
+% Alias
+\setcounter{secnumdepth}{10}
+\newcommand\exam[1]{\chapter{#1}}
+\newcommand\exampart[1]{\section{#1}}
+\newcommand\question[1]{\subsection{#1}}
+\newcommand\questionitem[1]{\subsubsection{#1}}

@@ -1,11 +1,11 @@
 \documentclass[docid=TP06]{tcom_TP}
 \begin{document}
-\setcounter{section}{5}
-\section{TP06 - Regular languages}
+\setcounter{chapter}{5}
+\exam{TP06 - Regular languages}
 {
 \renewcommand{\thesubsubsection}{\thesubsection\alph{subsubsection}}
-\subsection{Exercise 1}
-\subsubsection{Item a}
+\question{Exercise 1}
+\questionitem{Item a}
 \begin{center}
 	\begin{tikzpicture}[->,>=stealth',node distance=2cm,initial text=$ $,]
 		\node[state, initial](q0) {$q_0$};
@@ -20,7 +20,7 @@
 				;
 	\end{tikzpicture}
 \end{center}
-\subsubsection{Item b}
+\questionitem{Item b}
 \begin{center}
 	\begin{tikzpicture}[->,>=stealth',node distance=2cm,initial text=$ $,]
 		\node[state, initial](q0) {$q_0$};
@@ -36,7 +36,7 @@
 				;
 	\end{tikzpicture}
 \end{center}
-\subsubsection{Item c}
+\questionitem{Item c}
 \begin{center}
 	\begin{minipage}{45mm}
 		\begin{center} \begin{tabular}{r | c c}
@@ -72,7 +72,7 @@
 	\end{minipage}
 \end{center}
 
-\subsubsection{Item d}
+\questionitem{Item d}
 \begin{center}
 	\begin{tikzpicture}[->,>=stealth',node distance=2cm,initial text=$ $,]
 		\node[state, accepting, initial](q0) {$\{q_0\}$};
@@ -93,8 +93,8 @@
 				;
 	\end{tikzpicture}
 \end{center}
-\subsection{Exercise 2}
-\subsubsection{Item a}
+\question{Exercise 2}
+\questionitem{Item a}
 \begin{alignat*}{2}
 	NFA N    &= (Q_N, \Sigma, \delta_N, q_0, F_N)\\
 	Q_N      &= \{1,2,3,4\}\\
@@ -103,7 +103,7 @@
 	F_N      &= \{2\}\\
 	\delta_N &\colon Q_N \times \Sigma \rightarrow \mathscr{P}(Q_N)
 \end{alignat*}
-\subsubsection{Item b}
+\questionitem{Item b}
 \begin{center} \begin{tabular}{r | c c}
 	$\delta_N     $ & $a      $ & $b    $ \\ \hline
 	$\rightarrow 1$ & $\{1,2\}$ & $\{3\}$ \\
@@ -111,7 +111,7 @@
 	$            3$ & $\{4\}  $ & $\{2\}$ \\
 	$            4$ & $\{2,3\}$ & $\{4\}$
 \end{tabular} \end{center}
-\subsubsection{Item c}
+\questionitem{Item c}
 \begin{center} \begin{tabular}{r | c c}
 	$\delta_N             $ & $a        $   & $b        $ \\ \hline
 	$            \emptyset$ & $\emptyset$   & $\emptyset$ \\
@@ -171,11 +171,11 @@
 				;
 	\end{tikzpicture}
 \end{center}
-\subsection{Exercise 3}
+\question{Exercise 3}
 \begin{equation*}
 	b^* a b^* a (a+b)^*
 \end{equation*}
-\subsection{Exercise 4}
+\question{Exercise 4}
 \begin{alignat*}{2}
 	     & L(b^*a^*)\cap L(a^*b^*) = L(a^*) \cup L(b^*)\\
 	\iff & (L(\varepsilon) \cup L(a^+) \cup L(b^+) \cup L(b^+a^+))\cap (L(\varepsilon) \cup L(a^+) \cup L(b^+) \cup L(a^+b^+)) = L(a^*) \cup L(b^*)\\
@@ -184,7 +184,7 @@
 	\iff & L(\varepsilon) \cup L(a^+) \cup L(b^+) = L(\varepsilon)\cup L(a^+) \cup L(b^+)
 \end{alignat*}
 We have thus proven this equality correct.
-\subsection{Exercise 5}
+\question{Exercise 5}
 \begin{center} \begin{tabular}{r | c c}
 	$\delta_D       $ & $0  $ & $1  $ \\ \hline
 	$\rightarrow q_1$ & $q_2$ & $q_3$\\
@@ -195,10 +195,10 @@ Aside from accept states, this DFA is the same as the one presented in TP05.10 a
 \begin{equation*}
 	R_{13}^{(3)} = 0^*1((0+1)0^*1)^*
 \end{equation*}
-\subsection{Exercise 6}
-\subsubsection{Item a}
+\question{Exercise 6}
+\questionitem{Item a}
 False, given the DFA equivalent to an NFA with $k$ states can have up to or exactly $2^k$ states.
-\subsubsection{Item b}
+\questionitem{Item b}
 True, given that $L^0 \subseteq L^*$ and $L^0=\{\varepsilon\}$.
 }
 \end{document}

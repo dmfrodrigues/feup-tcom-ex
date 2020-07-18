@@ -1,15 +1,15 @@
 \documentclass[docid=TP09]{tcom_TP}
 \begin{document}
-\setcounter{section}{8}
-\section{TP09 - Pushdown Automata (PDAs)}
+\setcounter{chapter}{8}
+\exam{TP09 - Pushdown Automata (PDAs)}
 {
 \renewcommand{\thesubsubsection}{\thesubsection\alph{subsubsection}}
-\subsection{Exercise 1}
-\subsubsection{Item a}
+\question{Exercise 1}
+\questionitem{Item a}
 \begin{alignat*}{2}
 	S \rightarrow aSb\mid aSbb\mid \varepsilon
 \end{alignat*}
-\subsubsection{Item b} \label{TP09_1b}
+\questionitem{Item b} \label{TP09_1b}
 PDA accepting by empty stack.
 \begin{center}
 \begin{minipage}[c]{0.30\textwidth}
@@ -30,7 +30,7 @@ PDA accepting by empty stack.
 \end{alignat*}
 \end{minipage}
 \end{center}
-\subsubsection{Item c}
+\questionitem{Item c}
 \begin{center}
 	\begin{tikzpicture}[->,>=stealth',node distance=1.7cm,initial text=$ $,state/.style={circle,inner sep=2pt}]
 		\footnotesize
@@ -99,7 +99,7 @@ PDA accepting by empty stack.
 	\end{tikzpicture}
 \end{center}
 \pagebreak
-\subsubsection{Item d}
+\questionitem{Item d}
 When the input string is $aaabb$, the stack has always more $b$'s than can be consumed from the remanescent input.
 \begin{center}
 	\begin{tikzpicture}[->,>=stealth',node distance=1.7cm,initial text=$ $,state/.style={circle,inner sep=2pt}]
@@ -198,7 +198,7 @@ When the input string is $aaabb$, the stack has always more $b$'s than can be co
 				;
 	\end{tikzpicture}
 \end{center}
-\subsection{Exercise 2} \label{TP09_2}
+\question{Exercise 2} \label{TP09_2}
 \begin{center}
 \begin{minipage}[c]{0.30\textwidth}
 \begin{alignat*}{2}
@@ -219,7 +219,7 @@ When the input string is $aaabb$, the stack has always more $b$'s than can be co
 \end{alignat*}
 \end{minipage}
 \end{center}
-\subsection{Exercise 3} \label{TP09_3}
+\question{Exercise 3} \label{TP09_3}
 \begin{center}
 \begin{minipage}[c]{0.4\textwidth}
 \begin{alignat*}{2}
@@ -239,8 +239,8 @@ When the input string is $aaabb$, the stack has always more $b$'s than can be co
 \end{alignat*}
 \end{minipage}
 \end{center}
-\subsection{Exercise 4}
-\subsubsection{Item a}
+\question{Exercise 4}
+\questionitem{Item a}
 \begin{center}
 	\begin{tikzpicture}[->,>=stealth',node distance=1.7cm,initial text=$ $,state/.style={circle,inner sep=2pt}]
 		\node[				](1) {$(p, 1100, Z)$};
@@ -260,9 +260,9 @@ When the input string is $aaabb$, the stack has always more $b$'s than can be co
 				;
 	\end{tikzpicture}
 \end{center}
-\subsubsection{Item b}
+\questionitem{Item b}
 The string $1100$ is accepted, given this PDA accepts by empty stack, and using it as input the PDA reaches an instantaneous description with empty remanescent input and empty stack.
-\subsubsection{Item c}
+\questionitem{Item c}
 \begin{center}
 	\begin{tikzpicture}[->,>=stealth',node distance=1.7cm,initial text=$ $,state/.style={circle,inner sep=2pt}]
 		\node[				](1) {$(p, 101, Z)$};
@@ -280,7 +280,7 @@ The string $1100$ is accepted, given this PDA accepts by empty stack, and using 
 				;
 	\end{tikzpicture}
 \end{center}
-\subsection{Exercise 5}
+\question{Exercise 5}
 This statement is false, given a CFG is ambiguous iff there exists a string with at least two different syntax trees. Having two different syntax trees can be guaranteed by having two different rightmost derivations, or two different leftmost derivations. Having different leftmost and rightmost derivations is not enough to be ambiguous.
 }
 \end{document}

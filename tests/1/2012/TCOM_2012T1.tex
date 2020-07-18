@@ -1,7 +1,8 @@
 \documentclass[docid=2012]{tcom_test1}
 \begin{document}
-\setcounter{section}{11}
-\section{2012 Test 1}
+\renewcommand\thesubsubsection{\thesubsection.\arabic{subsubsection}}
+\setcounter{chapter}{2011}
+\exam{2012 Test 1}
 \begin{center}
 \begin{tabular}{r | l}
 	Question & Answer   \\ \hline
@@ -39,8 +40,8 @@
 \end{tabular}
 \end{center}
 \setcounter{subsection}{3}
-\subsection{Problem 4}
-\subsubsection{Item 1}
+\question{Problem 4}
+\questionitem{Item 1}
 \begin{center}
 \begin{tabular}{r | c c}
 	$\delta_D                 $ & $0          $ & $1      $ \\ \hline
@@ -51,22 +52,22 @@
 \end{tabular}
 \end{center}
 \setcounter{subsection}{4}
-\subsection{Problem 5}
-\subsubsection{Item 1}
+\question{Problem 5}
+\questionitem{Item 1}
 \begin{enumerate}[label=(\alph*)]
 	\item \label{itm:5_1_a} Does not accept $ababababa$
 	\item \label{itm:5_1_b} Does not accept $bab$
 	\item \label{itm:5_1_correct} Correct answer
 	\item Incorrect because of the answers to \ref{itm:5_1_a} and \ref{itm:5_1_b} 
 \end{enumerate}
-\subsubsection{Item 2}
+\questionitem{Item 2}
 \begin{enumerate}[label=(\alph*)]
 	\item \label{itm:5_2_a} Does not accept $baaba$
 	\item \label{itm:5_2_b} Does not accept $bab$
 	\item \label{itm:5_2_correct} Correct answer
 	\item Incorrect because of the answers to \ref{itm:5_2_a} and \ref{itm:5_2_b} 
 \end{enumerate}
-\subsubsection{Item 3}
+\questionitem{Item 3}
 \begin{enumerate}[label=(\alph*)]
 	\item Does not accept $bab$
 	\item \label{itm:5_3_correct} Correct answer
@@ -74,25 +75,25 @@
 	\item Accepts $aab$
 \end{enumerate}
 \setcounter{subsection}{5}
-\subsection{Problem 6}
+\question{Problem 6}
 \setcounter{subsubsection}{4}
-\subsubsection{Item 5}
+\questionitem{Item 5}
 \begin{enumerate}[label=(\alph*)]
 	\item Accepts $bb$
 	\item Does not accept $b$
 	\item Does not accept $\varepsilon$
 	\item \label{itm:6_5_correct} Correct answer
 \end{enumerate}
-\subsection{Problem 7}
-\subsubsection{Item 1}
+\question{Problem 7}
+\questionitem{Item 1}
 \begin{enumerate}[label=(\alph*)]
 	\item \label{itm:7_1_correct} (NW) Correct answer
 	\item (NE) Does not accept $bbab$
 	\item (SW) Does not accept $\varepsilon$
 	\item (SE) Does not accept $bbab$
 \end{enumerate}
-\subsection{Problem 8}
-\subsubsection{Item 1}
+\question{Problem 8}
+\questionitem{Item 1}
 \begin{enumerate}[label=(\alph*)]
 	\item \textbf{False}. $\{0^n1^n\mid n \geq 0\} \in L(0^*1^*)$ and the first is not regular.
 	\item \textbf{True}. Convert them to DFAs, minimize them and compare.

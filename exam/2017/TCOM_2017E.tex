@@ -1,11 +1,11 @@
 \documentclass[docid=2017/18]{tcom_exam}
 \begin{document}
-\setcounter{section}{16}
-\section{Exam 2017/18}
+\setcounter{chapter}{16}
+\exam{Exam 2017/18}
 {
 \renewcommand{\thesubsubsection}{\thesubsection\alph{subsubsection}}
 \subsection{Group I}
-\subsubsection{Item a}
+\questionitem{Item a}
 \begin{alignat*}{2}
 	&\varepsilon close(q_0&&)=\{q_0,q_1,q_2,q_3\}\\
 	&\varepsilon close(q_1&&)=\{q_1,q_2,q_3\}\\
@@ -13,7 +13,7 @@
 	&\varepsilon close(q_3&&)=\{q_3\}\\
 	&\varepsilon close(q_4&&)=\{q_3,q_4\}
 \end{alignat*}
-\subsubsection{Item b}
+\questionitem{Item b}
 \begin{minipage}[c]{0.7\textwidth}
 	\begin{center}
 		\begin{tabular}{r | c c}
@@ -61,7 +61,7 @@
 				;
 	\end{tikzpicture}
 \end{center}
-\subsubsection{Item c}
+\questionitem{Item c}
 \begin{minipage}[c]{0.49\textwidth}
 	\begin{center}
 		\begin{tabular}{r || c | c | c | c | c}
@@ -88,7 +88,7 @@
 \end{minipage} \vspace*{1em} \\
 All states are distinguishable, so the automaton is already minimized.
 \pagebreak
-\subsubsection{Item d}
+\questionitem{Item d}
 \begin{minipage}[c]{0.33\textwidth}
 	\begin{center}
 		\begin{tikzpicture}[->,>=stealth',node distance=2cm,initial text=$ $,]
@@ -255,7 +255,7 @@ All states are distinguishable, so the automaton is already minimized.
 	&= (a(ba)^*+ \varepsilon(ba)^*)(b+\varepsilon)\\
 	&= (a+\varepsilon)(ba)^*(b+\varepsilon)
 \end{alignat*}
-\subsubsection{Item e}
+\questionitem{Item e}
 \begin{minipage}[c]{0.49\textwidth}
 	\begin{center}
 		\begin{tabular}{r || c | c}
@@ -303,7 +303,7 @@ All states are distinguishable, so the automaton is already minimized.
 	\end{center}
 \end{minipage}
 \pagebreak
-\subsubsection{Item f}
+\questionitem{Item f}
 \begin{alignat*}{3}
 	&L   &&= \{w \in \{a,b,c\}^* && \colon 2|\#a~\wedge~2|\#b~\wedge~2|\#c\}\\
 	&L_1 &&= \{w \in \{a,b\}^* && \colon 2|\#a~\wedge~2|\#b\}\\
@@ -315,7 +315,7 @@ To get the DFA of $L$ ($D$) from the DFA of $L_1$ ($D_1$), I need to:
 	\item Define $D$ as $D=D_1' \times D_c$ where $(q_1,q_2) \in F_D$ is an accept state iff $q_1 \in F_{D_1'}$ and $q_2 \in F_{D_c}$.
 \end{enumerate}
 In language notation, $L(D)=L(D_1') \cap L(D_c)$.
-\subsubsection{Item g}
+\questionitem{Item g}
 \begin{itemize}
 	\item Horizontal dash: $H$
 	\item Slash (/): $S$
@@ -335,10 +335,10 @@ In language notation, $L(D)=L(D_1') \cap L(D_c)$.
 \end{alignat*}
 \pagebreak
 \subsection{Group II}
-\subsubsection{Item a}
+\questionitem{Item a}
 Assume by absurd that there is a DFA with $N$ states that is equivalent to $L$. The least information that completely describes the status of the string processing (for our goal of finding if there are as many $yes$ as $no$) is the difference between the number of $yes$ and $no$ found so far. Now consider string $w=(yes)^{N+1}(no)^{N+1}$. By the time the $N+1$ $yes$ were processed, the state should indicate there are more $N+1$ processed $yes$ than $no$, but we have already passed through the states that count the difference from $0$ to $N-1$, so we can not count any more $yes$.\par
 Thus, $L$ is not regular.
-\subsubsection{Item b}
+\questionitem{Item b}
 $L$ is regular, given the following DFA is equivalent to $L$:
 \begin{center}
 	\begin{tikzpicture}[->,>=stealth',node distance=2cm,initial text=$ $,]
@@ -366,7 +366,7 @@ $L$ is regular, given the following DFA is equivalent to $L$:
 	\end{tikzpicture}
 \end{center}
 \subsection{Group III}
-\subsubsection{Item a}
+\questionitem{Item a}
 \begin{minipage}[c]{0.49\textwidth}
 	\begin{alignat*}{5}
 		S &\implies (S)S &&\implies ((S)S)S &&\implies (()S)S\\
@@ -395,16 +395,16 @@ $L$ is regular, given the following DFA is equivalent to $L$:
 		\end{tikzpicture}
 	\end{center}
 \end{minipage}
-\subsubsection{Item b}
+\questionitem{Item b}
 $G$ is not ambiguous, because no string can have two different syntax trees or two different left-most derivations.\par
 The recursivity in $G$ is to derive nested parenthesis, and to derive sequences of parenthesis.
-\subsubsection{Item c}
+\questionitem{Item c}
 \begin{alignat*}{2}
 	S &\rightarrow TS \mid \varepsilon\\
 	T &\rightarrow U) \\
 	U &\rightarrow (S 
 \end{alignat*}
-\subsubsection{Item d}
+\questionitem{Item d}
 \begin{center}
 	\begin{tikzpicture}[->,>=stealth',node distance=2.5cm,initial text=$ $,]
 		\node[state, initial				] (0) {$0$};
@@ -424,25 +424,25 @@ The recursivity in $G$ is to derive nested parenthesis, and to derive sequences 
 				;
 	\end{tikzpicture}
 \end{center}
-\subsubsection{Item e}
+\questionitem{Item e}
 The PDA is non-deterministic, given $\delta(1,\varepsilon,S)=\{(1,(S)S),(1,\varepsilon)\} \implies \#\delta(1,\varepsilon,S)=2 \geq 1$.
-\subsubsection{Item f}
+\questionitem{Item f}
 \begin{alignat*}{15}
 	& (0,(),X_0) && \vdash (1,(),SX_0) && \vdash (1,(),(S)SX_0) && \vdash (1,),S)SX_0) && \vdash (1,),)SX_0) \\
 	&            && \vdash (1,\varepsilon,SX_0) && \vdash (1,\varepsilon,X_0) && \vdash (2,\varepsilon,X_0) && 
 \end{alignat*}
-\subsubsection{Item g}
+\questionitem{Item g}
 \begin{alignat*}{2}
 	S &\rightarrow (S)S\mid \varepsilon
 \end{alignat*}
 \subsection{Group IV}
-\subsubsection{Item a}
+\questionitem{Item a}
 \begin{enumerate}
 	\item Ignore first $a$.
 	\item Find first $b$, replace by $B$. If no $b$ was found, check if at least an $\alpha$ is found. If so, go to end and check there are only $\alpha$'s and $\gamma$'s. 
 	\item Find first $a$ or $c$, and replace by $\alpha$ or $\gamma$. Go to beginning and go to step (2).
 \end{enumerate}
-\subsubsection{Item b}
+\questionitem{Item b}
 \begin{center}
 	\begin{tabular}{r | c c c c c c c }
 		$\delta$          & $a$                     & $b$                   & $c$                     & $\alpha$                   & $\gamma$                   & $B$ \\ \hline
@@ -454,7 +454,7 @@ The PDA is non-deterministic, given $\delta(1,\varepsilon,S)=\{(1,(S)S),(1,\vare
 		$         ^* f  $ &                         &                       &                         &                            &                            & 
 	\end{tabular}
 \end{center}
-\subsubsection{Item c}
+\questionitem{Item c}
 \begin{alignat*}{12}
 	& q_i abbac &&\vdash B q_0 bbac       B &&\vdash BB q_1 bac       B &&\vdash BBb q_1 ac      B &&\vdash BB l b\alpha c     B &&\vdash B l Bb\alpha c B &&\\
 	&           &&\vdash BB q_0 b\alpha c B &&\vdash BBB q_1 \alpha c B &&\vdash BBB\alpha q_1 c B &&\vdash BBB l \alpha\gamma B &&\vdash BB l B\alpha\gamma B &&\\

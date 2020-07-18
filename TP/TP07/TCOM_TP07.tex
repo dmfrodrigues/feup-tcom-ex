@@ -1,7 +1,7 @@
 \documentclass[docid=TP07]{tcom_TP}
 \begin{document}
-\setcounter{section}{6}
-\section{TP07 - Properties of regular languages}
+\setcounter{chapter}{6}
+\exam{TP07 - Properties of regular languages}
 {
 \renewcommand{\thesubsubsection}{\thesubsection\alph{subsubsection}}
 \begin{lemma}[Pumping lemma for REs] \label{lem:pump}
@@ -16,8 +16,8 @@ Given an infinite regular language $L \in \Sigma^*$,
 	\end{cases}
 \end{equation*} 
 \end{lemma}
-\subsection{Exercise 1}
-\subsubsection{Item a}
+\question{Exercise 1}
+\questionitem{Item a}
 \begin{theorem}
 	$L=\{0^n1^{2n}\mid n\geq 1\}$ is not a regular language.
 \end{theorem}
@@ -68,7 +68,7 @@ So, let's instantiate to $k=2$.
 which is trivially false given that $b \geq 1$. Now all that is left to do is conclude the contradiction will propagate all the way up the proof, thus proving the theorem correct.
 \end{proof}
 \pagebreak
-\subsubsection{Item b}
+\questionitem{Item b}
 \begin{theorem}
 $L=\{v1^{|v|}\mid v \in \{0,1\}^*\}$ is not a regular language.
 \end{theorem}
@@ -117,11 +117,11 @@ This means that if $|w| \equiv 1 \pmod{2}$ then this system is false.\\
 If $|w| \equiv 0 \pmod{2}$, then for $w$ to belong to $L$ it would be necessary to check that the last $|w|/2$ symbols are all $1$. This is not the case, because the last $|w|/2$ symbols are $0^{|w|/2-n}1^n$ and $|w|/2-n > 0$ (given that $|w|=2n+b \iff |w|/2=n+b/2 \iff |w|/2-n=b/2$ and $b \geq 1$).\\
 Now all that is left to do is conclude the contradiction will propagate all the way up the proof, thus proving the theorem correct.
 \end{proof}
-\subsubsection{Item c}
+\questionitem{Item c}
 If the language can be represented by a RE, then it is regular. Thus, the language of the strings given by $(00+11)^*$ is trivially regular.
-\subsubsection{Item d}
+\questionitem{Item d}
 Idem.
-\subsubsection{Item e}
+\questionitem{Item e}
 \begin{theorem}
 $L=\{0^n\mid n \text{ is a perfect square}\}$ is not a regular language.
 \end{theorem}
@@ -186,8 +186,8 @@ The left-hand side of the inequality describes a parabola facing upwards and int
 So, a function $f(n,b)=\sqrt{n+8}$ would perfectly fit its purpose.\\
 Given we found such a function $f$, we have found a definition of $x$ that creates a contradiction. Now all that is left to do is conclude the contradiction will propagate all the way up the proof, thus proving the theorem correct.
 \end{proof}
-\subsection{Exercise 2}
-\subsubsection{Item a}
+\question{Exercise 2}
+\questionitem{Item a}
 \begin{theorem}
 If $L$ is regular then $L/a$ is regular.
 \end{theorem}
@@ -207,34 +207,34 @@ If $L$ is regular, it can be represented by a DFA. Let us call it $D$. We will p
 \end{enumerate}
 This is exactly the algorithm we wanted to design. We have thus proven the theorem correct.
 \end{proof}
-\subsubsection{Item b}
+\questionitem{Item b}
 \begin{theorem}
 If $L$ is regular then $a\backslash L$ is regular.
 \end{theorem}
 \begin{proof}
 It is trivial that $a \backslash L=(L^{-1}/a)^{-1}$. Given that regular languages are closed to the reverse $^{-1}$ and the quotient $/$ operations, $L^{-1}$, $L^{-1}/a$ and $(L^{-1}/a)^{-1}$ are all regular languages, thus making $a \backslash L$ a regular language.
 \end{proof}
-\subsubsection{Item c}
+\questionitem{Item c}
 \begin{itemize}
 	\item False. $L=\{b\}$, $L/a=\emptyset$, $(L/a)a=\emptyset$.
 	\item False. $L=\{b\}$, $a \backslash L = \emptyset$, $a(a \backslash L)=\emptyset$.
 	\item True.
 	\item True.
 \end{itemize}
-\subsection{Exercise 3}
+\question{Exercise 3}
 \begin{theorem}
 Given $L_2=\{0^n1^n\mid n \geq 0\}$ is not a regular language, $L_1=\{0^i1^j\mid i \neq j\}$ is not a regular language.
 \end{theorem}
 \begin{proof}
 $L_2=\overline{L_1} \cap L(0^*1^*)$. Assuming $L_1$ is regular, and given regular languages are closed to negation $\overline{L}$ and intersection $\cap$, and since $L(0^*1^*)$ is regular, then $L_2$ is also regular. The theorem we want to prove is the contrapositive of what was just said, so the theorem is thus proven correct.
 \end{proof}
-\subsection{Exercise 4}
-\subsubsection{Item a}
+\question{Exercise 4}
+\questionitem{Item a}
 Consider all strings $w \in \Sigma^*$ such that $n \leq |w| < 2n$ where $n$ is the number of states of the DFA, and test each of them for acceptance by the DFA. If one of them is accepted, then it means there is a loop in the DFA, because a loopless DFA would not be able to recognize a string with at least $n$ symbols without having at least $n+1$ states. String $w=x\,y^2\,z$ getting accepted means the string took string $x$ to reach the loop, went around the loop twice, each time using string $y$, and then took string $z$ to reach an accept state. This implies any string of the form $x\,y^k\,z$ is accepted by the language, thus making it infinite.
-\subsubsection{Item b}
+\questionitem{Item b}
 Consider the negated DFA, and check if the corresponding language is empty by testing if any string $w \in \Sigma^*$ such that $0 \leq |w| < n$ (where $n$ is the number of states of the DFA) is accepted.
-\subsection{Exercise 5}
-\subsubsection{Item a}
+\question{Exercise 5}
+\questionitem{Item a}
 First step: if $p$ is final and $q$ is not, $(p,q)$ are distinguishable.
 \begin{center} \begin{tabular}{r || c | c | c | c | c | c | c | c | c}
 	   & A  & B  & $^*$C & D  & E  & $^*$F & G  & H  & $^*$I \\ \hline \hline
@@ -261,7 +261,7 @@ Second step: repeat while there are changes; if $\delta(p,a)$ and $\delta(q,a)$ 
 	H  & X  &    & X  & X  &    & X  & X  & \cellcolor{gray} & \cellcolor{gray} \\ \hline
 	$^*$I & X  & X  &    & X  & X  &    & X  & X  & \cellcolor{gray} 
 \end{tabular} \end{center}
-\subsubsection{Item b}
+\questionitem{Item b}
 \begin{center}
 \begin{minipage}[c]{0.45\textwidth}
 \begin{center} \begin{tabular}{r | c c}
@@ -287,8 +287,8 @@ Second step: repeat while there are changes; if $\delta(p,a)$ and $\delta(q,a)$ 
 \end{center}
 \end{minipage}
 \end{center}
-\subsection{Exercise 6}
-\subsubsection{Item a}
+\question{Exercise 6}
+\questionitem{Item a}
 \begin{center} \begin{tabular}{r | c c}
 	$\delta$ & $a$ & $b$ \\ \hline
 	$\rightarrow^*$A  & B  & E  \\
@@ -339,7 +339,7 @@ Second step: repeat while there are changes; if $\delta(p,a)$ and $\delta(q,a)$ 
 \end{center}
 \end{minipage}
 \end{center}
-\subsubsection{Item b}
+\questionitem{Item b}
 The automata $FA_1$ and $FA_2$ are equivalent, given the only difference between them is the names of the states.
 }
 \end{document}

@@ -1,11 +1,11 @@
 \documentclass[docid=TP08]{tcom_TP}
 \begin{document}
-\setcounter{section}{7}
-\section{TP08 - Context-Free Grammars}
+\setcounter{chapter}{7}
+\exam{TP08 - Context-Free Grammars}
 {
 \renewcommand{\thesubsubsection}{\thesubsection\alph{subsubsection}}
-\subsection{Exercise 1}
-\subsubsection{Item a}
+\question{Exercise 1}
+\questionitem{Item a}
 \begin{minipage}[b]{0.6\textwidth}
 	Left-most derivation:
 	\begin{alignat*}{3}
@@ -42,7 +42,7 @@
 		\end{tikzpicture}
 	\end{center}
 \end{minipage}
-\subsubsection{Item b}
+\questionitem{Item b}
 \begin{minipage}[b]{0.6\textwidth}
 	Left-most derivation:
 	\begin{alignat*}{4}
@@ -83,9 +83,9 @@
 	\end{center}
 \end{minipage}
 \pagebreak
-\subsection{Exercise 2}
+\question{Exercise 2}
 \begin{minipage}[c]{0.4\textwidth}
-\subsubsection{Item a}
+\questionitem{Item a}
 \begin{center}
 	\begin{tikzpicture}
  		\Tree 	[.S
@@ -111,10 +111,10 @@
 \end{center}
 \end{minipage}%
 \begin{minipage}[c]{0.6\textwidth}
-\subsubsection{Item b}
+\questionitem{Item b}
 The accepted language is the set of all strings started and ended with zeros that have double the number of 0's at the end than at the beginning, and that between those two groups of zeros have an odd amount of 1's followed by the same amount of 2's.
 \end{minipage}
-\subsubsection{Item c}
+\questionitem{Item c}
 \begin{theorem}
 	$L=\{0^m 1^n 2^n 0^{2m}\mid n \equiv 1 \pmod{2} \}$ is equivalent to grammar ${G=(\{S,B,C\},\{0,1,2\},P,S)}$
 	\begin{alignat*}{2}
@@ -181,8 +181,8 @@ Then, we can build the syntax tree of $0W00$ as:
 This means that $0W00 \in G$. One can also easily check that, given that $W=0^m 1^n 2^n 0^{2m}$, then it is true that $0W00=0^{m+1} 1^n 2^n 0^{2(m+1)}$, thus $0W00 \in L$.
 \end{proof}
 \pagebreak
-\subsection{Exercise 3}
-\subsubsection{Item a}
+\question{Exercise 3}
+\questionitem{Item a}
 \begin{theorem}
 Given grammar $G$ defined by $S \rightarrow aS\mid Sb\mid a\mid b$, $L(G) \subseteq \{a^m b^n \colon m+n \geq 1\}$.
 \end{theorem}
@@ -195,9 +195,9 @@ Inductive step: $w'=wb=a^m b^n b= a^m b^{n+1}$, so $w' \in L$.\\
 We have thus proven the theorem correct for the base cases, and for all the productions of $S$, thus proving the theorem correct.
 \end{proof}
 We can observe that a string of the form $a^m b^n$ does not have any $ba$ substring, thus meaning the exercise statement is thus satisfied.
-\subsubsection{Item b}
+\questionitem{Item b}
 $L(G)$ is the set of all nonempty strings with 0 or more $a$'s followed by 0 or more $b$'s.
-\subsection{Exercise 4}
+\question{Exercise 4}
 \textcolor{red}{Incomplete}\\
 If we decide not to use the suggestion, we can use another method. We can easily build a PDA equivalent to any DFA by following this algorithm:
 \begin{itemize}
@@ -210,12 +210,12 @@ If we decide not to use the suggestion, we can use another method. We can easily
 \end{itemize}
 With this, one can state that all RLs can be represented by a DFA, which can in turn be converted to an equivalent PDA, thus proving that all RLs are CFLs.
 \pagebreak
-\subsection{Exercise 5}
-\subsubsection{Item a}
+\question{Exercise 5}
+\questionitem{Item a}
 \begin{alignat*}{2}
 	E \rightarrow EE\mid (E)\mid E+E\mid E^*\mid \emptyset\mid 0\mid 1\mid e
 \end{alignat*}
-\subsubsection{Item b}
+\questionitem{Item b}
 $W=e+0+1$.\\
 \begin{minipage}[t]{0.49\textwidth}
 \begin{center}
@@ -247,7 +247,7 @@ $W=e+0+1$.\\
 	\end{tikzpicture}
 \end{center}
 \end{minipage}
-\subsubsection{Item c}
+\questionitem{Item c}
 \begin{alignat*}{2}
 	E &\rightarrow S+E\mid S \\
 	S &\rightarrow GS\mid G \\
@@ -257,17 +257,17 @@ $W=e+0+1$.\\
 \end{alignat*}
 Precedence is respected, given each symbol either performs an operation or "downgrades" the variable, and ordering from less to more precedence is respected (including parenthesis that upgrade a factor to an expression).\par
 Association is respected, given that in associative operations (+ and concatenation), the right-hand side keeps the same rank but the left-hand side is downgraded.
-\subsection{Exercise 6}
-\subsubsection{Item a}
+\question{Exercise 6}
+\questionitem{Item a}
 ItemList $\rightarrow$ <LI> Doc </LI>
-\subsubsection{Item b}
+\questionitem{Item b}
 Element $\rightarrow$ Text | <P> Doc | <B> Doc </B> | <OL> List </OL> | <UL> List </UL>
-\subsubsection{Item c}
+\questionitem{Item c}
 Element $\rightarrow$ Text | <P> Doc | <B> Doc </B> | <OL> List </OL> | <TABLE> Table </TABLE>\\
 Table $\rightarrow$ <TR> FirstLine </TR> RestTable | $\varepsilon$\\
 FirstLine $\rightarrow$ <TH> Doc </TH> FirstLine | $\varepsilon$\\
 RestTable $\rightarrow$ <TD> Doc </TD> RestTable | $\varepsilon$
-\subsection{Exercise 7}
+\question{Exercise 7}
 \begin{theorem}
 	Let $G$ be a CFG without $\varepsilon$-productions. If $w \in L(G)$, $|w|=n$ and $w$ has a derivation in $m$ steps, then it has a syntax tree with $n+m$ nodes. 
 \end{theorem}
@@ -278,8 +278,8 @@ On each derivation, a stack symbol is replaced by a sequence of stack and termin
 It is thus understandable that, in a syntax tree, there are as many leafs as terminal symbols in $w$, and as many non-leaf nodes as derivation steps.
 \end{proof}
 \pagebreak
-\subsection{Exercise 8}
-\subsubsection{Item a}
+\question{Exercise 8}
+\questionitem{Item a}
 \begin{definition}
 $G$ is the grammar defined by $S \rightarrow aSb\mid bSa\mid SS\mid \varepsilon$.
 \end{definition}
@@ -323,11 +323,11 @@ Lemma \ref{lem:simplemma} fundamentally simplifies this proof, because now for e
 \begin{proof}
 Trivial from lemmas \ref{lem:AimpB} and \ref{lem:BimpA}.
 \end{proof}
-\subsubsection{Item b}
+\questionitem{Item b}
 \begin{equation*}
 	S \implies SS \implies SaSb \implies SaaSbb \implies Saabb \implies bSaaabb \implies baaabb
 \end{equation*}
-\subsubsection{Item c}
+\questionitem{Item c}
 $G$ is ambiguous. Consider the string $w=abab$, which has at least two distinct syntax trees:\\
 \begin{minipage}[t]{0.49\textwidth}
 \begin{center}
@@ -350,27 +350,27 @@ $G$ is ambiguous. Consider the string $w=abab$, which has at least two distinct 
 	\end{tikzpicture}
 \end{center}
 \end{minipage}
-\subsection{Exercise 9}
-\subsubsection{Item a}
+\question{Exercise 9}
+\questionitem{Item a}
 \begin{alignat*}{2}
 	S &\rightarrow 0T \\
 	T &\rightarrow 00T1\mid \varepsilon
 \end{alignat*}
-\subsubsection{Item b}
+\questionitem{Item b}
 \begin{alignat*}{2}
 	S &\rightarrow Tb \\
 	T &\rightarrow Tb\mid aTb\mid aaTb\mid \varepsilon
 \end{alignat*}
-\subsubsection{Item c}
+\questionitem{Item c}
 \begin{alignat*}{2}
 	S &\rightarrow T1 \\
 	T &\rightarrow T1\mid 0T1\mid U \\
 	U &\rightarrow 1V \\
 	V &\rightarrow 1V\mid 1V0\mid \varepsilon
 \end{alignat*}
-\subsection{Exercise 10}
+\question{Exercise 10}
 Language of all binary strings that, when inverted and negated, are read the same.
-\subsection{Exercise 11}
+\question{Exercise 11}
 Yes, it is ambiguous. Consider the string $w=0101$, which has at least two distinct syntax trees:\\
 \begin{minipage}[t]{0.49\textwidth}
 \begin{center}

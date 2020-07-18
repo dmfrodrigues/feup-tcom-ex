@@ -1,8 +1,8 @@
 \documentclass[docid=CA04]{tcom_CA}
 \begin{document}
-\setcounter{section}{3}
-\section{Challenge Activity 4 - \texorpdfstring{$\varepsilon$}{epsilon}-NFAs}
-\subsection{Exercise 1}
+\setcounter{chapter}{3}
+\exam{\texorpdfstring{$\varepsilon$}{epsilon}-NFAs}
+\question{Exercise 1}
 The NFA equivalent to a given $\varepsilon$-NFA is given by
 \begin{alignat*}{2}
 	NFA &= (\Sigma, Q_N, \delta_N, q_N, F_N)\\
@@ -14,7 +14,7 @@ The NFA equivalent to a given $\varepsilon$-NFA is given by
 \end{alignat*}
 where $T(S,A)$ are states reachable from any of the members of $S$ through transitions with $a\in \Sigma$.\\
 Informally, this corresponds to replacing every occurence of a state by its $\varepsilon$-closure, given all states of $\varepsilon close(q)$ can be reached the same way $q$ can.
-\subsection{Exercise 2}
+\question{Exercise 2}
 \begin{alignat*}{2}
     NFA &= (\Sigma, Q_N, \delta_N, q_N, F_N)\\
     \Sigma &= \{a,b\}\\
@@ -87,6 +87,6 @@ Replacing sets by the $\varepsilon$-closures they correspond to, we have
 	\end{tikzpicture}
 \end{center}
 Both the provided $\varepsilon$-NFA and the constructed NFA accept the same strings: those ended in $abb$.
-\subsection{Exercise 3}
+\question{Exercise 3}
 I think my scheme can be applied to every $\varepsilon$-NFA.
 \end{document}

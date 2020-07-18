@@ -1,11 +1,11 @@
 \documentclass[docid=TP04]{tcom_TP}
 \begin{document}
-\setcounter{section}{3}
-\section{TP04 - \texorpdfstring{$\varepsilon$}{e}-NFAs}
+\setcounter{chapter}{3}
+\exam{TP04 - \texorpdfstring{$\varepsilon$}{e}-NFAs}
 {
 \renewcommand{\thesubsubsection}{\thesubsection\alph{subsubsection}}
-\subsection{Exercise 1}
-\subsubsection{Item a}
+\question{Exercise 1}
+\questionitem{Item a}
 \begin{center}
 	\begin{tikzpicture}[->,>=stealth',node distance=1.5cm,initial text=$ $,]
 		\footnotesize
@@ -32,7 +32,7 @@
 				;
 	\end{tikzpicture}
 \end{center}
-\subsubsection{Item b}
+\questionitem{Item b}
 This $\varepsilon$-NFA is actually a regular NFA; suggestions for a simpler, working $\varepsilon$-NFA are welcome.
 \begin{center}
 	\begin{tikzpicture}[->,>=stealth',node distance=1.46cm,initial text=$ $,]
@@ -63,16 +63,16 @@ This $\varepsilon$-NFA is actually a regular NFA; suggestions for a simpler, wor
 				;
 	\end{tikzpicture}
 \end{center}
-\subsection{Exercise 2}
-\subsubsection{Item a}
+\question{Exercise 2}
+\questionitem{Item a}
 \begin{alignat*}{2}
 	\varepsilon close(p)&=\{p,q,r\}\\
 	\varepsilon close(q)&=\{q\}\\
 	\varepsilon close(r)&=\{r\}
 \end{alignat*}
-\subsubsection{Item b}
+\questionitem{Item b}
 We will use the DFA from \ref{sssec:TP04_2_c} to answer to this item. The only reject state is $\emptyset$, which is also a dead state, so the only strings that are not accepted are the ones that end up locked in $\emptyset$. From that, it is easy to conclude that the only strings with length less or equal to $3$ that are rejected are $bba$ and $bbb$.
-\subsubsection{Item c} \label{sssec:TP04_2_c}
+\questionitem{Item c} \label{sssec:TP04_2_c}
 \begin{center}
 	\begin{tikzpicture}[->,>=stealth',node distance=2cm,initial text=$ $,]
 		\footnotesize
@@ -116,8 +116,8 @@ We will use the DFA from \ref{sssec:TP04_2_c} to answer to this item. The only r
 \end{center}
 \end{minipage}
 \end{center}
-\subsection{Exercise 3}
-\subsubsection{Item a}
+\question{Exercise 3}
+\questionitem{Item a}
 This $\varepsilon$-NFA is actually a regular NFA; suggestions for a simpler, working $\varepsilon$-NFA are welcome.
 \begin{center}
 	\begin{minipage}[c]{0.35\textwidth}
@@ -157,7 +157,7 @@ This $\varepsilon$-NFA is actually a regular NFA; suggestions for a simpler, wor
 		\end{center}
 	\end{minipage}
 \end{center}
-\subsubsection{Item b}
+\questionitem{Item b}
 This $\varepsilon$-NFA is actually a regular NFA; suggestions for a simpler, working $\varepsilon$-NFA are welcome.
 \begin{center}
 	\begin{minipage}[c]{0.33\textwidth}
@@ -205,7 +205,7 @@ This $\varepsilon$-NFA is actually a regular NFA; suggestions for a simpler, wor
 		\end{center}
 	\end{minipage}
 \end{center}
-\subsection{Exercise 4}
+\question{Exercise 4}
 \begin{center}
 	\begin{minipage}[c]{0.4\textwidth}
 		\begin{alignat*}{2}
