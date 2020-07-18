@@ -1,10 +1,10 @@
 \documentclass[docid=2018/19]{tcom_exam}
 \begin{document}
-\setcounter{chapter}{17}
+\setcounter{chapter}{2017}
 \exam{Exam 2018/19}
 {
-\renewcommand{\thesubsubsection}{\thesubsection\alph{subsubsection}}
-\subsection{Group I}
+
+\examgroup{Group I}
 \questionitem{Item a}
 \begin{minipage}[c]{0.50\textwidth}
 	The methodology should follow these lines:
@@ -228,7 +228,7 @@ This technique allows to easily create a DFA that accepts the reverse of all str
 		\end{tikzpicture}
 	\end{center}
 \end{minipage}
-\subsection{Group II}
+\examgroup{Group II}
 \questionitem{Item a}
 \begin{theorem}
 	Given $L_1=\{a^n b^n \mid n \geq 0\}$ is a non-regular language, $L_2=\{0^n 1^m 2^{n-m} \mid  n \geq m \geq 0\}$ is also a non-regular language.
@@ -253,7 +253,7 @@ Let $L_1$, $L_2$ be the regular languages for which we have regular expressions.
 \end{enumerate}
 We thus arrive at a regular expression of the symmetric difference of two languages.
 \pagebreak
-\subsection{Group III}
+\examgroup{Group III}
 \begin{alignat*}{2}
 	L=\{a^n w w^R a^j \mid n \geq 0, n \leq j \leq 2n, w \in \{a,b\}^*\}
 \end{alignat*}
@@ -349,7 +349,7 @@ An equivalent, non-ambiguous grammar is:
 				 & \vdash (q,bbaa,Waa) &&\vdash (q,bbaa,bWbaa) &&\vdash (q,baa,Wbaa)&&\vdash (q,baa,baa) \\
 				 & \vdash (q,aa,aa)     &&\vdash (q,a,a) &&\vdash (q,\varepsilon,\varepsilon)
 \end{alignat*}
-\subsection{Group IV}
+\examgroup{Group IV}
 \questionitem{Item a}
 A strategy to implement a TM to answer this question would be:
 \begin{enumerate}
@@ -400,7 +400,7 @@ A strategy to implement a TM to answer this question would be:
 			& B s 101B &&\vdash BX g_1 01B &&\vdash B l XX1B &&\vdash l BXX1B &&\\
 	\vdash 	& B s XX1B &&\vdash BX s X1B &&\vdash BXX s 1B &&\vdash BXXX g_1 B &&\vdash BXXXB f 
 \end{alignat*}
-\subsection{Group V}
+\examgroup{Group V}
 \begin{center}
 	\begin{tabular}{c | c p{132mm}}
 		\textbf{(a)} & True & All finite languages are regular. All regular languages are representable as regular expressions, where a regular expresison is nothing more than the result of applying certain regular operations over finite languages. \\ \hline

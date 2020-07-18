@@ -9,6 +9,21 @@
 \author{Diogo Miguel Ferreira Rodrigues \\ \href{mailto:dmfrodrigues2000@gmail.com}{dmfrodrigues2000@gmail.com}}
 \date{2019/2020, 1st semester}
 \setcounter{tocdepth}{2}
+% Stuff
+\makeatletter
+\renewcommand{\l@chapter}{\bfseries\@dottedtocline{0}{0em}{3.5em}}
+\renewcommand{\l@section}{\normalfont\@dottedtocline{1}{1em}{4.0em}}
+\renewcommand{\l@subsection}{\normalfont\@dottedtocline{2}{2em}{4.5em}}
+\renewcommand{\l@subsubsection}{\normalfont\@dottedtocline{3}{3em}{4.5em}}
+\makeatother
+% Macros
+\renewcommand\thechapter{\decimal{chapter}T1}
+\usepackage{titlesec}
+\titleformat{\chapter}[display]{\normalfont\bfseries}{}{0pt}{\Huge}
+\makeatletter
+\let\newtitle\@title
+\renewcommand{\chaptermark}[1]{\markboth{\newtitle}{\thechapter. #1}}
+\makeatother
 % Document
 \begin{document}
 \maketitle

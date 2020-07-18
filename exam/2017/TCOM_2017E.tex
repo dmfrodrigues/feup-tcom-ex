@@ -1,10 +1,10 @@
 \documentclass[docid=2017/18]{tcom_exam}
 \begin{document}
-\setcounter{chapter}{16}
+\setcounter{chapter}{2016}
 \exam{Exam 2017/18}
 {
-\renewcommand{\thesubsubsection}{\thesubsection\alph{subsubsection}}
-\subsection{Group I}
+
+\examgroup{Group I}
 \questionitem{Item a}
 \begin{alignat*}{2}
 	&\varepsilon close(q_0&&)=\{q_0,q_1,q_2,q_3\}\\
@@ -334,7 +334,7 @@ In language notation, $L(D)=L(D_1') \cap L(D_c)$.
 	&R)^*
 \end{alignat*}
 \pagebreak
-\subsection{Group II}
+\examgroup{Group II}
 \questionitem{Item a}
 Assume by absurd that there is a DFA with $N$ states that is equivalent to $L$. The least information that completely describes the status of the string processing (for our goal of finding if there are as many $yes$ as $no$) is the difference between the number of $yes$ and $no$ found so far. Now consider string $w=(yes)^{N+1}(no)^{N+1}$. By the time the $N+1$ $yes$ were processed, the state should indicate there are more $N+1$ processed $yes$ than $no$, but we have already passed through the states that count the difference from $0$ to $N-1$, so we can not count any more $yes$.\par
 Thus, $L$ is not regular.
@@ -365,7 +365,7 @@ $L$ is regular, given the following DFA is equivalent to $L$:
 				;
 	\end{tikzpicture}
 \end{center}
-\subsection{Group III}
+\examgroup{Group III}
 \questionitem{Item a}
 \begin{minipage}[c]{0.49\textwidth}
 	\begin{alignat*}{5}
@@ -435,7 +435,7 @@ The PDA is non-deterministic, given $\delta(1,\varepsilon,S)=\{(1,(S)S),(1,\vare
 \begin{alignat*}{2}
 	S &\rightarrow (S)S\mid \varepsilon
 \end{alignat*}
-\subsection{Group IV}
+\examgroup{Group IV}
 \questionitem{Item a}
 \begin{enumerate}
 	\item Ignore first $a$.
@@ -461,7 +461,7 @@ The PDA is non-deterministic, given $\delta(1,\varepsilon,S)=\{(1,(S)S),(1,\vare
 	&           &&\vdash BBB q_0 \alpha\gamma B &&\vdash BBB\alpha f_0 \gamma B &&\vdash BBB\alpha\gamma f_0 B &&\vdash BBB\alpha\gamma B f  
 \end{alignat*}
 \pagebreak
-\subsection{Group V}
+\examgroup{Group V}
 \begin{center}
 	\begin{tabular}{c | c p{130mm}}
 		\textbf{(a)} & False & Say $L$ is non-regular. $L \subset \Sigma^*$ but $\Sigma^*$ is regular. \\

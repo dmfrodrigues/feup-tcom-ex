@@ -17,3 +17,13 @@
 
 \author{Diogo Miguel Ferreira Rodrigues \\ \href{mailto:dmfrodrigues2000@gmail.com}{dmfrodrigues2000@gmail.com}}
 \title{TCOM Challenge Activities (CA) - \docid}
+
+% Macros
+\renewcommand\thechapter{CA\padzeroes[2]{\decimal{chapter}}}
+\usepackage{titlesec}
+\titleformat{\chapter}[display]
+{\normalfont\huge\bfseries}{Challenge activity \decimal{chapter}}{20pt}{\Huge}
+\makeatletter
+\let\newtitle\@title
+\renewcommand{\chaptermark}[1]{\markboth{\newtitle}{\thechapter. #1}}
+\makeatother

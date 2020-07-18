@@ -9,3 +9,4 @@ TCOM_*.pdf
 *.fdb_latexmk
 *.sta
 COMMIT.tex
+.vscode

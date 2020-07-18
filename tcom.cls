@@ -90,13 +90,13 @@
 \fancyfoot[LE, RO]{\ifx\@@author\@empty\else\@@author\fi}
 % Sections
 \makeatletter
-\renewcommand\thesection{\thechapter\ifnum\c@section>\z@ -P\arabic{section}\fi}
-\renewcommand\thesubsection{\thesection-\arabic{subsection}}
+\renewcommand\thesection{\thechapter\ifnum\c@section>\z@ -\Roman{section}\fi}
+\renewcommand\thesubsection{\thesection\ifnum\c@subsection>\z@ -\arabic{subsection}\fi}
 \renewcommand\thesubsubsection{\thesubsection\alph{subsubsection}}
 \makeatother
 % Alias
 \setcounter{secnumdepth}{10}
 \newcommand\exam[1]{\chapter{#1}}
-\newcommand\exampart[1]{\section{#1}}
+\newcommand\examgroup[1]{\section{#1}}
 \newcommand\question[1]{\subsection{#1}}
 \newcommand\questionitem[1]{\subsubsection{#1}}

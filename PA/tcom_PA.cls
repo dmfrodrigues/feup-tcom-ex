@@ -17,3 +17,13 @@
 
 \author{Diogo Miguel Ferreira Rodrigues \\ \href{mailto:dmfrodrigues2000@gmail.com}{dmfrodrigues2000@gmail.com}}
 \title{TCOM Preparation Activities (PA) - \docid}
+
+% Macros
+\renewcommand\thechapter{PA\padzeroes[2]{\decimal{chapter}}}
+\usepackage{titlesec}
+\titleformat{\chapter}[display]
+{\normalfont\huge\bfseries}{Preparation activity \decimal{chapter}}{20pt}{\Huge}
+\makeatletter
+\let\newtitle\@title
+\renewcommand{\chaptermark}[1]{\markboth{\newtitle}{\thechapter. #1}}
+\makeatother
